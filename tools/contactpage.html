@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Markup contact pages with business info">
+  <meta property="og:title" content="Contact Page Schema - Schema Markup Generator">
+  <meta property="og:description" content="Markup contact pages with business info">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schemamarkup.github.io/tools/contactpage.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Page Schema - Schema Markup Generator">
+  <meta name="twitter:description" content="Markup contact pages with business info">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <link rel="canonical" href="https://schemamarkup.github.io/tools/contactpage.html">
+  <title>Contact Page Schema - Schema Markup Generator | WebDeskArt</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    @media (max-width:1024px) { .tool-layout { grid-template-columns: 1fr; } }
+    .form-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .form-section h2 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--text); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 10px;
+      font-family: inherit; font-size: 0.875rem;
+      background: var(--bg); color: var(--text); transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; font-family: 'Monaco','Courier New',monospace; }
+    .required { color: var(--danger); }
+    .help-text { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .output-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .output-section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .validation-msg { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-bottom: 1rem; display: none; }
+    .validation-msg.show { display: block; animation: fadeIn 0.3s; }
+    .validation-msg.success { background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
+    .validation-msg.error { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    .output-box {
+      background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+      padding: 1rem; font-family: 'Monaco','Courier New',monospace; font-size: 0.8rem;
+      line-height: 1.5; max-height: 500px; overflow-y: auto; color: var(--text); min-height: 200px;
+    }
+    .output-box pre { margin: 0; white-space: pre-wrap; }
+    .json-key { color: var(--brand); }
+    .json-string { color: #dc2626; }
+    .json-value { color: #059669; }
+    .btn-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn-group .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+.tool-article { margin-top: 3rem; }
+    .tool-article h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .tool-article h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; }
+    .tool-article p { font-size: 0.9rem; line-height: 1.8; color: var(--text); margin-bottom: 0.75rem; }
+    .tool-article ul, .tool-article ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .tool-article li { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.35rem; }
+    .tool-article .faq-item { margin-bottom: 0.75rem; }
+    .tool-article .faq-item h4 { font-size: 1rem; margin: 0; }
+    .tool-article .note { background: #fff8e1; border-left: 4px solid #f9a825; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.85rem; }
+
+    .faq-item { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; position: relative; }
+    .faq-item .btn-remove { position: absolute; top: 0.5rem; right: 0.5rem; color: var(--danger); border: 1px solid var(--line); background: #fff; cursor: pointer; border-radius: 6px; padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+    .faq-item .btn-remove:hover { background: var(--danger); color: #fff; }
+    #addFaqBtn { margin-top: 0.5rem; }
+    @media (max-width:768px) {
+      .form-section, .output-section { padding: 1rem; }
+      .btn-group { flex-direction: column; }
+      .btn-group .btn { width: 100%; justify-content: center; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="breadcrumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="../all-tools.html">All Tools</a>
+        <span class="sep">›</span>
+        <span class="current">Contact Page Schema</span>
+      </div>
+      <div class="tool-header"><h1><span class="icon-box"><i class="fas fa-address-card"></i></span> Contact Page Schema</h1><p>Markup contact pages with business info</p></div>
+      <div class="tool-layout">
+        <div class="form-section"><h2>Fill in the Details</h2><form id="genForm"><div class="form-group"><label>Page Title <span class="required">*</span></label><input type="text" name="name" placeholder="Contact Us" required></div>
+        <div class="form-group"><label>Description <span class="required">*</span></label><textarea name="description" placeholder="Get in touch with our team" required></textarea></div>
+        <div class="form-group"><label>Page URL <span class="required">*</span></label><input type="text" name="url" placeholder="https://example.com/contact" required></div>
+        <div class="form-group"><label>Published Date</label><input type="text" name="datePublished" placeholder="2024-01-15"></div>
+        <div class="form-group"><label>Modified Date</label><input type="text" name="dateModified" placeholder="2024-01-20"></div>
+        <div class="form-group"><label>Page Author</label><input type="text" name="author" placeholder="Site Admin"></div>
+        <div class="form-group"><label>Image URL</label><input type="text" name="image" placeholder="https://example.com/contact.jpg"></div></form></div>
+        <div class="output-section">
+          <h2>Generated JSON-LD</h2>
+          <div class="validation-msg" id="valMsg"></div>
+          <div class="output-box" id="outBox"><pre>Fill in the form to generate JSON-LD...</pre></div>
+          <div class="btn-group">
+            <button class="btn primary btn-small" onclick="copyJSON()"><i class="fas fa-copy"></i> Copy JSON</button>
+            <button class="btn ghost btn-small" onclick="downloadJSON()"><i class="fas fa-download"></i> Download</button>
+            <button class="btn ghost btn-small" onclick="validateJSON()"><i class="fas fa-check-circle"></i> Validate</button>
+            <button class="btn ghost btn-small" onclick="beautifyJSON()"><i class="fas fa-wand-magic-sparkles"></i> Beautify</button>
+            <button class="btn ghost btn-small" onclick="minifyJSON()"><i class="fas fa-wrench"></i> Minify</button>
+          </div>
+        </div>
+      </div>
+      <div class="tool-article">
+
+<h2>Make It Easy for Customers to Find You With Contact Page Schema</h2>
+<p>Your contact page is one of the most important pages on your website. Contact Page Schema helps search engines understand exactly how customers can reach you by marking up your contact information. This structured data can power rich results that display your phone number, address, and email directly in search, making it effortless for potential customers to get in touch.</p>
+<p>Our Contact Page Schema Generator creates JSON-LD markup that tells search engines your contact page is the go-to destination for reaching your business.</p>
+
+<h2>What Is Contact Page Schema?</h2>
+<p>Contact Page Schema is a subtype of WebPage specifically designed for contact and about pages. It includes properties like name, description, URL, author, image, and publication dates. When combined with Organization or LocalBusiness schema on the same page, it creates a complete picture of your business's contact information for search engines.</p>
+
+<h2>Features</h2>
+<ul>
+<li>Page title and description optimized for contact page content</li>
+<li>URL and publication date tracking</li>
+<li>Author attribution support</li>
+<li>Image URL for visual rich results</li>
+<li>Valid JSON-LD format compliant with Google guidelines</li>
+<li>Clean, ready-to-implement output</li>
+</ul>
+
+<h2>Benefits</h2>
+<h3>Better Local Discovery</h3>
+<p>Contact pages with schema appear more prominently in local search results, helping nearby customers find your business.</p>
+<h3>Improved User Trust</h3>
+<p>A properly marked-up contact page signals professionalism and transparency to both search engines and visitors.</p>
+<h3>Higher Conversion Rates</h3>
+<p>When contact information is easily accessible in search, users are more likely to reach out and convert.</p>
+
+<h2>How It Works</h2>
+<ol>
+<li>Enter the contact page title and a clear description of contact methods.</li>
+<li>Add the page URL and optional image (such as a map or office photo).</li>
+<li>Set the publication date and optional modification date.</li>
+<li>Include author information if relevant.</li>
+<li>Copy the generated JSON-LD to your contact page HTML.</li>
+</ol>
+
+<h2>Use Cases</h2>
+<ul>
+<li>Business contact and location pages</li>
+<li>Customer support and help center pages</li>
+<li>Sales inquiry and lead generation pages</li>
+<li>Office location pages for multi-location businesses</li>
+<li>About pages that include contact information</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h4>Do I need Contact Page Schema in addition to Organization Schema?</h4><p>Yes. Use ContactPage for the page type and Organization for the business details. They work together for complete coverage.</p></div>
+<div class="faq-item"><h4>Can I use this for multiple location pages?</h4><p>Yes. Create separate ContactPage schema blocks for each location on their respective pages.</p></div>
+<div class="faq-item"><h4>Does this schema type show a contact form in search results?</h4><p>Contact Page Schema helps Google understand your page but does not directly create interactive contact forms in search.</p></div>
+<div class="faq-item"><h4>Is ContactPage a recommended schema type by Google?</h4><p>Yes, ContactPage is a recognized WebPage subtype that helps search engines categorize your contact pages.</p></div>
+
+<h2>Conclusion</h2>
+<p>Contact Page Schema ensures your contact information is properly understood and prominently displayed by search engines. Generate your markup above to make it easier for customers to find and reach your business.</p>
+
+</div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+  <script>
+    function genJSON(d){
+            return {'@context':'https://schema.org','@type':'ContactPage',name:d.name,description:d.description,url:d.url,
+                datePublished:d.datePublished||undefined,dateModified:d.dateModified||undefined,
+                author:d.author?{'@type':'Person',name:d.author}:undefined,
+                image:d.image||undefined}
+        }
+    function cleanJSON(obj){if(Array.isArray(obj))return obj.map(cleanJSON).filter(i=>i!==null);if(obj!==null&&typeof obj==='object'){const c={};for(const k in obj){const v=cleanJSON(obj[k]);if(v!==undefined)c[k]=v;}return Object.keys(c).length?c:undefined}return obj===undefined?undefined:obj}
+    function formatJSON(json,minify){return minify?JSON.stringify(cleanJSON(json)):JSON.stringify(cleanJSON(json),null,2)}
+    function highlightJSON(str){str=str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');str=str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,function(m){let cls='json-value';if(/^"/.test(m)){cls=/:$/.test(m)?'json-key':'json-string'}else if(/true|false|null/.test(m))cls='json-value';return '<span class="'+cls+'">'+m+'</span>'});return str}
+    function genOutput(){const f=document.getElementById('genForm');const d=Object.fromEntries(new FormData(f));const j=genJSON(d);if(!j)return;const fmt=formatJSON(j,false);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(fmt)+'</pre>';window._json=fmt}
+    function copyJSON(){if(!window._json){msg('Nothing to copy. Fill the form first.','error');return}navigator.clipboard.writeText(window._json).then(()=>msg('✓ Copied!','success')).catch(()=>msg('✗ Failed','error'))}
+    function downloadJSON(){if(!window._json){msg('Nothing to download. Fill the form first.','error');return}const a=document.createElement('a');a.setAttribute('href','data:application/json;charset=utf-8,'+encodeURIComponent(window._json));a.setAttribute('download',document.title.replace(/\s+/g,'-').toLowerCase()+'.json');a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);msg('⬇️ Downloaded!','success')}
+    function validateJSON(){try{JSON.parse(document.getElementById('outBox').innerText);msg('✓ Valid JSON!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function beautifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const f=JSON.stringify(v,null,2);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(f)+'</pre>';window._json=f;msg('✨ Beautified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function minifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const m=JSON.stringify(v);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(m)+'</pre>';window._json=m;msg('🔧 Minified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function msg(text,type){const el=document.getElementById('valMsg');el.textContent=text;el.className='validation-msg show '+type;setTimeout(()=>el.classList.remove('show'),3000)}
+    document.getElementById('genForm').addEventListener('input',genOutput);document.getElementById('genForm').addEventListener('change',genOutput);genOutput();
+  </script>
+</body>
+</html>

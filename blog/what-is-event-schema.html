@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Event schema markup and how it helps events appear in Google Search with dates, locations, and ticket information.">
+  <meta property="og:title" content="What is Event Schema?">
+  <meta property="og:description" content="Learn about Event schema markup and how it helps events appear in Google Search with dates, locations, and ticket information.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-event-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Event Schema?">
+  <meta name="twitter:description" content="Learn about Event schema markup and how it helps events appear in Google Search with dates, locations, and ticket information.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Event Schema? &#8212; Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-event-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Event Schema?</h1>
+      <p class="meta">June 2026 &middot; 534 words</p>
+      <p>Event schema is a type of structured data that describes organized events such as concerts, conferences, workshops, webinars, festivals, sports games, and more. It provides properties for the event name, date, time, location, performers, organizers, and ticket information. When Google detects valid Event schema, it can display your event details directly in search results, including in the event-rich result format and Google's event search features.</p>
+
+<h2>Key Properties of Event Schema</h2>
+<p>Event schema includes essential properties for describing events. The name property is required and should clearly identify the event. The startDate and endDate properties specify when the event begins and ends in ISO 8601 format. The location property describes where the event takes place using Place or VirtualLocation schema. The offers property provides ticket information using Offer schema. The performer property identifies who is performing or presenting at the event.</p>
+
+<h2>Event Schema Subtypes</h2>
+<p>Schema.org defines numerous event subtypes for different types of events. BusinessEvent, ChildrensEvent, ComedyEvent, DanceEvent, EducationEvent, Festival, FoodEvent, LiteratureEvent, MusicEvent, SaleEvent, SocialEvent, SportsEvent, TheaterEvent, and VisualArtsEvent are all subtypes of Event. Each subtype inherits all Event properties and may add specialized properties. Using the correct subtype helps search engines categorize your event appropriately for event search features.</p>
+
+<h2>Online and Hybrid Events</h2>
+<p>Event schema supports online and hybrid events through the VirtualLocation schema. For online events, use the location property with VirtualLocation that includes a url property for the event access link. For hybrid events that have both in-person and online components, you can include multiple location entries. The eventAttendanceMode property specifies whether the event is offline, online, or mixed. These properties are essential for webinars, virtual conferences, and hybrid gatherings.</p>
+
+<h2>Event Status and Schedule</h2>
+<p>The eventStatus property indicates whether an event is scheduled, rescheduled, postponed, cancelled, or moved online. Keeping this property updated helps users find accurate information about event changes. The eventSchedule property supports recurring events by linking to a Schedule object that defines the recurrence pattern. This is useful for weekly classes, monthly meetups, or annual conferences. The schedule property helps users understand when recurring events take place.</p>
+
+<h2>Ticket and Pricing Information</h2>
+<p>The offers property uses Offer schema to describe ticket availability and pricing. Each offer can specify price, currency, availability, and a URL for purchasing tickets. You can include multiple offers for different ticket types like general admission, VIP, and early bird pricing. The validFrom property for each offer indicates when ticket sales begin. Comprehensive ticket markup helps users find pricing and purchase options directly from search results.</p>
+
+<h2>Event Organization and Performers</h2>
+<p>The organizer property identifies the person or organization responsible for planning the event. The performer property lists who will be performing or speaking at the event. Both properties can use Person or Organization schema to provide detailed information. For multi-performer events like music festivals, include all major performers. This information helps search engines display event details and can attract attendees who follow specific performers or organizers.</p>
+
+<h2>Conclusion</h2>
+<p>Event schema is essential for any website promoting events. It enables rich search results with dates, locations, and ticket information, making it easier for users to find and attend your events. Our Schema Markup Generator supports Event schema with all relevant subtypes and properties for both in-person and online events.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Review schema markup and how it displays customer reviews with star ratings in search results.">
+  <meta property="og:title" content="What is Review Schema?">
+  <meta property="og:description" content="Learn about Review schema markup and how it displays customer reviews with star ratings in search results.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-review-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Review Schema?">
+  <meta name="twitter:description" content="Learn about Review schema markup and how it displays customer reviews with star ratings in search results.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Review Schema? &#8212; Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-review-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Review Schema?</h1>
+      <p class="meta">June 2026 &middot; 578 words</p>
+      <p>Review schema is a type of structured data that allows you to mark up individual customer reviews or expert reviews on your website. When combined with the appropriate item schema like Product or LocalBusiness, Review schema enables star ratings to appear in search results. Reviews with star ratings are among the most impactful types of rich results, as they provide immediate social proof and can significantly influence click-through rates and purchasing decisions.</p>
+
+<h2>How Review Schema Works</h2>
+<p>Review schema uses the Review type which contains properties for the review text, rating, author, and the item being reviewed. The itemReviewed property links to the schema type of the product, business, or other entity being reviewed. The reviewRating property uses Rating schema to provide the numeric or star rating. The author property identifies the reviewer using Person or Organization schema. The reviewBody contains the full text of the review.</p>
+
+<h2>Key Properties of Review Schema</h2>
+<p>Review schema includes essential properties for displaying reviews. The itemReviewed property is required and should reference the schema type of the reviewed item. The reviewRating property is required and must include a Rating with at least ratingValue. The author property is required to identify who wrote the review. The reviewBody contains the review text. The datePublished indicates when the review was posted. The name property provides a brief review title or summary.</p>
+
+<h2>Review Schema vs. AggregateRating Schema</h2>
+<p>Review schema describes a single review while AggregateRating schema describes the overall rating from multiple reviews. They serve different purposes and are often used together. Use Review schema for individual customer reviews on a product page. Use AggregateRating schema for the average rating displayed in rich results. A complete implementation typically includes both: AggregateRating for the summary star rating in search results and individual Review instances for the detailed reviews on the page.</p>
+
+<h2>Google's Review Guidelines</h2>
+<p>Google has strict guidelines for review markup to prevent manipulation. Reviews must be directly about the specific product, service, or business being reviewed. Reviews must be written by real users who have actually used the product or service. Self-reviews, reviews from competitors, and reviews from employees are not permitted. Review content must be visible on the page, not hidden from users. Violating these guidelines can result in manual action against your site, including removal of rich results.</p>
+
+<h2>Rating Properties</h2>
+<p>The Rating schema used within Review requires specific properties. The ratingValue is the numeric score, typically on a scale of 1 to 5. The bestRating and worstRating properties define the scale boundaries. If not specified, the default scale is 1 to 5. The ratingCount and reviewCount properties are used with AggregateRating to indicate how many ratings or reviews the average is based on. Using the correct scale and count helps users understand the rating context.</p>
+
+<h2>Third-Party Reviews</h2>
+<p>Google allows reviews from third-party platforms to be marked up, provided the reviews are genuine and meet Google's guidelines. If you display reviews from platforms like Yelp, Trustpilot, or Google Reviews on your site, you can mark them up with Review schema. However, you should include the provider property to identify the review platform. Google may verify the authenticity of third-party reviews against the original source.</p>
+
+<h2>Conclusion</h2>
+<p>Review schema is a powerful tool for displaying customer feedback in search results. Star ratings in rich results provide social proof that can dramatically improve click-through rates and conversions. Our Schema Markup Generator supports both Review and AggregateRating schema types for creating comprehensive review markup for your products, services, or business.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

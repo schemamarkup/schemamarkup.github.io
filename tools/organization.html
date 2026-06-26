@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Define your organization details for search engines">
+  <meta property="og:title" content="Organization Schema - Schema Markup Generator">
+  <meta property="og:description" content="Define your organization details for search engines">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schemamarkup.github.io/tools/organization.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Organization Schema - Schema Markup Generator">
+  <meta name="twitter:description" content="Define your organization details for search engines">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <link rel="canonical" href="https://schemamarkup.github.io/tools/organization.html">
+  <title>Organization Schema - Schema Markup Generator | WebDeskArt</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    @media (max-width:1024px) { .tool-layout { grid-template-columns: 1fr; } }
+    .form-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .form-section h2 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--text); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 10px;
+      font-family: inherit; font-size: 0.875rem;
+      background: var(--bg); color: var(--text); transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; font-family: 'Monaco','Courier New',monospace; }
+    .required { color: var(--danger); }
+    .help-text { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .output-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .output-section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .validation-msg { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-bottom: 1rem; display: none; }
+    .validation-msg.show { display: block; animation: fadeIn 0.3s; }
+    .validation-msg.success { background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
+    .validation-msg.error { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    .output-box {
+      background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+      padding: 1rem; font-family: 'Monaco','Courier New',monospace; font-size: 0.8rem;
+      line-height: 1.5; max-height: 500px; overflow-y: auto; color: var(--text); min-height: 200px;
+    }
+    .output-box pre { margin: 0; white-space: pre-wrap; }
+    .json-key { color: var(--brand); }
+    .json-string { color: #dc2626; }
+    .json-value { color: #059669; }
+    .btn-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn-group .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+.tool-article { margin-top: 3rem; }
+    .tool-article h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .tool-article h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; }
+    .tool-article p { font-size: 0.9rem; line-height: 1.8; color: var(--text); margin-bottom: 0.75rem; }
+    .tool-article ul, .tool-article ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .tool-article li { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.35rem; }
+    .tool-article .faq-item { margin-bottom: 0.75rem; }
+    .tool-article .faq-item h4 { font-size: 1rem; margin: 0; }
+    .tool-article .note { background: #fff8e1; border-left: 4px solid #f9a825; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.85rem; }
+
+    .faq-item { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; position: relative; }
+    .faq-item .btn-remove { position: absolute; top: 0.5rem; right: 0.5rem; color: var(--danger); border: 1px solid var(--line); background: #fff; cursor: pointer; border-radius: 6px; padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+    .faq-item .btn-remove:hover { background: var(--danger); color: #fff; }
+    #addFaqBtn { margin-top: 0.5rem; }
+    @media (max-width:768px) {
+      .form-section, .output-section { padding: 1rem; }
+      .btn-group { flex-direction: column; }
+      .btn-group .btn { width: 100%; justify-content: center; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="breadcrumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="../all-tools.html">All Tools</a>
+        <span class="sep">›</span>
+        <span class="current">Organization Schema</span>
+      </div>
+      <div class="tool-header"><h1><span class="icon-box"><i class="fas fa-building"></i></span> Organization Schema</h1><p>Define your organization details for search engines</p></div>
+      <div class="tool-layout">
+        <div class="form-section"><h2>Fill in the Details</h2><form id="genForm"><div class="form-group"><label>Organization Name <span class="required">*</span></label><input type="text" name="name" placeholder="Your Company Name" required></div>
+        <div class="form-group"><label>Website URL <span class="required">*</span></label><input type="text" name="url" placeholder="https://example.com" required></div>
+        <div class="form-group"><label>Logo URL</label><input type="text" name="logo" placeholder="https://example.com/logo.png"></div>
+        <div class="form-group"><label>Description</label><textarea name="description" placeholder="What does your organization do?"></textarea></div>
+        <div class="form-group"><label>Contact Telephone</label><input type="text" name="telephone" placeholder="+1-555-0123"></div>
+        <div class="form-group"><label>Contact Email</label><input type="text" name="email" placeholder="contact@example.com"></div>
+        <div class="form-group"><label>Street Address</label><input type="text" name="address" placeholder="123 Main St"></div>
+        <div class="form-group"><label>City</label><input type="text" name="city" placeholder="New York"></div>
+        <div class="form-group"><label>State/Province</label><input type="text" name="state" placeholder="NY"></div>
+        <div class="form-group"><label>ZIP Code</label><input type="text" name="zipCode" placeholder="10001"></div>
+        <div class="form-group"><label>Country</label><input type="text" name="country" placeholder="United States"></div>
+        <div class="form-group"><label>Social Media Profiles (one per line)</label><textarea name="socialProfile" placeholder="https://twitter.com/example&#10;https://facebook.com/example"></textarea></div></form></div>
+        <div class="output-section">
+          <h2>Generated JSON-LD</h2>
+          <div class="validation-msg" id="valMsg"></div>
+          <div class="output-box" id="outBox"><pre>Fill in the form to generate JSON-LD...</pre></div>
+          <div class="btn-group">
+            <button class="btn primary btn-small" onclick="copyJSON()"><i class="fas fa-copy"></i> Copy JSON</button>
+            <button class="btn ghost btn-small" onclick="downloadJSON()"><i class="fas fa-download"></i> Download</button>
+            <button class="btn ghost btn-small" onclick="validateJSON()"><i class="fas fa-check-circle"></i> Validate</button>
+            <button class="btn ghost btn-small" onclick="beautifyJSON()"><i class="fas fa-wand-magic-sparkles"></i> Beautify</button>
+            <button class="btn ghost btn-small" onclick="minifyJSON()"><i class="fas fa-wrench"></i> Minify</button>
+          </div>
+        </div>
+      </div>
+      <div class="tool-article">
+
+<h2>Stand Out in Search With Organization Schema</h2>
+<p>When people search for your business on Google, what do they see? A plain text link, or a rich knowledge panel with your logo, contact info, and social profiles? The difference is Organization Schema markup. This structured data tells search engines exactly who you are, where you are, and how to reach you.</p>
+<p>Many businesses miss this opportunity because implementing schema manually feels technical and error-prone. Our Organization Schema Generator solves this by creating clean, Google-compliant JSON-LD markup in seconds. No coding required.</p>
+
+<h2>What Is Organization Schema?</h2>
+<p>Organization Schema is a structured data vocabulary from Schema.org that describes an organization or business entity. When added to your website, it helps search engines understand your company's name, logo, contact details, social media profiles, and physical address. This data powers the knowledge panels and rich results that make your brand stand out.</p>
+<p>Google uses this markup to display enhanced search results that include your organization's logo, a map showing your location, customer reviews, and quick links to your social profiles. For businesses with a physical presence, this can significantly improve local search visibility.</p>
+
+<h2>Features</h2>
+<ul>
+<li>Generates valid JSON-LD format (Google's recommended format)</li>
+<li>Includes all core properties: name, URL, logo, description</li>
+<li>Complete address markup with street, city, state, ZIP, and country</li>
+<li>Contact information: telephone, email</li>
+<li>Social profile links (Facebook, Twitter, LinkedIn, etc.)</li>
+<li>Clean, minified output ready to copy and paste</li>
+<li>No account or sign-up required</li>
+</ul>
+
+<h2>Benefits of Using Organization Schema</h2>
+<h3>Knowledge Panel Eligibility</h3>
+<p>Properly marked-up organizations become eligible for Google Knowledge Graph inclusion, which displays your brand information prominently on the right side of search results.</p>
+<h3>Enhanced Brand Authority</h3>
+<p>Search results with logo, ratings, and verified information appear more trustworthy to users, increasing click-through rates by up to 30%.</p>
+<h3>Improved Local SEO</h3>
+<p>When combined with LocalBusiness schema, your organization appears in local search results with maps, directions, and contact information.</p>
+
+<h2>How It Works</h2>
+<ol>
+<li><strong>Enter your organization details</strong> in the form above: name, URL, logo, description, and contact information.</li>
+<li><strong>Add location details:</strong> street address, city, state, ZIP code, and country.</li>
+<li><strong>Include social profiles</strong> by pasting URLs to your social media pages (one per line).</li>
+<li><strong>Copy the generated JSON-LD</strong> code from the output panel.</li>
+<li><strong>Paste the code</strong> into the <code>&lt;head&gt;</code> or <code>&lt;body&gt;</code> section of your website.</li>
+<li><strong>Test with Google's Rich Results Test</strong> to verify your markup is valid.</li>
+</ol>
+
+<h2>When to Use Organization Schema</h2>
+<p>Every business, non-profit, educational institution, and government agency should use Organization Schema. It is the foundation schema type that all other organization-related schemas build upon. Use it on your homepage, contact page, and about us page.</p>
+
+<h2>Real-World Examples</h2>
+<p><strong>Example 1:</strong> A consulting firm adds Organization Schema to their homepage. Within weeks, their Google search results display the company logo, phone number, and a link to their LinkedIn profile. Potential clients see a professional, verified listing.</p>
+<p><strong>Example 2:</strong> An ecommerce brand implements Organization Schema with their social profiles. Their branded search results now include Facebook and Instagram links, driving additional traffic to their social channels.</p>
+
+<h2>Use Cases</h2>
+<ul>
+<li>Corporate websites wanting knowledge panel visibility</li>
+<li>Small businesses establishing local search presence</li>
+<li>Non-profits and educational institutions seeking credibility</li>
+<li>Ecommerce brands showcasing social proof</li>
+<li>Agency clients requiring structured data implementation</li>
+</ul>
+
+<h2>Common Mistakes to Avoid</h2>
+<p><strong>Missing logo URL:</strong> Google needs a logo to display in knowledge panels. Always include a high-resolution logo image URL.</p>
+<p><strong>Inconsistent NAP:</strong> Your name, address, and phone number should exactly match what appears on your website and Google Business Profile.</p>
+<p><strong>Duplicate markup:</strong> Only use one Organization Schema block per page. Multiple conflicting entries confuse search engines.</p>
+
+<h2>Tips & Best Practices</h2>
+<ul>
+<li>Add Organization Schema to your <strong>homepage</strong> and <strong>contact page</strong></li>
+<li>Use a logo that is at least 112x112px for knowledge panel display</li>
+<li>Include all social media profiles where your brand is active</li>
+<li>Test your markup with <strong>Google's Rich Results Test</strong> after implementation</li>
+<li>Combine with WebPage or Article schema on other pages for comprehensive coverage</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h4>Does Organization Schema improve SEO rankings?</h4><p>While not a direct ranking factor, it improves click-through rates and brand visibility, which positively influences SEO performance.</p></div>
+<div class="faq-item"><h4>Can I use Organization Schema on multiple pages?</h4><p>Yes, but each page should reference the same organization details consistently. The homepage is the most important page for this schema.</p></div>
+<div class="faq-item"><h4>What is the difference between Organization and LocalBusiness schema?</h4><p>LocalBusiness is a subtype of Organization that includes location-specific properties like opening hours and payment methods.</p></div>
+<div class="faq-item"><h4>How long does it take for Google to show my knowledge panel?</h4><p>It can take anywhere from a few days to several weeks. Proper schema markup increases your chances significantly.</p></div>
+<div class="faq-item"><h4>Do I need to add schema markup if I already have a Google Business Profile?</h4><p>Yes. Schema markup on your website and Google Business Profile work together to provide consistent information to search engines.</p></div>
+<div class="faq-item"><h4>What format does this generator use?</h4><p>JSON-LD, which is Google's recommended structured data format. It is the easiest to implement and maintain.</p></div>
+<div class="faq-item"><h4>Can I add multiple social profiles?</h4><p>Yes, enter one URL per line in the social profiles field. All major platforms are supported.</p></div>
+<div class="faq-item"><h4>Is Organization Schema required for Google verification?</h4><p>No, but it helps Google verify and display accurate information about your business.</p></div>
+
+<h2>Conclusion</h2>
+<p>Organization Schema is the foundation of your website's structured data strategy. It ensures search engines understand who you are, builds trust with users through enhanced search results, and lays the groundwork for additional schema types. Use our Organization Schema Generator above to create your markup in seconds and take the first step toward better search visibility.</p>
+
+</div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+  <script>
+    function genJSON(d){
+            return {'@context':'https://schema.org','@type':'Organization',name:d.name,url:d.url,
+                logo:d.logo||undefined,description:d.description||undefined,
+                telephone:d.telephone||undefined,email:d.email||undefined,
+                address:{'@type':'PostalAddress',streetAddress:d.address||undefined,addressLocality:d.city||undefined,addressRegion:d.state||undefined,postalCode:d.zipCode||undefined,addressCountry:d.country||undefined},
+                sameAs:(d.socialProfile||'').split('\n').filter(s=>s.trim())||undefined}
+        }
+    function cleanJSON(obj){if(Array.isArray(obj))return obj.map(cleanJSON).filter(i=>i!==null);if(obj!==null&&typeof obj==='object'){const c={};for(const k in obj){const v=cleanJSON(obj[k]);if(v!==undefined)c[k]=v;}return Object.keys(c).length?c:undefined}return obj===undefined?undefined:obj}
+    function formatJSON(json,minify){return minify?JSON.stringify(cleanJSON(json)):JSON.stringify(cleanJSON(json),null,2)}
+    function highlightJSON(str){str=str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');str=str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,function(m){let cls='json-value';if(/^"/.test(m)){cls=/:$/.test(m)?'json-key':'json-string'}else if(/true|false|null/.test(m))cls='json-value';return '<span class="'+cls+'">'+m+'</span>'});return str}
+    function genOutput(){const f=document.getElementById('genForm');const d=Object.fromEntries(new FormData(f));const j=genJSON(d);if(!j)return;const fmt=formatJSON(j,false);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(fmt)+'</pre>';window._json=fmt}
+    function copyJSON(){if(!window._json){msg('Nothing to copy. Fill the form first.','error');return}navigator.clipboard.writeText(window._json).then(()=>msg('✓ Copied!','success')).catch(()=>msg('✗ Failed','error'))}
+    function downloadJSON(){if(!window._json){msg('Nothing to download. Fill the form first.','error');return}const a=document.createElement('a');a.setAttribute('href','data:application/json;charset=utf-8,'+encodeURIComponent(window._json));a.setAttribute('download',document.title.replace(/\s+/g,'-').toLowerCase()+'.json');a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);msg('⬇️ Downloaded!','success')}
+    function validateJSON(){try{JSON.parse(document.getElementById('outBox').innerText);msg('✓ Valid JSON!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function beautifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const f=JSON.stringify(v,null,2);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(f)+'</pre>';window._json=f;msg('✨ Beautified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function minifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const m=JSON.stringify(v);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(m)+'</pre>';window._json=m;msg('🔧 Minified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function msg(text,type){const el=document.getElementById('valMsg');el.textContent=text;el.className='validation-msg show '+type;setTimeout(()=>el.classList.remove('show'),3000)}
+    document.getElementById('genForm').addEventListener('input',genOutput);document.getElementById('genForm').addEventListener('change',genOutput);genOutput();
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Person schema markup and how it describes individuals in search results and knowledge panels.">
+  <meta property="og:title" content="What is Person Schema?">
+  <meta property="og:description" content="Learn about Person schema markup and how it describes individuals in search results and knowledge panels.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-person-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Person Schema?">
+  <meta name="twitter:description" content="Learn about Person schema markup and how it describes individuals in search results and knowledge panels.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Person Schema? &#8212; Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-person-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Person Schema?</h1>
+      <p class="meta">June 2026 &middot; 548 words</p>
+      <p>Person schema is a type of structured data that describes an individual person. It can be used to mark up profiles, author pages, team members, executives, and any other page about a specific person. Person schema provides properties for name, job title, affiliation, contact information, and social media profiles. When properly implemented, it can help generate knowledge panels for notable individuals and enhance search results with detailed person information.</p>
+
+<h2>Key Properties of Person Schema</h2>
+<p>Person schema includes many properties to describe an individual comprehensively. The name property is required and should contain the person's full name. The givenName and familyName properties allow for more precise name breakdown. The jobTitle property specifies the person's role or position. The affiliation property identifies organizations the person is associated with. The sameAs property links to social media profiles and other online identities. The image property provides a photo of the person.</p>
+
+<h2>Person Schema for Author Pages</h2>
+<p>One of the most common uses of Person schema is for author pages and bylines on articles. When you mark up an author with Person schema and link to it from your Article schema using the author property, Google can display author information in article rich results. This includes the author's name, photo, and a link to their author page. Author markup helps establish credibility and can improve click-through rates for your content.</p>
+
+<h2>Person Schema for Team Pages</h2>
+<p>For company team pages, Person schema allows you to mark up each team member with their name, job title, photo, and bio. This helps search engines understand your team structure and can display team member information in knowledge panels. When combined with Organization schema, the person's affiliation property links them to your organization, strengthening your entity relationships in Google's knowledge graph.</p>
+
+<h2>Knowledge Panel Eligibility</h2>
+<p>Person schema is one of the factors Google uses when determining whether to create a knowledge panel for an individual. A knowledge panel is the information box that appears on the right side of search results for notable people. While schema markup alone does not guarantee a knowledge panel, it helps Google gather and verify the information needed. Including comprehensive Person schema with accurate information increases your chances of having a well-populated knowledge panel.</p>
+
+<h2>Nested Objects in Person Schema</h2>
+<p>Person schema supports nested objects for detailed information. The address property uses PostalAddress schema to describe the person's location. The contactPoint property uses ContactPoint schema for phone and email. The worksFor property uses Organization schema to describe their employer. The alumniOf property uses Organization or EducationalOrganization schema for alma maters. These nested relationships create a rich profile that search engines can display in various ways.</p>
+
+<h2>Privacy Considerations</h2>
+<p>When implementing Person schema, be mindful of privacy concerns. Only include information that is publicly available and that the person is comfortable having displayed in search results. Avoid including sensitive personal information like home addresses, personal phone numbers, or private email addresses. Use professional contact information and social media profiles that the person uses for public communication.</p>
+
+<h2>Conclusion</h2>
+<p>Person schema is valuable for author pages, team profiles, executive bios, and any page about a specific individual. It helps search engines display detailed person information in search results and supports knowledge panel generation. Our Schema Markup Generator supports Person schema for creating individual profiles with all the key properties.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

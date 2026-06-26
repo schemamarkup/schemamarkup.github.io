@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional JSON-LD Schema Markup Generator. Create valid, SEO-optimized structured data for your website in seconds. 15+ schema types with instant validation.">
+  <meta name="keywords" content="schema markup generator, JSON-LD generator, structured data generator, schema validator, SEO markup">
+  <meta name="author" content="WebDeskArt">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Schema Markup Generator - JSON-LD SEO Tool">
+  <meta property="og:description" content="Generate valid Schema.org JSON-LD markup instantly. 15+ schema types with live preview and validation.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect fill='%237c3aed' width='1200' height='630'/%3E%3Ctext x='600' y='315' font-size='72' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'%3ESchema Markup Generator%3C/text%3E%3C/svg%3E">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Schema Markup Generator">
+  <meta name="twitter:description" content="Create JSON-LD schema markup for SEO">
+  <title>Schema Markup Generator - JSON-LD SEO Tool | WebDeskArt</title>
+  <link rel="canonical" href="https://schemamarkup.github.io">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .generators-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .generator-card {
+      display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.5rem; text-decoration: none; color: inherit; transition: all 0.3s; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .generator-card:hover { border-color: #ddd6fe; transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .generator-card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .generator-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; margin: 0; }
+    .generator-icon { width: 40px; height: 40px; background: var(--brand-soft); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.25rem; }
+    .generator-category {
+      display: inline-block; font-size: 0.75rem;
+      background: var(--brand-soft); color: var(--brand);
+      padding: 0.25rem 0.75rem; border-radius: 12px; margin-top: 1rem;
+    }
+    .modal {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5); z-index: 2000; overflow-y: auto; padding: 1rem;
+    }
+    .modal.active { display: flex; align-items: flex-start; justify-content: center; padding-top: 2rem; animation: slideUp 0.3s ease; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-content { background: #fff; border-radius: var(--radius-lg); width: 100%; max-width: 1000px; max-height: 90vh; overflow-y: auto; position: relative; }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 2rem; border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 100; background: #fff;
+    }
+    .modal-header h2 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+    .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: all 0.3s; }
+    .close-btn:hover { background: var(--bg-soft); }
+    .modal-body { padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width:1024px) { .modal-body { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 10px;
+      font-family: inherit; font-size: 0.875rem; background: var(--bg); color: var(--text); transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; font-family: 'Monaco','Courier New',monospace; }
+    .required-indicator { color: var(--danger); }
+    .help-text { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .checkbox-group { display: flex; align-items: center; gap: 0.5rem; }
+    .checkbox-group input[type="checkbox"] { width: auto; margin: 0; }
+    .output-section { display: flex; flex-direction: column; gap: 1rem; }
+    .output-box {
+      background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+      padding: 1rem; font-family: 'Monaco','Courier New',monospace; font-size: 0.8rem;
+      line-height: 1.5; max-height: 400px; overflow-y: auto; color: var(--text);
+    }
+    .output-box pre { margin: 0; white-space: pre-wrap; }
+    .json-key { color: var(--brand); }
+    .json-value { color: #059669; }
+    .json-string { color: #dc2626; }
+    .tab-group { display: flex; gap: 0; border-bottom: 2px solid var(--line); margin-bottom: 1rem; }
+    .tab-btn {
+      padding: 1rem; border: none; background: none; cursor: pointer;
+      font-weight: 500; font-size: 0.875rem; color: var(--muted);
+      border-bottom: 2px solid transparent; transition: all 0.3s; margin-bottom: -2px;
+    }
+    .tab-btn.active { color: var(--brand); border-bottom-color: var(--brand); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: slideUp 0.3s ease; }
+    .button-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; }
+    .validation-message { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-bottom: 1rem; display: none; }
+    .validation-message.show { display: block; animation: slideUp 0.3s ease; }
+    .validation-message.success { background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
+    .validation-message.error { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+    @media (max-width:768px) {
+      .modal-body { padding: 1rem; }
+      .button-group { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+      .generators-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="all-tools.html" class="active">All Tools</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="index.html">Home</a>
+      <a href="all-tools.html" class="active">All Tools</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="tos.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero" style="padding-bottom:0">
+        <h1>Schema Markup Generator</h1>
+        <p class="hero-sub">Create valid JSON-LD structured data for your website. Instant validation, live preview, and one-click copy.</p>
+
+        <div class="search-section">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search schema generators...">
+          </div>
+          <div class="filter-tabs" id="filterTabs"></div>
+        </div>
+
+        <div class="generators-grid" id="generatorsGrid"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="all-tools.html">All Tools</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+
+  <div class="modal" id="generatorModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle"></h2>
+        <button class="close-btn" aria-label="Close modal" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const generators = [
+      { id:'organization', name:'Organization Schema', description:'Define your organization details for search engines', category:'Business', icon:'fa-building',
+        fields:[
+          {name:'name',label:'Organization Name',type:'text',required:true,placeholder:'Your Company Name'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com'},
+          {name:'logo',label:'Logo URL',type:'text',required:false,placeholder:'https://example.com/logo.png'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'What does your organization do?'},
+          {name:'telephone',label:'Contact Telephone',type:'text',required:false,placeholder:'+1-555-0123'},
+          {name:'email',label:'Contact Email',type:'text',required:false,placeholder:'contact@example.com'},
+          {name:'address',label:'Street Address',type:'text',required:false,placeholder:'123 Main St'},
+          {name:'city',label:'City',type:'text',required:false,placeholder:'New York'},
+          {name:'state',label:'State/Province',type:'text',required:false,placeholder:'NY'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:false,placeholder:'10001'},
+          {name:'country',label:'Country',type:'text',required:false,placeholder:'United States'},
+          {name:'socialProfile',label:'Social Media Profiles (comma-separated)',type:'textarea',required:false,placeholder:'https://twitter.com/example\nhttps://facebook.com/example'}
+        ]
+      },
+      { id:'localbusiness', name:'Local Business Schema', description:'Target local search results with business information', category:'Local SEO', icon:'fa-location-dot',
+        fields:[
+          {name:'name',label:'Business Name',type:'text',required:true,placeholder:'Your Business Name'},
+          {name:'businessType',label:'Business Type',type:'select',required:true,options:['Restaurant','Salon','Doctor','Plumber','Lawyer','Photographer','Other']},
+          {name:'url',label:'Website',type:'text',required:true,placeholder:'https://example.com'},
+          {name:'telephone',label:'Phone Number',type:'text',required:true,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:true,placeholder:'123 Main St'},
+          {name:'city',label:'City',type:'text',required:true,placeholder:'New York'},
+          {name:'state',label:'State',type:'text',required:true,placeholder:'NY'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:true,placeholder:'10001'},
+          {name:'country',label:'Country',type:'text',required:true,placeholder:'United States'},
+          {name:'latitude',label:'Latitude',type:'text',required:false,placeholder:'40.7128'},
+          {name:'longitude',label:'Longitude',type:'text',required:false,placeholder:'-74.0060'},
+          {name:'openingHours',label:'Opening Hours (e.g., Mon-Fri 9:00-17:00)',type:'text',required:false,placeholder:'Mon-Fri 9:00-17:00'},
+          {name:'description',label:'Business Description',type:'textarea',required:false,placeholder:'Describe your business'},
+          {name:'image',label:'Business Image URL',type:'text',required:false,placeholder:'https://example.com/business.jpg'}
+        ]
+      },
+      { id:'article', name:'Article Schema', description:'Markup blog posts and articles for rich snippets', category:'Content', icon:'fa-newspaper',
+        fields:[
+          {name:'headline',label:'Article Headline',type:'text',required:true,placeholder:'Article Title'},
+          {name:'description',label:'Article Description',type:'textarea',required:true,placeholder:'Brief summary of the article'},
+          {name:'image',label:'Article Image URL',type:'text',required:true,placeholder:'https://example.com/image.jpg'},
+          {name:'datePublished',label:'Date Published',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Date Modified',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'author',label:'Author Name',type:'text',required:true,placeholder:'John Doe'},
+          {name:'authorUrl',label:'Author URL',type:'text',required:false,placeholder:'https://example.com/author'},
+          {name:'url',label:'Article URL',type:'text',required:true,placeholder:'https://example.com/article'},
+          {name:'articleBody',label:'Article Text (first 100 chars)',type:'textarea',required:false,placeholder:'Beginning of the article...'}
+        ]
+      },
+      { id:'blogposting', name:'BlogPosting Schema', description:'Optimize blog posts for search results', category:'Content', icon:'fa-blog',
+        fields:[
+          {name:'headline',label:'Blog Post Title',type:'text',required:true,placeholder:'Blog Post Title'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Brief summary'},
+          {name:'image',label:'Featured Image URL',type:'text',required:true,placeholder:'https://example.com/image.jpg'},
+          {name:'datePublished',label:'Published Date',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Modified Date',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'author',label:'Author Name',type:'text',required:true,placeholder:'Jane Smith'},
+          {name:'url',label:'Blog Post URL',type:'text',required:true,placeholder:'https://example.com/blog/post'},
+          {name:'keywords',label:'Keywords (comma-separated)',type:'text',required:false,placeholder:'keyword1, keyword2, keyword3'}
+        ]
+      },
+      { id:'product', name:'Product Schema', description:'Display products in rich snippets and shopping results', category:'Ecommerce', icon:'fa-cube',
+        fields:[
+          {name:'name',label:'Product Name',type:'text',required:true,placeholder:'Product Name'},
+          {name:'description',label:'Product Description',type:'textarea',required:true,placeholder:'Detailed product description'},
+          {name:'image',label:'Product Image URL',type:'text',required:true,placeholder:'https://example.com/product.jpg'},
+          {name:'price',label:'Price',type:'text',required:true,placeholder:'29.99'},
+          {name:'priceCurrency',label:'Price Currency',type:'select',required:true,options:['USD','EUR','GBP','CAD','AUD','INR','JPY']},
+          {name:'url',label:'Product URL',type:'text',required:true,placeholder:'https://example.com/product'},
+          {name:'availability',label:'Availability',type:'select',required:true,options:['InStock','OutOfStock','PreOrder','Discontinued']},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'150'},
+          {name:'sku',label:'SKU',type:'text',required:false,placeholder:'SKU-12345'},
+          {name:'brand',label:'Brand Name',type:'text',required:false,placeholder:'Brand Name'}
+        ]
+      },
+      { id:'offer', name:'Offer Schema', description:'Markup special offers and deals', category:'Ecommerce', icon:'fa-tag',
+        fields:[
+          {name:'name',label:'Offer Title',type:'text',required:true,placeholder:'Special Offer'},
+          {name:'description',label:'Offer Description',type:'textarea',required:true,placeholder:'Details of the offer'},
+          {name:'price',label:'Offer Price',type:'text',required:true,placeholder:'19.99'},
+          {name:'priceCurrency',label:'Currency',type:'select',required:true,options:['USD','EUR','GBP','CAD','INR']},
+          {name:'url',label:'Offer URL',type:'text',required:true,placeholder:'https://example.com/offer'},
+          {name:'availability',label:'Availability',type:'select',required:true,options:['InStock','OutOfStock','PreOrder']},
+          {name:'priceCurrencyOriginal',label:'Original Price',type:'text',required:false,placeholder:'29.99'},
+          {name:'validFrom',label:'Valid From Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'validUntil',label:'Valid Until Date',type:'text',required:false,placeholder:'2024-02-15'}
+        ]
+      },
+      { id:'review', name:'Review Schema', description:'Markup customer reviews with ratings', category:'Ecommerce', icon:'fa-star',
+        fields:[
+          {name:'reviewRating',label:'Rating (1-5)',type:'text',required:true,placeholder:'5'},
+          {name:'reviewBody',label:'Review Text',type:'textarea',required:true,placeholder:'This is an excellent product!'},
+          {name:'reviewAuthor',label:'Reviewer Name',type:'text',required:true,placeholder:'John Smith'},
+          {name:'reviewDate',label:'Review Date',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'reviewedItem',label:'Item Being Reviewed',type:'text',required:true,placeholder:'Product Name'},
+          {name:'reviewedItemUrl',label:'Item URL',type:'text',required:false,placeholder:'https://example.com/product'}
+        ]
+      },
+      { id:'aggregaterating', name:'Aggregate Rating Schema', description:'Show overall ratings from multiple reviews', category:'Ecommerce', icon:'fa-chart-simple',
+        fields:[
+          {name:'ratingValue',label:'Overall Rating',type:'text',required:true,placeholder:'4.5'},
+          {name:'ratingCount',label:'Number of Ratings',type:'text',required:true,placeholder:'150'},
+          {name:'reviewCount',label:'Number of Reviews',type:'text',required:false,placeholder:'120'},
+          {name:'bestRating',label:'Best Rating',type:'text',required:true,placeholder:'5'},
+          {name:'worstRating',label:'Worst Rating',type:'text',required:true,placeholder:'1'},
+          {name:'itemName',label:'Item Name',type:'text',required:true,placeholder:'Product or Business Name'},
+          {name:'itemUrl',label:'Item URL',type:'text',required:false,placeholder:'https://example.com/product'}
+        ]
+      },
+      { id:'faq', name:'FAQ Schema', description:'Create FAQ rich snippets for search results', category:'Content', icon:'fa-circle-question',
+        fields:[
+          {name:'question1',label:'Question 1',type:'text',required:true,placeholder:'What is your return policy?'},
+          {name:'answer1',label:'Answer 1',type:'textarea',required:true,placeholder:'We offer a 30-day return policy...'},
+          {name:'question2',label:'Question 2',type:'text',required:false,placeholder:'How long does shipping take?'},
+          {name:'answer2',label:'Answer 2',type:'textarea',required:false,placeholder:'Standard shipping takes 5-7 business days...'},
+          {name:'question3',label:'Question 3',type:'text',required:false,placeholder:'Do you offer discounts?'},
+          {name:'answer3',label:'Answer 3',type:'textarea',required:false,placeholder:'Yes, we offer bulk discounts...'}
+        ]
+      },
+      { id:'recipe', name:'Recipe Schema', description:'Markup recipes with ingredients and instructions', category:'Content', icon:'fa-utensils',
+        fields:[
+          {name:'name',label:'Recipe Name',type:'text',required:true,placeholder:'Chocolate Chip Cookies'},
+          {name:'description',label:'Recipe Description',type:'textarea',required:true,placeholder:'Delicious homemade cookies'},
+          {name:'image',label:'Recipe Image URL',type:'text',required:true,placeholder:'https://example.com/recipe.jpg'},
+          {name:'prepTime',label:'Prep Time (ISO duration)',type:'text',required:true,placeholder:'PT15M'},
+          {name:'cookTime',label:'Cook Time (ISO duration)',type:'text',required:true,placeholder:'PT12M'},
+          {name:'totalTime',label:'Total Time (ISO duration)',type:'text',required:true,placeholder:'PT27M'},
+          {name:'yield',label:'Servings/Yield',type:'text',required:true,placeholder:'24 cookies'},
+          {name:'calories',label:'Calories per Serving',type:'text',required:false,placeholder:'200'},
+          {name:'ingredients',label:'Ingredients (one per line)',type:'textarea',required:true,placeholder:'2 cups flour\n1 cup butter\n1 cup sugar'},
+          {name:'instructions',label:'Instructions (one per line)',type:'textarea',required:true,placeholder:'Preheat oven to 350°F\nMix ingredients\nBake for 12 minutes'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.8'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'45'}
+        ]
+      },
+      { id:'event', name:'Event Schema', description:'Markup events with dates, locations, and tickets', category:'Content', icon:'fa-calendar',
+        fields:[
+          {name:'name',label:'Event Name',type:'text',required:true,placeholder:'Tech Conference 2024'},
+          {name:'description',label:'Event Description',type:'textarea',required:true,placeholder:'Annual technology conference'},
+          {name:'image',label:'Event Image URL',type:'text',required:true,placeholder:'https://example.com/event.jpg'},
+          {name:'startDate',label:'Start Date & Time',type:'text',required:true,placeholder:'2024-06-15T09:00:00'},
+          {name:'endDate',label:'End Date & Time',type:'text',required:true,placeholder:'2024-06-17T18:00:00'},
+          {name:'location',label:'Location/Venue',type:'text',required:true,placeholder:'Convention Center, New York, NY'},
+          {name:'url',label:'Event URL',type:'text',required:true,placeholder:'https://example.com/event'},
+          {name:'ticketPrice',label:'Ticket Price',type:'text',required:false,placeholder:'99.99'},
+          {name:'ticketCurrency',label:'Ticket Currency',type:'text',required:false,placeholder:'USD'},
+          {name:'availability',label:'Availability',type:'select',required:false,options:['InStock','SoldOut','PreOrder']}
+        ]
+      },
+      { id:'webpage', name:'WebPage Schema', description:'Mark up individual web pages', category:'Website', icon:'fa-globe',
+        fields:[
+          {name:'name',label:'Page Title',type:'text',required:true,placeholder:'Page Title'},
+          {name:'description',label:'Page Description',type:'textarea',required:true,placeholder:'Page meta description'},
+          {name:'url',label:'Page URL',type:'text',required:true,placeholder:'https://example.com/page'},
+          {name:'datePublished',label:'Published Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Modified Date',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'image',label:'Featured Image URL',type:'text',required:false,placeholder:'https://example.com/image.jpg'},
+          {name:'author',label:'Page Author',type:'text',required:false,placeholder:'John Doe'}
+        ]
+      },
+      { id:'breadcrumb', name:'Breadcrumb Schema', description:'Show navigation breadcrumbs in search results', category:'Website', icon:'fa-link',
+        fields:[
+          {name:'breadcrumb1Name',label:'Level 1 Name',type:'text',required:true,placeholder:'Home'},
+          {name:'breadcrumb1Url',label:'Level 1 URL',type:'text',required:true,placeholder:'https://example.com'},
+          {name:'breadcrumb2Name',label:'Level 2 Name',type:'text',required:true,placeholder:'Products'},
+          {name:'breadcrumb2Url',label:'Level 2 URL',type:'text',required:true,placeholder:'https://example.com/products'},
+          {name:'breadcrumb3Name',label:'Level 3 Name',type:'text',required:false,placeholder:'Laptops'},
+          {name:'breadcrumb3Url',label:'Level 3 URL',type:'text',required:false,placeholder:'https://example.com/products/laptops'},
+          {name:'breadcrumb4Name',label:'Level 4 Name',type:'text',required:false,placeholder:'Gaming Laptops'},
+          {name:'breadcrumb4Url',label:'Level 4 URL',type:'text',required:false,placeholder:'https://example.com/products/laptops/gaming'}
+        ]
+      },
+      { id:'jobposting', name:'Job Posting Schema', description:'Post job openings with salary and requirements', category:'Content', icon:'fa-briefcase',
+        fields:[
+          {name:'title',label:'Job Title',type:'text',required:true,placeholder:'Senior Software Developer'},
+          {name:'description',label:'Job Description',type:'textarea',required:true,placeholder:'We are looking for...'},
+          {name:'company',label:'Company Name',type:'text',required:true,placeholder:'Tech Company Inc.'},
+          {name:'jobLocation',label:'Job Location',type:'text',required:true,placeholder:'San Francisco, CA'},
+          {name:'salaryMin',label:'Salary Min',type:'text',required:false,placeholder:'100000'},
+          {name:'salaryMax',label:'Salary Max',type:'text',required:false,placeholder:'150000'},
+          {name:'salaryCurrency',label:'Salary Currency',type:'text',required:false,placeholder:'USD'},
+          {name:'salaryPeriod',label:'Salary Period',type:'select',required:false,options:['YEAR','MONTH','WEEK','HOUR']},
+          {name:'employmentType',label:'Employment Type',type:'select',required:true,options:['FULL_TIME','PART_TIME','CONTRACT','TEMPORARY','INTERN']},
+          {name:'datePosted',label:'Date Posted',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'validThrough',label:'Valid Until',type:'text',required:true,placeholder:'2024-02-15'}
+        ]
+      },
+      { id:'course', name:'Course Schema', description:'Markup online courses and training programs', category:'Education', icon:'fa-graduation-cap',
+        fields:[
+          {name:'name',label:'Course Name',type:'text',required:true,placeholder:'Web Development Basics'},
+          {name:'description',label:'Course Description',type:'textarea',required:true,placeholder:'Learn web development from scratch'},
+          {name:'url',label:'Course URL',type:'text',required:true,placeholder:'https://example.com/course'},
+          {name:'image',label:'Course Image URL',type:'text',required:false,placeholder:'https://example.com/course.jpg'},
+          {name:'instructor',label:'Instructor Name',type:'text',required:true,placeholder:'Jane Smith'},
+          {name:'provider',label:'Provider Name',type:'text',required:true,placeholder:'Example Academy'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.7'},
+          {name:'reviewCount',label:'Number of Reviews',type:'text',required:false,placeholder:'250'},
+          {name:'studentCount',label:'Number of Students',type:'text',required:false,placeholder:'1000'}
+        ]
+      },
+      { id:'newsarticle', name:'NewsArticle Schema', description:'Markup news articles for Google News and rich results', category:'Content', icon:'fa-newspaper',
+        fields:[
+          {name:'headline',label:'Headline',type:'text',required:true,placeholder:'Breaking: Major News Story'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Brief summary of the news article'},
+          {name:'image',label:'Image URL',type:'text',required:true,placeholder:'https://example.com/news-image.jpg'},
+          {name:'datePublished',label:'Date Published',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Date Modified',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'author',label:'Author Name',type:'text',required:true,placeholder:'Jane Reporter'},
+          {name:'authorUrl',label:'Author URL',type:'text',required:false,placeholder:'https://example.com/author/jane'},
+          {name:'url',label:'Article URL',type:'text',required:true,placeholder:'https://example.com/news/article'},
+          {name:'dateline',label:'Dateline',type:'text',required:false,placeholder:'NEW YORK'},
+          {name:'keywords',label:'Keywords (comma-separated)',type:'text',required:false,placeholder:'breaking news, politics, technology'},
+          {name:'articleBody',label:'Article Text (first 100 chars)',type:'textarea',required:false,placeholder:'Beginning of the article...'}
+        ]
+      },
+      { id:'service', name:'Service Schema', description:'Markup services offered by your business', category:'Content', icon:'fa-wrench',
+        fields:[
+          {name:'name',label:'Service Name',type:'text',required:true,placeholder:'Web Design Service'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Professional web design services for small businesses'},
+          {name:'url',label:'Service URL',type:'text',required:true,placeholder:'https://example.com/service'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/service.jpg'},
+          {name:'provider',label:'Provider Name',type:'text',required:true,placeholder:'Your Company Name'},
+          {name:'serviceType',label:'Service Type',type:'text',required:false,placeholder:'Consulting, Installation, Support'},
+          {name:'category',label:'Category',type:'text',required:false,placeholder:'Business Services, Home Services'},
+          {name:'price',label:'Price',type:'text',required:false,placeholder:'199.99'},
+          {name:'priceCurrency',label:'Price Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+          {name:'areaServed',label:'Area Served',type:'text',required:false,placeholder:'United States, Worldwide'}
+        ]
+      },
+      { id:'videoobject', name:'VideoObject Schema', description:'Markup videos for rich video results', category:'Content', icon:'fa-video',
+        fields:[
+          {name:'name',label:'Video Title',type:'text',required:true,placeholder:'How to Bake a Cake'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Step-by-step baking tutorial'},
+          {name:'thumbnailUrl',label:'Thumbnail URL',type:'text',required:true,placeholder:'https://example.com/thumb.jpg'},
+          {name:'contentUrl',label:'Content URL',type:'text',required:false,placeholder:'https://example.com/video.mp4'},
+          {name:'embedUrl',label:'Embed URL',type:'text',required:false,placeholder:'https://example.com/embed/video'},
+          {name:'uploadDate',label:'Upload Date',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'duration',label:'Duration (ISO)',type:'text',required:false,placeholder:'PT15M30S'},
+          {name:'author',label:'Author Name',type:'text',required:false,placeholder:'Video Creator'},
+          {name:'publisher',label:'Publisher Name',type:'text',required:false,placeholder:'Publishing Channel'}
+        ]
+      },
+      { id:'movie', name:'Movie Schema', description:'Markup movies for rich movie results', category:'Content', icon:'fa-film',
+        fields:[
+          {name:'name',label:'Movie Title',type:'text',required:true,placeholder:'The Great Adventure'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'An epic tale of adventure and discovery'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/poster.jpg'},
+          {name:'url',label:'Movie URL',type:'text',required:false,placeholder:'https://example.com/movie'},
+          {name:'dateCreated',label:'Date Created',type:'text',required:false,placeholder:'2024'},
+          {name:'duration',label:'Duration (ISO)',type:'text',required:false,placeholder:'PT2H15M'},
+          {name:'director',label:'Director Name',type:'text',required:false,placeholder:'Jane Director'},
+          {name:'actor',label:'Actor Name',type:'text',required:false,placeholder:'John Actor'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'250'}
+        ]
+      },
+      { id:'tvseries', name:'TV Series Schema', description:'Markup TV series with cast and episode info', category:'Content', icon:'fa-tv',
+        fields:[
+          {name:'name',label:'Series Title',type:'text',required:true,placeholder:'Amazing Stories'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'A thrilling TV series about...'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/series-poster.jpg'},
+          {name:'url',label:'Series URL',type:'text',required:false,placeholder:'https://example.com/series'},
+          {name:'actor',label:'Actor Name',type:'text',required:false,placeholder:'Lead Actor'},
+          {name:'director',label:'Director Name',type:'text',required:false,placeholder:'Series Director'},
+          {name:'numberOfSeasons',label:'Number of Seasons',type:'text',required:false,placeholder:'5'},
+          {name:'numberOfEpisodes',label:'Number of Episodes',type:'text',required:false,placeholder:'50'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'1200'}
+        ]
+      },
+      { id:'book', name:'Book Schema', description:'Markup books with author and ISBN details', category:'Content', icon:'fa-book',
+        fields:[
+          {name:'name',label:'Book Title',type:'text',required:true,placeholder:'The Art of Coding'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'A comprehensive guide to programming'},
+          {name:'url',label:'Book URL',type:'text',required:false,placeholder:'https://example.com/book'},
+          {name:'image',label:'Cover Image URL',type:'text',required:false,placeholder:'https://example.com/cover.jpg'},
+          {name:'author',label:'Author Name',type:'text',required:true,placeholder:'Jane Author'},
+          {name:'isbn',label:'ISBN',type:'text',required:false,placeholder:'978-0-123456-78-9'},
+          {name:'bookFormat',label:'Book Format',type:'select',required:false,options:['Paperback','Hardcover','EBook','AudiobookFormat']},
+          {name:'numberOfPages',label:'Number of Pages',type:'text',required:false,placeholder:'350'},
+          {name:'publisher',label:'Publisher',type:'text',required:false,placeholder:'Tech Press'},
+          {name:'datePublished',label:'Publication Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'180'}
+        ]
+      },
+      { id:'softwareapplication', name:'Software Application Schema', description:'Markup desktop software applications', category:'Content', icon:'fa-laptop-code',
+        fields:[
+          {name:'name',label:'Software Name',type:'text',required:true,placeholder:'PhotoEditor Pro'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Professional photo editing software'},
+          {name:'url',label:'Software URL',type:'text',required:true,placeholder:'https://example.com/software'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/software.png'},
+          {name:'operatingSystem',label:'Operating System',type:'text',required:false,placeholder:'Windows 10, macOS 11'},
+          {name:'applicationCategory',label:'Application Category',type:'select',required:false,options:['Multimedia','DeveloperApplication','BusinessApplication','GameApplication','GraphicsApplication','UtilitiesApplication']},
+          {name:'price',label:'Price',type:'text',required:false,placeholder:'49.99'},
+          {name:'priceCurrency',label:'Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+          {name:'availability',label:'Availability',type:'select',required:false,options:['InStock','OutOfStock','PreOrder']},
+          {name:'fileSize',label:'File Size',type:'text',required:false,placeholder:'150MB'},
+          {name:'author',label:'Author/Publisher',type:'text',required:false,placeholder:'Software Company'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'320'}
+        ]
+      },
+      { id:'mobileapplication', name:'Mobile Application Schema', description:'Markup mobile apps in app stores', category:'Content', icon:'fa-mobile-screen-button',
+        fields:[
+          {name:'name',label:'App Name',type:'text',required:true,placeholder:'MyFitnessApp'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Fitness tracking mobile application'},
+          {name:'url',label:'App URL',type:'text',required:true,placeholder:'https://example.com/app'},
+          {name:'image',label:'App Icon URL',type:'text',required:false,placeholder:'https://example.com/icon.png'},
+          {name:'operatingSystem',label:'Operating System',type:'select',required:false,options:['iOS','Android','Windows Phone']},
+          {name:'applicationCategory',label:'Application Category',type:'select',required:false,options:['Multimedia','DeveloperApplication','BusinessApplication','GameApplication','GraphicsApplication','UtilitiesApplication']},
+          {name:'price',label:'Price',type:'text',required:false,placeholder:'2.99'},
+          {name:'priceCurrency',label:'Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+          {name:'availability',label:'Availability',type:'select',required:false,options:['InStock','OutOfStock','PreOrder']},
+          {name:'fileSize',label:'File Size',type:'text',required:false,placeholder:'45MB'},
+          {name:'author',label:'Developer Name',type:'text',required:false,placeholder:'App Developer'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'1500'}
+        ]
+      },
+      { id:'imageobject', name:'ImageObject Schema', description:'Markup images with creator and license info', category:'Content', icon:'fa-image',
+        fields:[
+          {name:'name',label:'Image Title',type:'text',required:true,placeholder:'Sunset Landscape'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'A beautiful sunset over the mountains'},
+          {name:'contentUrl',label:'Image URL',type:'text',required:true,placeholder:'https://example.com/image.jpg'},
+          {name:'author',label:'Author/Photographer',type:'text',required:false,placeholder:'John Photographer'},
+          {name:'datePublished',label:'Date Published',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'license',label:'License URL',type:'text',required:false,placeholder:'https://example.com/license'},
+          {name:'copyrightHolder',label:'Copyright Holder',type:'text',required:false,placeholder:'Copyright Owner'},
+          {name:'creditText',label:'Credit Text',type:'text',required:false,placeholder:'Photo by John'}
+        ]
+      },
+      { id:'audioobject', name:'AudioObject Schema', description:'Markup audio files and recordings', category:'Content', icon:'fa-volume-high',
+        fields:[
+          {name:'name',label:'Audio Title',type:'text',required:true,placeholder:'Podcast Episode 1'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Episode description'},
+          {name:'contentUrl',label:'Audio URL',type:'text',required:true,placeholder:'https://example.com/audio.mp3'},
+          {name:'duration',label:'Duration (ISO)',type:'text',required:false,placeholder:'PT30M'},
+          {name:'author',label:'Author/Creator',type:'text',required:false,placeholder:'Audio Creator'},
+          {name:'datePublished',label:'Date Published',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'url',label:'Audio Page URL',type:'text',required:false,placeholder:'https://example.com/audio-page'}
+        ]
+      },
+      { id:'podcast', name:'Podcast Schema', description:'Markup podcast episodes for podcast directories', category:'Content', icon:'fa-podcast',
+        fields:[
+          {name:'name',label:'Episode Title',type:'text',required:true,placeholder:'Interview with Expert'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'In this episode we discuss...'},
+          {name:'url',label:'Episode URL',type:'text',required:true,placeholder:'https://example.com/episode'},
+          {name:'image',label:'Episode Image URL',type:'text',required:false,placeholder:'https://example.com/episode.jpg'},
+          {name:'datePublished',label:'Date Published',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'duration',label:'Duration (ISO)',type:'text',required:false,placeholder:'PT45M'},
+          {name:'author',label:'Host/Creator',type:'text',required:false,placeholder:'Podcast Host'},
+          {name:'seasonNumber',label:'Season Number',type:'text',required:false,placeholder:'1'},
+          {name:'episodeNumber',label:'Episode Number',type:'text',required:false,placeholder:'5'},
+          {name:'seriesName',label:'Series/Podcast Name',type:'text',required:false,placeholder:'The Tech Show'}
+        ]
+      },
+      { id:'musicalbum', name:'Music Album Schema', description:'Markup music albums with track listings', category:'Content', icon:'fa-compact-disc',
+        fields:[
+          {name:'name',label:'Album Title',type:'text',required:true,placeholder:'Greatest Hits'},
+          {name:'url',label:'Album URL',type:'text',required:false,placeholder:'https://example.com/album'},
+          {name:'image',label:'Cover Art URL',type:'text',required:false,placeholder:'https://example.com/album.jpg'},
+          {name:'artist',label:'Artist/Band Name',type:'text',required:true,placeholder:'The Band'},
+          {name:'datePublished',label:'Release Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'numTracks',label:'Number of Tracks',type:'text',required:false,placeholder:'12'},
+          {name:'albumProductionType',label:'Album Type',type:'select',required:false,options:['Album','Compilation','EP','Single','LiveAlbum']},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'500'}
+        ]
+      },
+      { id:'musicrecording', name:'Music Recording Schema', description:'Markup individual music tracks and songs', category:'Content', icon:'fa-microphone',
+        fields:[
+          {name:'name',label:'Song Title',type:'text',required:true,placeholder:'Summer Nights'},
+          {name:'url',label:'Track URL',type:'text',required:false,placeholder:'https://example.com/track'},
+          {name:'image',label:'Cover Art URL',type:'text',required:false,placeholder:'https://example.com/track.jpg'},
+          {name:'artist',label:'Artist Name',type:'text',required:true,placeholder:'Recording Artist'},
+          {name:'duration',label:'Duration (ISO)',type:'text',required:false,placeholder:'PT3M45S'},
+          {name:'albumName',label:'Album Name',type:'text',required:false,placeholder:'Greatest Hits'},
+          {name:'datePublished',label:'Release Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'300'}
+        ]
+      },
+      { id:'restaurant', name:'Restaurant Schema', description:'Markup restaurants with menu and hours', category:'Content', icon:'fa-utensils',
+        fields:[
+          {name:'name',label:'Restaurant Name',type:'text',required:true,placeholder:'The Italian Place'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com/restaurant'},
+          {name:'telephone',label:'Phone Number',type:'text',required:true,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:true,placeholder:'123 Main St'},
+          {name:'city',label:'City',type:'text',required:true,placeholder:'New York'},
+          {name:'state',label:'State',type:'text',required:true,placeholder:'NY'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:true,placeholder:'10001'},
+          {name:'country',label:'Country',type:'text',required:true,placeholder:'United States'},
+          {name:'cuisine',label:'Cuisine Served',type:'text',required:false,placeholder:'Italian, Pizza, Pasta'},
+          {name:'priceRange',label:'Price Range',type:'select',required:false,options:['$','$$','$$$','$$$$']},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/restaurant.jpg'},
+          {name:'openingHours',label:'Opening Hours',type:'text',required:false,placeholder:'09:00-22:00'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'320'}
+        ]
+      },
+      { id:'hotel', name:'Hotel Schema', description:'Markup hotels with amenities and pricing', category:'Content', icon:'fa-hotel',
+        fields:[
+          {name:'name',label:'Hotel Name',type:'text',required:true,placeholder:'Grand Plaza Hotel'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Luxury hotel in downtown'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com/hotel'},
+          {name:'telephone',label:'Phone Number',type:'text',required:false,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:true,placeholder:'456 Park Ave'},
+          {name:'city',label:'City',type:'text',required:true,placeholder:'New York'},
+          {name:'state',label:'State',type:'text',required:true,placeholder:'NY'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:true,placeholder:'10001'},
+          {name:'country',label:'Country',type:'text',required:true,placeholder:'United States'},
+          {name:'image',label:'Hotel Image URL',type:'text',required:false,placeholder:'https://example.com/hotel.jpg'},
+          {name:'priceRange',label:'Price Range',type:'select',required:false,options:['$','$$','$$$','$$$$']},
+          {name:'starRating',label:'Star Rating',type:'text',required:false,placeholder:'5'},
+          {name:'amenities',label:'Amenities (comma-separated)',type:'text',required:false,placeholder:'Pool, Gym, WiFi, Parking'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'850'}
+        ]
+      },
+      { id:'realestatelisting', name:'Real Estate Listing Schema', description:'Markup property listings for real estate', category:'Content', icon:'fa-house-chimney',
+        fields:[
+          {name:'name',label:'Listing Title',type:'text',required:true,placeholder:'Modern 3BR Apartment'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Beautiful apartment with city views'},
+          {name:'url',label:'Listing URL',type:'text',required:true,placeholder:'https://example.com/listing'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/property.jpg'},
+          {name:'datePosted',label:'Date Posted',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'floorSize',label:'Floor Size (sq ft)',type:'text',required:false,placeholder:'1500'},
+          {name:'numberOfRooms',label:'Number of Rooms',type:'text',required:false,placeholder:'5'},
+          {name:'price',label:'Price',type:'text',required:true,placeholder:'500000'},
+          {name:'priceCurrency',label:'Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+          {name:'leaseLength',label:'Lease Length',type:'text',required:false,placeholder:'Monthly, Yearly'}
+        ]
+      },
+      { id:'vehicle', name:'Vehicle Schema', description:'Markup vehicles for sale with specs and pricing', category:'Content', icon:'fa-car',
+        fields:[
+          {name:'name',label:'Vehicle Title',type:'text',required:true,placeholder:'2024 Tesla Model 3'},
+          {name:'url',label:'Listing URL',type:'text',required:false,placeholder:'https://example.com/vehicle'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/vehicle.jpg'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Electric sedan in excellent condition'},
+          {name:'model',label:'Model',type:'text',required:false,placeholder:'Model 3'},
+          {name:'manufacturer',label:'Manufacturer',type:'text',required:false,placeholder:'Tesla'},
+          {name:'fuelType',label:'Fuel Type',type:'select',required:false,options:['Gasoline','Diesel','Electric','Hybrid','Hydrogen']},
+          {name:'engineType',label:'Engine Type',type:'text',required:false,placeholder:'Electric Motor'},
+          {name:'mileage',label:'Mileage',type:'text',required:false,placeholder:'15000'},
+          {name:'price',label:'Price',type:'text',required:true,placeholder:'45000'},
+          {name:'priceCurrency',label:'Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+          {name:'availability',label:'Availability',type:'select',required:false,options:['InStock','OutOfStock','PreOrder']},
+          {name:'color',label:'Color',type:'text',required:false,placeholder:'White'},
+          {name:'transmission',label:'Transmission',type:'select',required:false,options:['Automatic','Manual']}
+        ]
+      },
+      { id:'educationalorganization', name:'Educational Organization Schema', description:'Markup schools, colleges, and universities', category:'Business', icon:'fa-school',
+        fields:[
+          {name:'name',label:'Institution Name',type:'text',required:true,placeholder:'State University'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.edu'},
+          {name:'logo',label:'Logo URL',type:'text',required:false,placeholder:'https://example.edu/logo.png'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Leading institution of higher learning'},
+          {name:'telephone',label:'Telephone',type:'text',required:false,placeholder:'+1-555-0123'},
+          {name:'email',label:'Email',type:'text',required:false,placeholder:'info@example.edu'},
+          {name:'address',label:'Street Address',type:'text',required:false,placeholder:'123 College Ave'},
+          {name:'city',label:'City',type:'text',required:false,placeholder:'Boston'},
+          {name:'state',label:'State',type:'text',required:false,placeholder:'MA'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:false,placeholder:'02108'},
+          {name:'country',label:'Country',type:'text',required:false,placeholder:'United States'},
+          {name:'socialProfile',label:'Social Profiles (one per line)',type:'textarea',required:false,placeholder:'https://twitter.com/univ'}
+        ]
+      },
+      { id:'medicalorganization', name:'Medical Organization Schema', description:'Markup hospitals and medical institutions', category:'Business', icon:'fa-hospital',
+        fields:[
+          {name:'name',label:'Organization Name',type:'text',required:true,placeholder:'City Medical Center'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com/medical'},
+          {name:'logo',label:'Logo URL',type:'text',required:false,placeholder:'https://example.com/logo.png'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Comprehensive healthcare services'},
+          {name:'telephone',label:'Telephone',type:'text',required:false,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:false,placeholder:'789 Health Blvd'},
+          {name:'city',label:'City',type:'text',required:false,placeholder:'Chicago'},
+          {name:'state',label:'State',type:'text',required:false,placeholder:'IL'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:false,placeholder:'60601'},
+          {name:'country',label:'Country',type:'text',required:false,placeholder:'United States'}
+        ]
+      },
+      { id:'dentist', name:'Dentist Schema', description:'Markup dental practices for local search', category:'Business', icon:'fa-tooth',
+        fields:[
+          {name:'name',label:'Dental Practice Name',type:'text',required:true,placeholder:'Smile Dental Care'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com/dentist'},
+          {name:'telephone',label:'Phone Number',type:'text',required:true,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:true,placeholder:'123 Dental Dr'},
+          {name:'city',label:'City',type:'text',required:true,placeholder:'San Francisco'},
+          {name:'state',label:'State',type:'text',required:true,placeholder:'CA'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:true,placeholder:'94102'},
+          {name:'country',label:'Country',type:'text',required:true,placeholder:'United States'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/clinic.jpg'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Family and cosmetic dentistry'},
+          {name:'openingHours',label:'Opening Hours',type:'text',required:false,placeholder:'09:00-17:00'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'120'}
+        ]
+      },
+      { id:'physician', name:'Physician Schema', description:'Markup medical doctors and clinics', category:'Business', icon:'fa-user-doctor',
+        fields:[
+          {name:'name',label:'Practice Name',type:'text',required:true,placeholder:'Downtown Medical Clinic'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com/clinic'},
+          {name:'telephone',label:'Phone Number',type:'text',required:true,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:true,placeholder:'456 Medical Plaza'},
+          {name:'city',label:'City',type:'text',required:true,placeholder:'Los Angeles'},
+          {name:'state',label:'State',type:'text',required:true,placeholder:'CA'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:true,placeholder:'90001'},
+          {name:'country',label:'Country',type:'text',required:true,placeholder:'United States'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/clinic.jpg'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Primary care and specialty services'},
+          {name:'specialty',label:'Medical Specialty',type:'select',required:false,options:['Cardiology','Dermatology','Neurology','Pediatrics','Orthopedic','Ophthalmology','GeneralPractice']},
+          {name:'openingHours',label:'Opening Hours',type:'text',required:false,placeholder:'08:00-18:00'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'200'}
+        ]
+      },
+      { id:'legalservice', name:'Legal Service Schema', description:'Markup law firms and legal services', category:'Business', icon:'fa-scale-balanced',
+        fields:[
+          {name:'name',label:'Law Firm Name',type:'text',required:true,placeholder:'Smith & Associates'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com/lawfirm'},
+          {name:'telephone',label:'Phone Number',type:'text',required:true,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:true,placeholder:'789 Legal Ave'},
+          {name:'city',label:'City',type:'text',required:true,placeholder:'Washington'},
+          {name:'state',label:'State',type:'text',required:true,placeholder:'DC'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:true,placeholder:'20001'},
+          {name:'country',label:'Country',type:'text',required:true,placeholder:'United States'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/firm.jpg'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Expert legal representation'},
+          {name:'priceRange',label:'Price Range',type:'select',required:false,options:['$','$$','$$$']},
+          {name:'openingHours',label:'Opening Hours',type:'text',required:false,placeholder:'09:00-17:00'},
+          {name:'rating',label:'Rating (0-5)',type:'text',required:false,placeholder:'4.5'},
+          {name:'reviewCount',label:'Review Count',type:'text',required:false,placeholder:'85'}
+        ]
+      },
+      { id:'financialservice', name:'Financial Service Schema', description:'Markup financial advisors and services', category:'Business', icon:'fa-money-bill-wave',
+        fields:[
+          {name:'name',label:'Service Name',type:'text',required:true,placeholder:'Secure Financial Advisors'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com/financial'},
+          {name:'telephone',label:'Phone Number',type:'text',required:false,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:false,placeholder:'123 Finance St'},
+          {name:'city',label:'City',type:'text',required:false,placeholder:'New York'},
+          {name:'state',label:'State',type:'text',required:false,placeholder:'NY'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:false,placeholder:'10005'},
+          {name:'country',label:'Country',type:'text',required:false,placeholder:'United States'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/office.jpg'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Comprehensive financial planning'},
+          {name:'fees',label:'Fees & Pricing',type:'text',required:false,placeholder:'Fee-based, Commission-based'},
+          {name:'openingHours',label:'Opening Hours',type:'text',required:false,placeholder:'09:00-17:00'}
+        ]
+      },
+      { id:'ngo', name:'NGO Schema', description:'Markup non-profit organizations', category:'Business', icon:'fa-hand-holding-heart',
+        fields:[
+          {name:'name',label:'Organization Name',type:'text',required:true,placeholder:'Global Help Foundation'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.org'},
+          {name:'logo',label:'Logo URL',type:'text',required:false,placeholder:'https://example.org/logo.png'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Making the world a better place'},
+          {name:'telephone',label:'Telephone',type:'text',required:false,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:false,placeholder:'456 Charity Ave'},
+          {name:'city',label:'City',type:'text',required:false,placeholder:'Portland'},
+          {name:'state',label:'State',type:'text',required:false,placeholder:'OR'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:false,placeholder:'97201'},
+          {name:'country',label:'Country',type:'text',required:false,placeholder:'United States'},
+          {name:'socialProfile',label:'Social Profiles (one per line)',type:'textarea',required:false,placeholder:'https://twitter.com/ngo'}
+        ]
+      },
+      { id:'governmentorganization', name:'Government Organization Schema', description:'Markup government agencies and departments', category:'Business', icon:'fa-landmark',
+        fields:[
+          {name:'name',label:'Agency Name',type:'text',required:true,placeholder:'Department of Services'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.gov'},
+          {name:'logo',label:'Logo URL',type:'text',required:false,placeholder:'https://example.gov/logo.png'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Serving our community since 1900'},
+          {name:'address',label:'Street Address',type:'text',required:false,placeholder:'123 Government Dr'},
+          {name:'city',label:'City',type:'text',required:false,placeholder:'Sacramento'},
+          {name:'state',label:'State',type:'text',required:false,placeholder:'CA'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:false,placeholder:'95814'},
+          {name:'country',label:'Country',type:'text',required:false,placeholder:'United States'}
+        ]
+      },
+      { id:'profilepage', name:'Profile Page Schema', description:'Markup user profile and about pages', category:'Website', icon:'fa-user',
+        fields:[
+          {name:'name',label:'Page Title',type:'text',required:true,placeholder:'About John Doe'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Profile page description'},
+          {name:'url',label:'Page URL',type:'text',required:true,placeholder:'https://example.com/profile'},
+          {name:'datePublished',label:'Published Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Modified Date',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'author',label:'Profile Owner',type:'text',required:false,placeholder:'John Doe'},
+          {name:'image',label:'Profile Image URL',type:'text',required:false,placeholder:'https://example.com/profile.jpg'}
+        ]
+      },
+      { id:'contactpage', name:'Contact Page Schema', description:'Markup contact pages with business info', category:'Website', icon:'fa-address-card',
+        fields:[
+          {name:'name',label:'Page Title',type:'text',required:true,placeholder:'Contact Us'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Get in touch with our team'},
+          {name:'url',label:'Page URL',type:'text',required:true,placeholder:'https://example.com/contact'},
+          {name:'datePublished',label:'Published Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Modified Date',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'author',label:'Page Author',type:'text',required:false,placeholder:'Site Admin'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/contact.jpg'}
+        ]
+      },
+      { id:'searchaction', name:'Search Action Schema', description:'Add site search to Google search results', category:'Website', icon:'fa-magnifying-glass',
+        fields:[
+          {name:'name',label:'Site Name',type:'text',required:true,placeholder:'My Website'},
+          {name:'url',label:'Site URL',type:'text',required:true,placeholder:'https://example.com'},
+          {name:'searchUrl',label:'Search Results URL',type:'text',required:true,placeholder:'https://example.com/search'}
+        ]
+      },
+      { id:'sitelinkssearchbox', name:'Sitelinks Search Box Schema', description:'Enable search box in Google search results', category:'Website', icon:'fa-search-plus',
+        fields:[
+          {name:'name',label:'Site Name',type:'text',required:true,placeholder:'My Website'},
+          {name:'url',label:'Site URL',type:'text',required:true,placeholder:'https://example.com'},
+          {name:'searchUrl',label:'Search Results URL',type:'text',required:true,placeholder:'https://example.com/search'},
+          {name:'query_param',label:'Query Parameter',type:'text',required:true,placeholder:'q'}
+        ]
+      },
+      { id:'howto', name:'How-To Schema', description:'Markup step-by-step instructions and guides', category:'Content', icon:'fa-list',
+        fields:[
+          {name:'name',label:'Guide Title',type:'text',required:true,placeholder:'How to Change a Tire'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Step-by-step guide'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/guide.jpg'},
+          {name:'totalTime',label:'Total Time (ISO)',type:'text',required:false,placeholder:'PT30M'},
+          {name:'tools',label:'Tools (one per line)',type:'textarea',required:false,placeholder:'Jack&#10;Lug wrench&#10;Spare tire'},
+          {name:'supplies',label:'Supplies (one per line)',type:'textarea',required:false,placeholder:'WD-40&#10;Gloves'},
+          {name:'steps',label:'Steps (one per line)',type:'textarea',required:true,placeholder:'Park on level ground&#10;Loosen lug nuts&#10;Jack up the car'}
+        ]
+      },
+      { id:'speakable', name:'Speakable Schema', description:'Markup text for voice search and assistants', category:'Content', icon:'fa-volume-high',
+        fields:[
+          {name:'name',label:'Page Title',type:'text',required:true,placeholder:'Article Title'},
+          {name:'url',label:'Page URL',type:'text',required:true,placeholder:'https://example.com/article'},
+          {name:'cssSelector',label:'CSS Selectors (one per line)',type:'textarea',required:false,placeholder:'#headline&#10;.summary&#10;.key-points'},
+          {name:'xPath',label:'XPath Selectors (one per line)',type:'textarea',required:false,placeholder:'//h1&#10;//div[@class=\"summary\"]'}
+        ]
+      },
+      { id:'dataset', name:'Dataset Schema', description:'Markup data sets for research and science', category:'Content', icon:'fa-database',
+        fields:[
+          {name:'name',label:'Dataset Title',type:'text',required:true,placeholder:'Global Climate Data 2024'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Comprehensive climate dataset'},
+          {name:'url',label:'Dataset URL',type:'text',required:true,placeholder:'https://example.com/dataset'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/dataset.jpg'},
+          {name:'datePublished',label:'Date Published',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Date Modified',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'creator',label:'Creator/Publisher',type:'text',required:false,placeholder:'Research Institute'},
+          {name:'license',label:'License URL',type:'text',required:false,placeholder:'https://creativecommons.org/licenses/by/4.0/'},
+          {name:'temporalCoverage',label:'Temporal Coverage',type:'text',required:false,placeholder:'2020/2024'},
+          {name:'spatialCoverage',label:'Spatial Coverage',type:'text',required:false,placeholder:'Global'},
+          {name:'keywords',label:'Keywords (comma-separated)',type:'text',required:false,placeholder:'climate, temperature, weather'}
+        ]
+      },
+      { id:'employer', name:'Employer Review Schema', description:'Markup employer reviews and ratings', category:'Business', icon:'fa-users',
+        fields:[
+          {name:'name',label:'Company Name',type:'text',required:true,placeholder:'Tech Corp'},
+          {name:'url',label:'Website URL',type:'text',required:true,placeholder:'https://example.com'},
+          {name:'logo',label:'Logo URL',type:'text',required:false,placeholder:'https://example.com/logo.png'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Leading technology company'},
+          {name:'telephone',label:'Telephone',type:'text',required:false,placeholder:'+1-555-0123'},
+          {name:'address',label:'Street Address',type:'text',required:false,placeholder:'123 Tech Blvd'},
+          {name:'city',label:'City',type:'text',required:false,placeholder:'Seattle'},
+          {name:'state',label:'State',type:'text',required:false,placeholder:'WA'},
+          {name:'zipCode',label:'ZIP Code',type:'text',required:false,placeholder:'98101'},
+          {name:'country',label:'Country',type:'text',required:false,placeholder:'United States'},
+          {name:'rating',label:'Overall Rating (0-5)',type:'text',required:false,placeholder:'4.2'},
+          {name:'reviewCount',label:'Number of Reviews',type:'text',required:false,placeholder:'1500'}
+        ]
+      },
+      { id:'occupation', name:'Occupation Schema', description:'Markup job occupations with salary data', category:'Content', icon:'fa-briefcase',
+        fields:[
+          {name:'name',label:'Occupation Title',type:'text',required:true,placeholder:'Software Developer'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Designs and develops software applications'},
+          {name:'skills',label:'Skills (one per line)',type:'textarea',required:false,placeholder:'JavaScript&#10;Python&#10;SQL'},
+          {name:'location',label:'Occupation Location',type:'text',required:false,placeholder:'United States'},
+          {name:'qualifications',label:'Qualifications (one per line)',type:'textarea',required:false,placeholder:'Bachelor\'s degree&#10;3+ years experience'},
+          {name:'duties',label:'Duties (one per line)',type:'textarea',required:false,placeholder:'Write code&#10;Review pull requests&#10;Attend stand-ups'},
+          {name:'salaryMin',label:'Salary Min',type:'text',required:false,placeholder:'80000'},
+          {name:'salaryMax',label:'Salary Max',type:'text',required:false,placeholder:'150000'},
+          {name:'salaryCurrency',label:'Salary Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+          {name:'salaryPeriod',label:'Salary Period',type:'select',required:false,options:['YEAR','MONTH','WEEK','HOUR']}
+        ]
+      },
+      { id:'collectionpage', name:'Collection Page Schema', description:'Markup collection and listing pages', category:'Website', icon:'fa-layer-group',
+        fields:[
+          {name:'name',label:'Page Title',type:'text',required:true,placeholder:'Product Collection'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Our curated product collection'},
+          {name:'url',label:'Page URL',type:'text',required:true,placeholder:'https://example.com/collection'},
+          {name:'datePublished',label:'Published Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Modified Date',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/collection.jpg'},
+          {name:'author',label:'Author',type:'text',required:false,placeholder:'Collection Curator'}
+        ]
+      },
+      { id:'categorypage', name:'Category Page Schema', description:'Markup category and taxonomy pages', category:'Website', icon:'fa-folder-open',
+        fields:[
+          {name:'name',label:'Page Title',type:'text',required:true,placeholder:'Laptops Category'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Browse our laptop selection'},
+          {name:'url',label:'Page URL',type:'text',required:true,placeholder:'https://example.com/category'},
+          {name:'datePublished',label:'Published Date',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'dateModified',label:'Modified Date',type:'text',required:false,placeholder:'2024-01-20'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/category.jpg'},
+          {name:'author',label:'Author',type:'text',required:false,placeholder:'Category Editor'}
+        ]
+      },
+      { id:'itemlist', name:'ItemList Schema', description:'Markup ordered lists for rich results', category:'Content', icon:'fa-list-ul',
+        fields:[
+          {name:'item1Name',label:'Item 1 Name',type:'text',required:true,placeholder:'First Item'},
+          {name:'item1Url',label:'Item 1 URL',type:'text',required:false,placeholder:'https://example.com/item1'},
+          {name:'item2Name',label:'Item 2 Name',type:'text',required:true,placeholder:'Second Item'},
+          {name:'item2Url',label:'Item 2 URL',type:'text',required:false,placeholder:'https://example.com/item2'},
+          {name:'item3Name',label:'Item 3 Name',type:'text',required:false,placeholder:'Third Item'},
+          {name:'item3Url',label:'Item 3 URL',type:'text',required:false,placeholder:'https://example.com/item3'},
+          {name:'item4Name',label:'Item 4 Name',type:'text',required:false,placeholder:'Fourth Item'},
+          {name:'item4Url',label:'Item 4 URL',type:'text',required:false,placeholder:'https://example.com/item4'},
+          {name:'item5Name',label:'Item 5 Name',type:'text',required:false,placeholder:'Fifth Item'},
+          {name:'item5Url',label:'Item 5 URL',type:'text',required:false,placeholder:'https://example.com/item5'}
+        ]
+      },
+      { id:'carousel', name:'Carousel Schema', description:'Markup item carousels for rich results', category:'Content', icon:'fa-images',
+        fields:[
+          {name:'item1Name',label:'Item 1 Name',type:'text',required:true,placeholder:'Item One'},
+          {name:'item1Url',label:'Item 1 URL',type:'text',required:false,placeholder:'https://example.com/item1'},
+          {name:'item1Image',label:'Item 1 Image URL',type:'text',required:false,placeholder:'https://example.com/item1.jpg'},
+          {name:'item1Type',label:'Item 1 Type',type:'select',required:false,options:['Article','Product','Recipe','Video','Course']},
+          {name:'item2Name',label:'Item 2 Name',type:'text',required:true,placeholder:'Item Two'},
+          {name:'item2Url',label:'Item 2 URL',type:'text',required:false,placeholder:'https://example.com/item2'},
+          {name:'item2Image',label:'Item 2 Image URL',type:'text',required:false,placeholder:'https://example.com/item2.jpg'},
+          {name:'item2Type',label:'Item 2 Type',type:'select',required:false,options:['Article','Product','Recipe','Video','Course']},
+          {name:'item3Name',label:'Item 3 Name',type:'text',required:false,placeholder:'Item Three'},
+          {name:'item3Url',label:'Item 3 URL',type:'text',required:false,placeholder:'https://example.com/item3'},
+          {name:'item3Image',label:'Item 3 Image URL',type:'text',required:false,placeholder:'https://example.com/item3.jpg'},
+          {name:'item3Type',label:'Item 3 Type',type:'select',required:false,options:['Article','Product','Recipe','Video','Course']},
+          {name:'item4Name',label:'Item 4 Name',type:'text',required:false,placeholder:'Item Four'},
+          {name:'item4Url',label:'Item 4 URL',type:'text',required:false,placeholder:'https://example.com/item4'},
+          {name:'item4Image',label:'Item 4 Image URL',type:'text',required:false,placeholder:'https://example.com/item4.jpg'},
+          {name:'item4Type',label:'Item 4 Type',type:'select',required:false,options:['Article','Product','Recipe','Video','Course']},
+          {name:'item5Name',label:'Item 5 Name',type:'text',required:false,placeholder:'Item Five'},
+          {name:'item5Url',label:'Item 5 URL',type:'text',required:false,placeholder:'https://example.com/item5'},
+          {name:'item5Image',label:'Item 5 Image URL',type:'text',required:false,placeholder:'https://example.com/item5.jpg'},
+          {name:'item5Type',label:'Item 5 Type',type:'select',required:false,options:['Article','Product','Recipe','Video','Course']}
+        ]
+      },
+      { id:'videolivestream', name:'Video Live Stream Schema', description:'Markup live video streams', category:'Content', icon:'fa-tower-broadcast',
+        fields:[
+          {name:'name',label:'Stream Title',type:'text',required:true,placeholder:'Live Event Stream'},
+          {name:'description',label:'Description',type:'textarea',required:true,placeholder:'Live broadcast description'},
+          {name:'thumbnailUrl',label:'Thumbnail URL',type:'text',required:false,placeholder:'https://example.com/thumb.jpg'},
+          {name:'contentUrl',label:'Content URL',type:'text',required:false,placeholder:'https://example.com/stream'},
+          {name:'embedUrl',label:'Embed URL',type:'text',required:false,placeholder:'https://example.com/embed/stream'},
+          {name:'uploadDate',label:'Upload Date',type:'text',required:true,placeholder:'2024-01-15'},
+          {name:'duration',label:'Duration (ISO)',type:'text',required:false,placeholder:'PT1H'},
+          {name:'author',label:'Author/Creator',type:'text',required:false,placeholder:'Stream Creator'},
+          {name:'broadcastName',label:'Broadcast Name',type:'text',required:false,placeholder:'Live News Coverage'},
+          {name:'isLive',label:'Is Live?',type:'select',required:false,options:['Yes','No']},
+          {name:'startDate',label:'Start Date',type:'text',required:false,placeholder:'2024-01-15T14:00:00'},
+          {name:'endDate',label:'End Date',type:'text',required:false,placeholder:'2024-01-15T15:00:00'}
+        ]
+      },
+      { id:'socialprofile', name:'Social Profile Schema', description:'Markup social media profile pages', category:'Content', icon:'fa-share-nodes',
+        fields:[
+          {name:'name',label:'Post Title',type:'text',required:true,placeholder:'Exciting News!'},
+          {name:'description',label:'Description',type:'textarea',required:false,placeholder:'Post content or summary'},
+          {name:'url',label:'Post URL',type:'text',required:true,placeholder:'https://example.com/post'},
+          {name:'image',label:'Image URL',type:'text',required:false,placeholder:'https://example.com/post.jpg'},
+          {name:'datePublished',label:'Date Published',type:'text',required:false,placeholder:'2024-01-15'},
+          {name:'author',label:'Author Name',type:'text',required:false,placeholder:'Post Author'},
+          {name:'sharedContentUrl',label:'Shared Content URL',type:'text',required:false,placeholder:'https://example.com/shared'},
+          {name:'commentCount',label:'Comment Count',type:'text',required:false,placeholder:'42'}
+        ]
+      }
+    ];
+
+    function generateSchemaJSON(generatorId, formData) {
+      const generator = generators.find(g => g.id === generatorId);
+      if (!generator) return null;
+      switch (generatorId) {
+        case 'organization':
+          return {'@context':'https://schema.org','@type':'Organization','name':formData.name,'url':formData.url,'logo':formData.logo||undefined,'description':formData.description||undefined,'telephone':formData.telephone||undefined,'email':formData.email||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address||undefined,'addressLocality':formData.city||undefined,'addressRegion':formData.state||undefined,'postalCode':formData.zipCode||undefined,'addressCountry':formData.country||undefined},'sameAs':(formData.socialProfile||'').split('\n').filter(s=>s.trim())||undefined};
+        case 'localbusiness':
+          return {'@context':'https://schema.org','@type':formData.businessType||'LocalBusiness','name':formData.name,'url':formData.url,'telephone':formData.telephone,'address':{'@type':'PostalAddress','streetAddress':formData.address,'addressLocality':formData.city,'addressRegion':formData.state,'postalCode':formData.zipCode,'addressCountry':formData.country},'geo':formData.latitude&&formData.longitude?{'@type':'GeoCoordinates','latitude':formData.latitude,'longitude':formData.longitude}:undefined,'openingHoursSpecification':formData.openingHours?{'@type':'OpeningHoursSpecification','dayOfWeek':'Monday-Friday','opens':formData.openingHours.split('-')[0].trim()||'09:00','closes':formData.openingHours.split('-')[1].trim()||'17:00'}:undefined,'description':formData.description||undefined,'image':formData.image||undefined};
+        case 'article':
+          return {'@context':'https://schema.org','@type':'Article','headline':formData.headline,'description':formData.description,'image':formData.image,'datePublished':formData.datePublished,'dateModified':formData.dateModified||formData.datePublished,'author':{'@type':'Person','name':formData.author,'url':formData.authorUrl||undefined},'url':formData.url,'articleBody':formData.articleBody||undefined};
+        case 'blogposting':
+          return {'@context':'https://schema.org','@type':'BlogPosting','headline':formData.headline,'description':formData.description,'image':formData.image,'datePublished':formData.datePublished,'dateModified':formData.dateModified||formData.datePublished,'author':{'@type':'Person','name':formData.author},'url':formData.url,'keywords':formData.keywords||undefined};
+        case 'product':
+          return {'@context':'https://schema.org','@type':'Product','name':formData.name,'description':formData.description,'image':formData.image,'url':formData.url,'offers':{'@type':'Offer','price':formData.price,'priceCurrency':formData.priceCurrency,'availability':'https://schema.org/'+formData.availability,'url':formData.url},'sku':formData.sku||undefined,'brand':formData.brand?{'@type':'Brand','name':formData.brand}:undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'offer':
+          return {'@context':'https://schema.org','@type':'Offer','name':formData.name,'description':formData.description,'price':formData.price,'priceCurrency':formData.priceCurrency,'url':formData.url,'availability':'https://schema.org/'+formData.availability,'priceValidUntil':formData.validUntil||undefined,'offerValidFrom':formData.validFrom||undefined,'offerValidUntil':formData.validUntil||undefined};
+        case 'review':
+          return {'@context':'https://schema.org','@type':'Review','reviewRating':{'@type':'Rating','ratingValue':formData.reviewRating,'bestRating':'5','worstRating':'1'},'reviewBody':formData.reviewBody,'author':{'@type':'Person','name':formData.reviewAuthor},'reviewDate':formData.reviewDate,'itemReviewed':{'@type':'Thing','name':formData.reviewedItem,'url':formData.reviewedItemUrl||undefined}};
+        case 'aggregaterating':
+          return {'@context':'https://schema.org','@type':'AggregateRating','ratingValue':formData.ratingValue,'ratingCount':formData.ratingCount,'reviewCount':formData.reviewCount||undefined,'bestRating':formData.bestRating,'worstRating':formData.worstRating,'itemReviewed':{'@type':'Thing','name':formData.itemName,'url':formData.itemUrl||undefined}};
+        case 'faq':
+          const faqs=[]; for(let i=1;i<=3;i++){if(formData[`question${i}`]&&formData[`answer${i}`]){faqs.push({'@type':'Question','name':formData[`question${i}`],'acceptedAnswer':{'@type':'Answer','text':formData[`answer${i}`]}});}}
+          return {'@context':'https://schema.org','@type':'FAQPage','mainEntity':faqs};
+        case 'recipe':
+          const ingredients=(formData.ingredients||'').split('\n').filter(i=>i.trim()).map(i=>i.trim());
+          const instructions=(formData.instructions||'').split('\n').filter(i=>i.trim()).map((i,idx)=>({'@type':'HowToStep','position':idx+1,'text':i.trim()}));
+          return {'@context':'https://schema.org','@type':'Recipe','name':formData.name,'description':formData.description,'image':formData.image,'prepTime':formData.prepTime,'cookTime':formData.cookTime,'totalTime':formData.totalTime,'recipeYield':formData.yield,'calories':formData.calories?{'@type':'Energy','value':formData.calories,'unitCode':'CAL'}:undefined,'recipeIngredient':ingredients,'recipeInstructions':instructions,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'event':
+          return {'@context':'https://schema.org','@type':'Event','name':formData.name,'description':formData.description,'image':formData.image,'startDate':formData.startDate,'endDate':formData.endDate,'location':{'@type':'Place','name':formData.location},'url':formData.url,'offers':formData.ticketPrice?{'@type':'Offer','price':formData.ticketPrice,'priceCurrency':formData.ticketCurrency||'USD','availability':'https://schema.org/'+(formData.availability||'InStock')}:undefined};
+        case 'webpage':
+          return {'@context':'https://schema.org','@type':'WebPage','name':formData.name,'description':formData.description,'url':formData.url,'datePublished':formData.datePublished||undefined,'dateModified':formData.dateModified||undefined,'image':formData.image||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined};
+        case 'breadcrumb':
+          const breadcrumbs=[]; for(let i=1;i<=4;i++){if(formData[`breadcrumb${i}Name`]){breadcrumbs.push({'@type':'ListItem','position':i,'name':formData[`breadcrumb${i}Name`],'item':formData[`breadcrumb${i}Url`]});}}
+          return {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':breadcrumbs};
+        case 'jobposting':
+          return {'@context':'https://schema.org','@type':'JobPosting','title':formData.title,'description':formData.description,'hiringOrganization':{'@type':'Organization','name':formData.company},'jobLocation':{'@type':'Place','address':{'@type':'PostalAddress','addressLocality':formData.jobLocation}},'baseSalary':(formData.salaryMin&&formData.salaryMax)?{'@type':'PriceSpecification','priceCurrency':formData.salaryCurrency||'USD','minPrice':formData.salaryMin,'maxPrice':formData.salaryMax,'priceType':'BidPrice','unitText':formData.salaryPeriod||'YEAR'}:undefined,'employmentType':formData.employmentType,'datePosted':formData.datePosted,'validThrough':formData.validThrough};
+        case 'course':
+          return {'@context':'https://schema.org','@type':'Course','name':formData.name,'description':formData.description,'url':formData.url,'image':formData.image||undefined,'instructor':{'@type':'Person','name':formData.instructor},'provider':{'@type':'Organization','name':formData.provider},'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined,'numberOfStudents':formData.studentCount||undefined};
+        case 'service':
+          return {'@context':'https://schema.org','@type':'Service','name':formData.name,'description':formData.description,'url':formData.url,'image':formData.image||undefined,'provider':{'@type':'Organization','name':formData.provider},'serviceType':formData.serviceType||undefined,'category':formData.category||undefined,'offers':formData.price?{'@type':'Offer','price':formData.price,'priceCurrency':formData.priceCurrency||'USD'}:undefined,'areaServed':formData.areaServed||undefined};
+        case 'videoobject':
+          return {'@context':'https://schema.org','@type':'VideoObject','name':formData.name,'description':formData.description,'thumbnailUrl':formData.thumbnailUrl,'contentUrl':formData.contentUrl||undefined,'embedUrl':formData.embedUrl||undefined,'uploadDate':formData.uploadDate,'duration':formData.duration||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'publisher':formData.publisher?{'@type':'Organization','name':formData.publisher}:undefined};
+        case 'movie':
+          return {'@context':'https://schema.org','@type':'Movie','name':formData.name,'description':formData.description,'image':formData.image||undefined,'url':formData.url||undefined,'dateCreated':formData.dateCreated||undefined,'duration':formData.duration||undefined,'director':formData.director?{'@type':'Person','name':formData.director}:undefined,'actor':formData.actor?{'@type':'Person','name':formData.actor}:undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'tvseries':
+          return {'@context':'https://schema.org','@type':'TVSeries','name':formData.name,'description':formData.description,'image':formData.image||undefined,'url':formData.url||undefined,'actor':formData.actor?{'@type':'Person','name':formData.actor}:undefined,'director':formData.director?{'@type':'Person','name':formData.director}:undefined,'numberOfSeasons':formData.numberOfSeasons||undefined,'numberOfEpisodes':formData.numberOfEpisodes||undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'book':
+          return {'@context':'https://schema.org','@type':'Book','name':formData.name,'description':formData.description,'url':formData.url||undefined,'image':formData.image||undefined,'author':{'@type':'Person','name':formData.author},'isbn':formData.isbn||undefined,'bookFormat':formData.bookFormat||undefined,'numberOfPages':formData.numberOfPages||undefined,'publisher':formData.publisher||undefined,'datePublished':formData.datePublished||undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'softwareapplication':
+          return {'@context':'https://schema.org','@type':'SoftwareApplication','name':formData.name,'description':formData.description,'url':formData.url,'image':formData.image||undefined,'operatingSystem':formData.operatingSystem||undefined,'applicationCategory':formData.applicationCategory||undefined,'offers':formData.price?{'@type':'Offer','price':formData.price,'priceCurrency':formData.priceCurrency||'USD','availability':'https://schema.org/'+(formData.availability||'InStock')}:undefined,'author':formData.author?{'@type':'Organization','name':formData.author}:undefined,'fileSize':formData.fileSize||undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'mobileapplication':
+          return {'@context':'https://schema.org','@type':'MobileApplication','name':formData.name,'description':formData.description,'url':formData.url,'image':formData.image||undefined,'operatingSystem':formData.operatingSystem||undefined,'applicationCategory':formData.applicationCategory||undefined,'offers':formData.price?{'@type':'Offer','price':formData.price,'priceCurrency':formData.priceCurrency||'USD','availability':'https://schema.org/'+(formData.availability||'InStock')}:undefined,'author':formData.author?{'@type':'Organization','name':formData.author}:undefined,'fileSize':formData.fileSize||undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'imageobject':
+          return {'@context':'https://schema.org','@type':'ImageObject','name':formData.name,'description':formData.description||undefined,'contentUrl':formData.contentUrl,'url':formData.contentUrl,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'datePublished':formData.datePublished||undefined,'license':formData.license||undefined,'copyrightHolder':formData.copyrightHolder||undefined,'creditText':formData.creditText||undefined};
+        case 'audioobject':
+          return {'@context':'https://schema.org','@type':'AudioObject','name':formData.name,'description':formData.description||undefined,'contentUrl':formData.contentUrl,'duration':formData.duration||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'datePublished':formData.datePublished||undefined,'url':formData.url||undefined};
+        case 'podcast':
+          return {'@context':'https://schema.org','@type':'PodcastEpisode','name':formData.name,'description':formData.description,'url':formData.url,'image':formData.image||undefined,'datePublished':formData.datePublished,'duration':formData.duration||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'seasonNumber':formData.seasonNumber||undefined,'episodeNumber':formData.episodeNumber||undefined,'partOfSeries':formData.seriesName?{'@type':'PodcastSeries','name':formData.seriesName}:undefined};
+        case 'musicalbum':
+          return {'@context':'https://schema.org','@type':'MusicAlbum','name':formData.name,'url':formData.url||undefined,'image':formData.image||undefined,'byArtist':{'@type':'MusicGroup','name':formData.artist},'datePublished':formData.datePublished||undefined,'numTracks':formData.numTracks||undefined,'albumProductionType':formData.albumProductionType||undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'musicrecording':
+          return {'@context':'https://schema.org','@type':'MusicRecording','name':formData.name,'url':formData.url||undefined,'image':formData.image||undefined,'byArtist':{'@type':'MusicGroup','name':formData.artist},'duration':formData.duration||undefined,'inAlbum':formData.albumName?{'@type':'MusicAlbum','name':formData.albumName}:undefined,'datePublished':formData.datePublished||undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'restaurant':
+          return {'@context':'https://schema.org','@type':'Restaurant','name':formData.name,'url':formData.url,'telephone':formData.telephone,'address':{'@type':'PostalAddress','streetAddress':formData.address,'addressLocality':formData.city,'addressRegion':formData.state,'postalCode':formData.zipCode,'addressCountry':formData.country},'servesCuisine':formData.cuisine?formData.cuisine.split(',').map(s=>s.trim()):undefined,'priceRange':formData.priceRange||undefined,'image':formData.image||undefined,'openingHoursSpecification':formData.openingHours?{'@type':'OpeningHoursSpecification','dayOfWeek':'Monday-Sunday','opens':(formData.openingHours.split('-')[0]||'').trim(),'closes':(formData.openingHours.split('-')[1]||'').trim()}:undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'hotel':
+          return {'@context':'https://schema.org','@type':'Hotel','name':formData.name,'description':formData.description,'url':formData.url,'telephone':formData.telephone||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address,'addressLocality':formData.city,'addressRegion':formData.state,'postalCode':formData.zipCode,'addressCountry':formData.country},'image':formData.image||undefined,'priceRange':formData.priceRange||undefined,'starRating':formData.starRating?{'@type':'Rating','ratingValue':formData.starRating}:undefined,'amenityFeature':formData.amenities?formData.amenities.split(',').map(s=>s.trim()).map(a=>({'@type':'AmenityFeature','name':a})):undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'realestatelisting':
+          return {'@context':'https://schema.org','@type':'RealEstateListing','name':formData.name,'description':formData.description,'url':formData.url,'image':formData.image||undefined,'datePosted':formData.datePosted||undefined,'floorSize':formData.floorSize?{'@type':'QuantitativeValue','value':formData.floorSize,'unitCode':'SQFT'}:undefined,'numberOfRooms':formData.numberOfRooms?parseInt(formData.numberOfRooms):undefined,'offers':formData.price?{'@type':'Offer','price':formData.price,'priceCurrency':formData.priceCurrency||'USD','availability':'https://schema.org/InStock'}:undefined,'leaseLength':formData.leaseLength||undefined};
+        case 'vehicle':
+          return {'@context':'https://schema.org','@type':'Vehicle','name':formData.name,'url':formData.url||undefined,'image':formData.image||undefined,'description':formData.description||undefined,'model':formData.model||undefined,'manufacturer':formData.manufacturer?{'@type':'Organization','name':formData.manufacturer}:undefined,'fuelType':formData.fuelType||undefined,'vehicleEngine':formData.engineType?{'@type':'EngineSpecification','name':formData.engineType}:undefined,'mileageFromOdometer':formData.mileage?{'@type':'QuantitativeValue','value':formData.mileage,'unitCode':'SMI'}:undefined,'offers':formData.price?{'@type':'Offer','price':formData.price,'priceCurrency':formData.priceCurrency||'USD','availability':'https://schema.org/'+(formData.availability||'InStock')}:undefined,'color':formData.color||undefined,'vehicleTransmission':formData.transmission||undefined};
+        case 'educationalorganization':
+          return {'@context':'https://schema.org','@type':'EducationalOrganization','name':formData.name,'url':formData.url,'logo':formData.logo||undefined,'description':formData.description||undefined,'telephone':formData.telephone||undefined,'email':formData.email||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address||undefined,'addressLocality':formData.city||undefined,'addressRegion':formData.state||undefined,'postalCode':formData.zipCode||undefined,'addressCountry':formData.country||undefined},'sameAs':(formData.socialProfile||'').split('\n').filter(s=>s.trim())||undefined};
+        case 'medicalorganization':
+          return {'@context':'https://schema.org','@type':'MedicalOrganization','name':formData.name,'url':formData.url,'logo':formData.logo||undefined,'description':formData.description||undefined,'telephone':formData.telephone||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address||undefined,'addressLocality':formData.city||undefined,'addressRegion':formData.state||undefined,'postalCode':formData.zipCode||undefined,'addressCountry':formData.country||undefined}};
+        case 'dentist':
+          return {'@context':'https://schema.org','@type':'Dentist','name':formData.name,'url':formData.url,'telephone':formData.telephone,'address':{'@type':'PostalAddress','streetAddress':formData.address,'addressLocality':formData.city,'addressRegion':formData.state,'postalCode':formData.zipCode,'addressCountry':formData.country},'image':formData.image||undefined,'description':formData.description||undefined,'openingHoursSpecification':formData.openingHours?{'@type':'OpeningHoursSpecification','dayOfWeek':'Monday-Friday','opens':(formData.openingHours.split('-')[0]||'').trim(),'closes':(formData.openingHours.split('-')[1]||'').trim()}:undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'physician':
+          return {'@context':'https://schema.org','@type':'Physician','name':formData.name,'url':formData.url,'telephone':formData.telephone,'address':{'@type':'PostalAddress','streetAddress':formData.address,'addressLocality':formData.city,'addressRegion':formData.state,'postalCode':formData.zipCode,'addressCountry':formData.country},'image':formData.image||undefined,'description':formData.description||undefined,'medicalSpecialty':formData.specialty||undefined,'openingHoursSpecification':formData.openingHours?{'@type':'OpeningHoursSpecification','dayOfWeek':'Monday-Friday','opens':(formData.openingHours.split('-')[0]||'').trim(),'closes':(formData.openingHours.split('-')[1]||'').trim()}:undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'legalservice':
+          return {'@context':'https://schema.org','@type':'LegalService','name':formData.name,'url':formData.url,'telephone':formData.telephone,'address':{'@type':'PostalAddress','streetAddress':formData.address,'addressLocality':formData.city,'addressRegion':formData.state,'postalCode':formData.zipCode,'addressCountry':formData.country},'image':formData.image||undefined,'description':formData.description||undefined,'priceRange':formData.priceRange||undefined,'openingHoursSpecification':formData.openingHours?{'@type':'OpeningHoursSpecification','dayOfWeek':'Monday-Friday','opens':(formData.openingHours.split('-')[0]||'').trim(),'closes':(formData.openingHours.split('-')[1]||'').trim()}:undefined,'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'financialservice':
+          return {'@context':'https://schema.org','@type':'FinancialService','name':formData.name,'url':formData.url,'telephone':formData.telephone||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address||undefined,'addressLocality':formData.city||undefined,'addressRegion':formData.state||undefined,'postalCode':formData.zipCode||undefined,'addressCountry':formData.country||undefined},'image':formData.image||undefined,'description':formData.description||undefined,'fees':formData.fees||undefined,'openingHoursSpecification':formData.openingHours?{'@type':'OpeningHoursSpecification','dayOfWeek':'Monday-Friday','opens':(formData.openingHours.split('-')[0]||'').trim(),'closes':(formData.openingHours.split('-')[1]||'').trim()}:undefined};
+        case 'ngo':
+          return {'@context':'https://schema.org','@type':'NGO','name':formData.name,'url':formData.url,'logo':formData.logo||undefined,'description':formData.description||undefined,'telephone':formData.telephone||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address||undefined,'addressLocality':formData.city||undefined,'addressRegion':formData.state||undefined,'postalCode':formData.zipCode||undefined,'addressCountry':formData.country||undefined},'sameAs':(formData.socialProfile||'').split('\n').filter(s=>s.trim())||undefined};
+        case 'governmentorganization':
+          return {'@context':'https://schema.org','@type':'GovernmentOrganization','name':formData.name,'url':formData.url,'logo':formData.logo||undefined,'description':formData.description||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address||undefined,'addressLocality':formData.city||undefined,'addressRegion':formData.state||undefined,'postalCode':formData.zipCode||undefined,'addressCountry':formData.country||undefined}};
+        case 'profilepage':
+          return {'@context':'https://schema.org','@type':'ProfilePage','name':formData.name,'description':formData.description,'url':formData.url,'datePublished':formData.datePublished||undefined,'dateModified':formData.dateModified||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'image':formData.image||undefined};
+        case 'contactpage':
+          return {'@context':'https://schema.org','@type':'ContactPage','name':formData.name,'description':formData.description,'url':formData.url,'datePublished':formData.datePublished||undefined,'dateModified':formData.dateModified||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'image':formData.image||undefined};
+        case 'searchaction':
+          return {'@context':'https://schema.org','@type':'WebSite','name':formData.name,'url':formData.url,'potentialAction':{'@type':'SearchAction','target':formData.searchUrl+'?q={search_term_string}','query-input':'required name=search_term_string'}};
+        case 'sitelinkssearchbox':
+          return {'@context':'https://schema.org','@type':'WebSite','name':formData.name,'url':formData.url,'potentialAction':{'@type':'SearchAction','target':formData.searchUrl+'?{query_param}='+'{search_term_string}','query-input':'required name=search_term_string'}};
+        case 'howto':
+          const steps=(formData.steps||'').split('\n').filter(s=>s.trim()).map((s,i)=>({'@type':'HowToStep','position':i+1,'text':s.trim()}));
+          return {'@context':'https://schema.org','@type':'HowTo','name':formData.name,'description':formData.description,'image':formData.image||undefined,'totalTime':formData.totalTime||undefined,'step':steps,'tool':formData.tools?(formData.tools.split('\n').filter(s=>s.trim()).map(t=>({'@type':'HowToTool','name':t.trim()}))):undefined,'supply':formData.supplies?(formData.supplies.split('\n').filter(s=>s.trim()).map(s=>({'@type':'HowToSupply','name':s.trim()}))):undefined};
+        case 'speakable':
+          const css=(formData.cssSelector||'').split('\n').filter(s=>s.trim());
+          return {'@context':'https://schema.org','@type':'WebPage','name':formData.name,'url':formData.url,'speakable':{'@type':'SpeakableSpecification','cssSelector':css.length?css:undefined,'xPath':formData.xPath?formData.xPath.split('\n').filter(s=>s.trim()):undefined}};
+        case 'dataset':
+          return {'@context':'https://schema.org','@type':'Dataset','name':formData.name,'description':formData.description,'url':formData.url,'image':formData.image||undefined,'datePublished':formData.datePublished||undefined,'dateModified':formData.dateModified||undefined,'creator':formData.creator?{'@type':'Organization','name':formData.creator}:undefined,'license':formData.license||undefined,'temporalCoverage':formData.temporalCoverage||undefined,'spatialCoverage':formData.spatialCoverage||undefined,'keywords':formData.keywords?formData.keywords.split(',').map(s=>s.trim()):undefined};
+        case 'employer':
+          return {'@context':'https://schema.org','@type':'Organization','name':formData.name,'url':formData.url,'logo':formData.logo||undefined,'description':formData.description||undefined,'telephone':formData.telephone||undefined,'address':{'@type':'PostalAddress','streetAddress':formData.address||undefined,'addressLocality':formData.city||undefined,'addressRegion':formData.state||undefined,'postalCode':formData.zipCode||undefined,'addressCountry':formData.country||undefined},'aggregateRating':(formData.rating&&formData.reviewCount)?{'@type':'AggregateRating','ratingValue':formData.rating,'reviewCount':formData.reviewCount}:undefined};
+        case 'occupation':
+          const skills=(formData.skills||'').split('\n').filter(s=>s.trim()).map(s=>s.trim());
+          return {'@context':'https://schema.org','@type':'Occupation','name':formData.name,'description':formData.description||undefined,'skills':formData.skills?skills:undefined,'occupationLocation':formData.location||undefined,'qualifications':formData.qualifications?formData.qualifications.split('\n').filter(s=>s.trim()):undefined,'duties':formData.duties?formData.duties.split('\n').filter(s=>s.trim()):undefined,'estimatedSalary':formData.salaryMin&&formData.salaryMax?{'@type':'PriceSpecification','priceCurrency':formData.salaryCurrency||'USD','minPrice':formData.salaryMin,'maxPrice':formData.salaryMax,'unitText':formData.salaryPeriod||'YEAR'}:undefined};
+        case 'collectionpage':
+          return {'@context':'https://schema.org','@type':'CollectionPage','name':formData.name,'description':formData.description,'url':formData.url,'datePublished':formData.datePublished||undefined,'dateModified':formData.dateModified||undefined,'image':formData.image||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined};
+        case 'categorypage':
+          return {'@context':'https://schema.org','@type':'CategoryPage','name':formData.name,'description':formData.description,'url':formData.url,'datePublished':formData.datePublished||undefined,'dateModified':formData.dateModified||undefined,'image':formData.image||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined};
+        case 'itemlist':
+          const items=[]; for(let i=1;i<=5;i++){if(formData['item'+i+'Name']){items.push({'@type':'ListItem','position':i,'name':formData['item'+i+'Name'],'item':formData['item'+i+'Url']||undefined})}}
+          return {'@context':'https://schema.org','@type':'ItemList','itemListElement':items,'numberOfItems':items.length};
+        case 'carousel':
+          const carouselItems=[]; for(let i=1;i<=5;i++){if(formData['item'+i+'Name']){const t=formData['item'+i+'Type']||'Thing';carouselItems.push({'@type':'ListItem','position':i,'item':{'@type':t,'name':formData['item'+i+'Name'],'url':formData['item'+i+'Url']||undefined,'image':formData['item'+i+'Image']||undefined}})}}
+          return {'@context':'https://schema.org','@type':'ItemList','itemListElement':carouselItems,'numberOfItems':carouselItems.length};
+        case 'videolivestream':
+          return {'@context':'https://schema.org','@type':'VideoObject','name':formData.name,'description':formData.description,'thumbnailUrl':formData.thumbnailUrl||undefined,'contentUrl':formData.contentUrl||undefined,'embedUrl':formData.embedUrl||undefined,'uploadDate':formData.uploadDate,'duration':formData.duration||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'publication':{'@type':'BroadcastEvent','name':formData.broadcastName||undefined,'isLiveBroadcast':formData.isLive==='true'?true:false,'startDate':formData.startDate||undefined,'endDate':formData.endDate||undefined}};
+        case 'socialprofile':
+          return {'@context':'https://schema.org','@type':'SocialMediaPosting','name':formData.name,'description':formData.description||undefined,'url':formData.url,'image':formData.image||undefined,'datePublished':formData.datePublished||undefined,'author':formData.author?{'@type':'Person','name':formData.author}:undefined,'sharedContent':formData.sharedContentUrl?{'@type':'CreativeWork','url':formData.sharedContentUrl}:undefined,'commentCount':formData.commentCount||undefined};
+        default: return null;
+      }
+    }
+
+    function cleanJSON(obj) {
+      if (Array.isArray(obj)) return obj.map(cleanJSON).filter(item=>item!==null);
+      else if (obj!==null && typeof obj==='object') { const cleaned={}; for(const key in obj){const value=cleanJSON(obj[key]); if(value!==undefined) cleaned[key]=value;} return Object.keys(cleaned).length>0?cleaned:undefined; }
+      return obj===undefined?undefined:obj;
+    }
+
+    function formatJSON(json, minify) {
+      return minify ? JSON.stringify(cleanJSON(json)) : JSON.stringify(cleanJSON(json), null, 2);
+    }
+
+    function highlightJSON(json) {
+      json = json.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      json = json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, function(match){
+        let cls='json-value';
+        if(/^"/.test(match)){cls=/:$/.test(match)?'json-key':'json-string';}
+        else if(/true|false/.test(match)) cls='json-value';
+        else if(/null/.test(match)) cls='json-value';
+        return '<span class="'+cls+'">'+match+'</span>';
+      });
+      return json;
+    }
+
+    function createGeneratorCard(generator) {
+      return `<a href="tools/${generator.id}.html" class="generator-card"><div class="generator-icon"><i class="fas ${generator.icon}"></i></div><h3>${generator.name}</h3><p>${generator.description}</p><div class="generator-category">${generator.category}</div></a>`;
+    }
+
+    function renderGenerators(filteredGenerators) {
+      if (!filteredGenerators) filteredGenerators = generators;
+      document.getElementById('generatorsGrid').innerHTML = filteredGenerators.map(g=>createGeneratorCard(g)).join('');
+    }
+
+    function createForm(generator) {
+      let html = '<form class="generator-form">';
+      generator.fields.forEach(field => {
+        html += '<div class="form-group">';
+        html += `<label>${field.label}${field.required?'<span class="required-indicator">*</span>':''}</label>`;
+        if (field.type === 'textarea') {
+          html += `<textarea name="${field.name}" placeholder="${field.placeholder}" ${field.required?'required':''}></textarea>`;
+        } else if (field.type === 'select') {
+          html += `<select name="${field.name}" ${field.required?'required':''}><option value="">Select...</option>${field.options.map(opt=>`<option value="${opt}">${opt}</option>`).join('')}</select>`;
+        } else {
+          html += `<input type="${field.type}" name="${field.name}" placeholder="${field.placeholder}" ${field.required?'required':''}>`;
+        }
+        html += '</div>';
+      });
+      html += '</form>';
+      return html;
+    }
+
+    function openGenerator(generatorId) {
+      const generator = generators.find(g=>g.id===generatorId);
+      if (!generator) return;
+      const modal = document.getElementById('generatorModal');
+      document.getElementById('modalTitle').textContent = generator.name;
+      const form = createForm(generator);
+        const output = `<div class="output-section"><h3>Generated JSON-LD</h3><div class="validation-message" id="validationMessage"></div><div class="tab-group" id="outputTabs"><button class="tab-btn active" onclick="switchTab('output')">Output</button><button class="tab-btn" onclick="switchTab('editor')">Editor</button></div><div id="output" class="tab-content active"><div class="output-box" id="outputBox"></div></div><div id="editor" class="tab-content"><textarea id="jsonEditor" style="width:100%;font-family:monospace;height:300px;padding:0.75rem;border:1px solid var(--line);border-radius:10px;background:var(--bg-soft);color:var(--text)"></textarea></div><div class="button-group" style="margin-top:1rem"><button class="btn primary btn-small" onclick="copyToClipboard()"><i class="fas fa-copy"></i> Copy JSON</button><button class="btn ghost btn-small" onclick="downloadJSON('${generator.name}')"><i class="fas fa-download"></i> Download</button><button class="btn ghost btn-small" onclick="validateJSON()"><i class="fas fa-check-circle"></i> Validate</button><button class="btn ghost btn-small" onclick="beautifyJSON()"><i class="fas fa-wand-magic-sparkles"></i> Beautify</button><button class="btn ghost btn-small" onclick="minifyJSON()"><i class="fas fa-wrench"></i> Minify</button></div></div>`;
+      document.getElementById('modalBody').innerHTML = `<div>${form}</div><div>${output}</div>`;
+      const formElement = document.querySelector('.generator-form');
+      formElement.addEventListener('change', ()=>generateOutput(generatorId));
+      formElement.addEventListener('input', ()=>generateOutput(generatorId));
+      modal.classList.add('active');
+    }
+
+    function generateOutput(generatorId) {
+      const form = document.querySelector('.generator-form');
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      const json = generateSchemaJSON(generatorId, data);
+      if (!json) return;
+      const formatted = formatJSON(json, false);
+      const highlighted = highlightJSON(formatted);
+      document.getElementById('outputBox').innerHTML = '<pre>'+highlighted+'</pre>';
+      document.getElementById('jsonEditor').value = formatted;
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function copyToClipboard() {
+      const json = document.getElementById('jsonEditor').value || document.getElementById('outputBox').innerText;
+      navigator.clipboard.writeText(json).then(()=>showMessage('✓ Copied to clipboard!','success')).catch(()=>showMessage('✗ Failed to copy','error'));
+    }
+
+    function downloadJSON(generatorName) {
+      const json = document.getElementById('jsonEditor').value;
+      const element = document.createElement('a');
+      element.setAttribute('href','data:application/json;charset=utf-8,'+encodeURIComponent(json));
+      element.setAttribute('download',generatorName.replace(/\s+/g,'-').toLowerCase()+'.json');
+      element.style.display='none'; document.body.appendChild(element); element.click(); document.body.removeChild(element);
+      showMessage('⬇️ Downloaded!','success');
+    }
+
+    function validateJSON() {
+      try { JSON.parse(document.getElementById('jsonEditor').value); showMessage('✓ JSON is valid!','success'); } catch(e) { showMessage('✗ Invalid JSON: '+e.message,'error'); }
+    }
+
+    function beautifyJSON() {
+      try { const p=JSON.parse(document.getElementById('jsonEditor').value); const f=JSON.stringify(p,null,2); document.getElementById('jsonEditor').value=f; const h=highlightJSON(f); document.getElementById('outputBox').innerHTML='<pre>'+h+'</pre>'; showMessage('✨ JSON beautified!','success'); } catch(e) { showMessage('✗ Error: '+e.message,'error'); }
+    }
+
+    function minifyJSON() {
+      try { const m=JSON.stringify(JSON.parse(document.getElementById('jsonEditor').value)); document.getElementById('jsonEditor').value=m; const h=highlightJSON(m); document.getElementById('outputBox').innerHTML='<pre>'+h+'</pre>'; showMessage('🔧 JSON minified!','success'); } catch(e) { showMessage('✗ Error: '+e.message,'error'); }
+    }
+
+    function closeModal() { document.getElementById('generatorModal').classList.remove('active'); }
+
+    function showMessage(text, type) {
+      const msg = document.getElementById('validationMessage');
+      msg.textContent = text; msg.className = 'validation-message show '+type;
+      setTimeout(()=>msg.classList.remove('show'),3000);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      renderGenerators(generators.filter(g=>g.name.toLowerCase().includes(q)||g.description.toLowerCase().includes(q)||g.category.toLowerCase().includes(q)));
+    });
+
+    const categories = [...new Set(generators.map(g=>g.category))];
+    const filterTabs = document.getElementById('filterTabs');
+    filterTabs.innerHTML = `<button class="filter-btn active" onclick="filterByCategory('all')">All</button>`;
+    categories.forEach(cat=>{filterTabs.innerHTML+=`<button class="filter-btn" onclick="filterByCategory('${cat}')">${cat}</button>`;});
+
+    function filterByCategory(category) {
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      event.target.classList.add('active');
+      renderGenerators(category==='all'?generators:generators.filter(g=>g.category===category));
+    }
+
+    document.getElementById('generatorModal').addEventListener('click', (e)=>{if(e.target.id==='generatorModal') closeModal();});
+    renderGenerators();
+  </script>
+</body>
+</html>

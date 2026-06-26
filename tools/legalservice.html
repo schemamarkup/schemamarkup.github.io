@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Markup law firms and legal services">
+  <meta property="og:title" content="Legal Service Schema - Schema Markup Generator">
+  <meta property="og:description" content="Markup law firms and legal services">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schemamarkup.github.io/tools/legalservice.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Legal Service Schema - Schema Markup Generator">
+  <meta name="twitter:description" content="Markup law firms and legal services">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <link rel="canonical" href="https://schemamarkup.github.io/tools/legalservice.html">
+  <title>Legal Service Schema - Schema Markup Generator | WebDeskArt</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    @media (max-width:1024px) { .tool-layout { grid-template-columns: 1fr; } }
+    .form-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .form-section h2 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--text); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 10px;
+      font-family: inherit; font-size: 0.875rem;
+      background: var(--bg); color: var(--text); transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; font-family: 'Monaco','Courier New',monospace; }
+    .required { color: var(--danger); }
+    .help-text { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .output-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .output-section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .validation-msg { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-bottom: 1rem; display: none; }
+    .validation-msg.show { display: block; animation: fadeIn 0.3s; }
+    .validation-msg.success { background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
+    .validation-msg.error { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    .output-box {
+      background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+      padding: 1rem; font-family: 'Monaco','Courier New',monospace; font-size: 0.8rem;
+      line-height: 1.5; max-height: 500px; overflow-y: auto; color: var(--text); min-height: 200px;
+    }
+    .output-box pre { margin: 0; white-space: pre-wrap; }
+    .json-key { color: var(--brand); }
+    .json-string { color: #dc2626; }
+    .json-value { color: #059669; }
+    .btn-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn-group .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+.tool-article { margin-top: 3rem; }
+    .tool-article h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .tool-article h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; }
+    .tool-article p { font-size: 0.9rem; line-height: 1.8; color: var(--text); margin-bottom: 0.75rem; }
+    .tool-article ul, .tool-article ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .tool-article li { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.35rem; }
+    .tool-article .faq-item { margin-bottom: 0.75rem; }
+    .tool-article .faq-item h4 { font-size: 1rem; margin: 0; }
+    .tool-article .note { background: #fff8e1; border-left: 4px solid #f9a825; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.85rem; }
+
+    .faq-item { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; position: relative; }
+    .faq-item .btn-remove { position: absolute; top: 0.5rem; right: 0.5rem; color: var(--danger); border: 1px solid var(--line); background: #fff; cursor: pointer; border-radius: 6px; padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+    .faq-item .btn-remove:hover { background: var(--danger); color: #fff; }
+    #addFaqBtn { margin-top: 0.5rem; }
+    @media (max-width:768px) {
+      .form-section, .output-section { padding: 1rem; }
+      .btn-group { flex-direction: column; }
+      .btn-group .btn { width: 100%; justify-content: center; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="breadcrumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="../all-tools.html">All Tools</a>
+        <span class="sep">›</span>
+        <span class="current">Legal Service Schema</span>
+      </div>
+      <div class="tool-header"><h1><span class="icon-box"><i class="fas fa-scale-balanced"></i></span> Legal Service Schema</h1><p>Markup law firms and legal services</p></div>
+      <div class="tool-layout">
+        <div class="form-section"><h2>Fill in the Details</h2><form id="genForm"><div class="form-group"><label>Law Firm Name <span class="required">*</span></label><input type="text" name="name" placeholder="Smith & Associates" required></div>
+        <div class="form-group"><label>Website URL <span class="required">*</span></label><input type="text" name="url" placeholder="https://example.com/lawfirm" required></div>
+        <div class="form-group"><label>Phone Number <span class="required">*</span></label><input type="text" name="telephone" placeholder="+1-555-0123" required></div>
+        <div class="form-group"><label>Street Address <span class="required">*</span></label><input type="text" name="address" placeholder="789 Legal Ave" required></div>
+        <div class="form-group"><label>City <span class="required">*</span></label><input type="text" name="city" placeholder="Washington" required></div>
+        <div class="form-group"><label>State <span class="required">*</span></label><input type="text" name="state" placeholder="DC" required></div>
+        <div class="form-group"><label>ZIP Code <span class="required">*</span></label><input type="text" name="zipCode" placeholder="20001" required></div>
+        <div class="form-group"><label>Country <span class="required">*</span></label><input type="text" name="country" placeholder="United States" required></div>
+        <div class="form-group"><label>Image URL</label><input type="text" name="image" placeholder="https://example.com/firm.jpg"></div>
+        <div class="form-group"><label>Description</label><textarea name="description" placeholder="Expert legal representation"></textarea></div>
+        <div class="form-group"><label>Price Range</label><select name="priceRange"><option value="">Select...</option><option>$</option><option>$$</option><option>$$$</option></select></div>
+        <div class="form-group"><label>Opening Hours</label><input type="text" name="openingHours" placeholder="09:00-17:00"></div>
+        <div class="form-group"><label>Rating (0-5)</label><input type="text" name="rating" placeholder="4.5"></div>
+        <div class="form-group"><label>Review Count</label><input type="text" name="reviewCount" placeholder="85"></div></form></div>
+        <div class="output-section">
+          <h2>Generated JSON-LD</h2>
+          <div class="validation-msg" id="valMsg"></div>
+          <div class="output-box" id="outBox"><pre>Fill in the form to generate JSON-LD...</pre></div>
+          <div class="btn-group">
+            <button class="btn primary btn-small" onclick="copyJSON()"><i class="fas fa-copy"></i> Copy JSON</button>
+            <button class="btn ghost btn-small" onclick="downloadJSON()"><i class="fas fa-download"></i> Download</button>
+            <button class="btn ghost btn-small" onclick="validateJSON()"><i class="fas fa-check-circle"></i> Validate</button>
+            <button class="btn ghost btn-small" onclick="beautifyJSON()"><i class="fas fa-wand-magic-sparkles"></i> Beautify</button>
+            <button class="btn ghost btn-small" onclick="minifyJSON()"><i class="fas fa-wrench"></i> Minify</button>
+          </div>
+        </div>
+      </div>
+      <div class="tool-article">
+
+<h2>Win More Clients With Legal Service Schema</h2>
+<p>When someone needs a lawyer, they search for expertise, trust, and availability. Legal Service Schema helps law firms and attorneys appear in search results with practice areas, ratings, and contact information that attract potential clients. This structured data makes your firm visible when people need legal help the most.</p>
+<p>Our Legal Service Schema Generator creates JSON-LD markup for law firms, solo practitioners, and legal organizations. Generate compliant code in seconds.</p>
+
+<h2>What Is Legal Service Schema?</h2>
+<p>Legal Service Schema is a subtype of LocalBusiness schema designed for legal professionals and law firms. It includes properties for practice name, areas of law, location, opening hours, pricing, and client ratings. Google uses this markup to display legal services in local search results with rich information that helps clients choose representation.</p>
+
+<h2>Features</h2>
+<ul>
+<li>Complete firm profile with name, image, and description</li>
+<li>Full address markup with city, state, ZIP, and country</li>
+<li>Opening hours for client consultations</li>
+<li>Price range indicator for fee transparency</li>
+<li>Rating and review count for client trust</li>
+<li>Telephone number for immediate contact</li>
+<li>Valid JSON-LD output ready to implement</li>
+</ul>
+
+<h2>Benefits</h2>
+<h3>Client Trust Signals</h3>
+<p>Displaying ratings, practice areas, and contact information directly in search builds immediate credibility with potential clients seeking legal representation.</p>
+<h3>Practice Area Visibility</h3>
+<p>Clients searching for specific legal needs like personal injury, family law, or criminal defense can find your firm more easily with proper categorization.</p>
+<h3>Local Search Dominance</h3>
+<p>Law firms with complete schema outrank competitors in local search results, capturing clients at the moment they need legal help.</p>
+
+<h2>How It Works</h2>
+<ol>
+<li>Enter your law firm name, website URL, and phone number.</li>
+<li>Add your complete office address for local search visibility.</li>
+<li>Write a professional description highlighting your practice areas.</li>
+<li>Set your opening hours for client appointments.</li>
+<li>Select your price range indicator.</li>
+<li>Include your average rating and review count if available.</li>
+<li>Copy the generated JSON-LD code to your website.</li>
+</ol>
+
+<h2>Use Cases</h2>
+<ul>
+<li>Law firms attracting new clients through local search</li>
+<li>Solo practitioners building professional online presence</li>
+<li>Specialized legal practices targeting specific case types</li>
+<li>Multi-office law firms managing local SEO across locations</li>
+<li>Legal aid organizations connecting with those in need</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h4>Can I list multiple practice areas?</h4><p>Yes, describe your key practice areas in the description field to help clients find your specific type of legal expertise.</p></div>
+<div class="faq-item"><h4>Should I include pricing information?</h4><p>The priceRange field provides a general fee indicator. Use it to set client expectations and attract appropriate cases.</p></div>
+<div class="faq-item"><h4>Does this work for corporate law firms?</h4><p>Yes, Legal Service Schema works for all types of legal practices from solo practitioners to large corporate law firms.</p></div>
+<div class="faq-item"><h4>How do client reviews affect my schema?</h4><p>Positive ratings and reviews displayed in search results significantly increase client trust and click-through rates.</p></div>
+<div class="faq-item"><h4>Can I mark up multiple office locations?</h4><p>Yes, create separate Legal Service schema blocks for each office location on their respective pages.</p></div>
+
+<h2>Conclusion</h2>
+<p>Legal Service Schema is essential for law firms and attorneys who want to be found by clients searching for legal representation. It makes your practice areas, ratings, and contact information visible in search results at the moment of need. Use our Legal Service Schema Generator above to create your markup and attract more clients.</p>
+
+</div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+  <script>
+    function genJSON(d){
+            return {'@context':'https://schema.org','@type':'LegalService',name:d.name,url:d.url,telephone:d.telephone,
+                address:{'@type':'PostalAddress',streetAddress:d.address,addressLocality:d.city,addressRegion:d.state,postalCode:d.zipCode,addressCountry:d.country},
+                image:d.image||undefined,description:d.description||undefined,
+                priceRange:d.priceRange||undefined,
+                openingHoursSpecification:d.openingHours?{'@type':'OpeningHoursSpecification',dayOfWeek:'Monday-Friday',opens:(d.openingHours.split('-')[0]||'').trim(),closes:(d.openingHours.split('-')[1]||'').trim()}:undefined,
+                aggregateRating:d.rating&&d.reviewCount?{'@type':'AggregateRating',ratingValue:d.rating,reviewCount:d.reviewCount}:undefined}
+        }
+    function cleanJSON(obj){if(Array.isArray(obj))return obj.map(cleanJSON).filter(i=>i!==null);if(obj!==null&&typeof obj==='object'){const c={};for(const k in obj){const v=cleanJSON(obj[k]);if(v!==undefined)c[k]=v;}return Object.keys(c).length?c:undefined}return obj===undefined?undefined:obj}
+    function formatJSON(json,minify){return minify?JSON.stringify(cleanJSON(json)):JSON.stringify(cleanJSON(json),null,2)}
+    function highlightJSON(str){str=str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');str=str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,function(m){let cls='json-value';if(/^"/.test(m)){cls=/:$/.test(m)?'json-key':'json-string'}else if(/true|false|null/.test(m))cls='json-value';return '<span class="'+cls+'">'+m+'</span>'});return str}
+    function genOutput(){const f=document.getElementById('genForm');const d=Object.fromEntries(new FormData(f));const j=genJSON(d);if(!j)return;const fmt=formatJSON(j,false);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(fmt)+'</pre>';window._json=fmt}
+    function copyJSON(){if(!window._json){msg('Nothing to copy. Fill the form first.','error');return}navigator.clipboard.writeText(window._json).then(()=>msg('✓ Copied!','success')).catch(()=>msg('✗ Failed','error'))}
+    function downloadJSON(){if(!window._json){msg('Nothing to download. Fill the form first.','error');return}const a=document.createElement('a');a.setAttribute('href','data:application/json;charset=utf-8,'+encodeURIComponent(window._json));a.setAttribute('download',document.title.replace(/\s+/g,'-').toLowerCase()+'.json');a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);msg('⬇️ Downloaded!','success')}
+    function validateJSON(){try{JSON.parse(document.getElementById('outBox').innerText);msg('✓ Valid JSON!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function beautifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const f=JSON.stringify(v,null,2);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(f)+'</pre>';window._json=f;msg('✨ Beautified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function minifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const m=JSON.stringify(v);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(m)+'</pre>';window._json=m;msg('🔧 Minified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function msg(text,type){const el=document.getElementById('valMsg');el.textContent=text;el.className='validation-msg show '+type;setTimeout(()=>el.classList.remove('show'),3000)}
+    document.getElementById('genForm').addEventListener('input',genOutput);document.getElementById('genForm').addEventListener('change',genOutput);genOutput();
+  </script>
+</body>
+</html>

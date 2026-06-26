@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about the most common schema markup errors and how to avoid them for better rich result eligibility.">
+  <meta property="og:title" content="Common Schema Markup Mistakes to Avoid">
+  <meta property="og:description" content="Learn about the most common schema markup errors and how to avoid them for better rich result eligibility.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/common-schema-markup-mistakes.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Common Schema Markup Mistakes to Avoid">
+  <meta name="twitter:description" content="Learn about the most common schema markup errors and how to avoid them for better rich result eligibility.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>Common Schema Markup Mistakes to Avoid &#8212; Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/common-schema-markup-mistakes.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>Common Schema Markup Mistakes to Avoid</h1>
+      <p class="meta">June 2026 &middot; 541 words</p>
+      <p>Even experienced SEO professionals can make mistakes when implementing schema markup. These errors can prevent your content from appearing in rich results or, in serious cases, result in manual actions from Google. Understanding common mistakes helps you avoid them and ensure your schema markup works correctly.</p>
+
+<h2>Mistake 1: Using Incorrect Schema Types</h2>
+<p>One of the most common mistakes is using the wrong schema type for your content. For example, using Article schema when you should use NewsArticle, or using Product schema when you should use SoftwareApplication. Using a generic type instead of a specific subtype limits the properties available and may prevent rich result eligibility. Always check Schema.org to find the most appropriate type for your content.</p>
+
+<h2>Mistake 2: Missing Required Properties</h2>
+<p>Each schema type and rich result type has required properties. Omitting required properties is the most common reason for schema markup to fail validation. For example, Product schema requires the name property. Recipe schema requires name, recipeIngredient, and recipeInstructions. Always check Google's documentation for the required properties of each rich result type you are targeting, not just the Schema.org specification.</p>
+
+<h2>Mistake 3: Marking Up Hidden Content</h2>
+<p>Google's guidelines require that the content described in your schema markup is visible to users. Marking up content that is hidden, behind tabs, or only visible after user interaction can violate Google's guidelines. If Google determines that your markup does not represent visible content, it may ignore your markup or take manual action against your site. Ensure that all structured data content is clearly visible on the page.</p>
+
+<h2>Mistake 4: Inconsistent Information</h2>
+<p>The information in your schema markup must match the visible content on your page. Inconsistencies between markup and visible content can confuse search engines and may be considered deceptive. For example, if your markup shows a price of $19.99 but the visible page shows $29.99, Google may consider this a violation. Ensure that your markup accurately reflects what users can see on the page.</p>
+
+<h2>Mistake 5: JSON-LD Syntax Errors</h2>
+<p>JSON-LD is strict about syntax. Missing commas, extra trailing commas, unquoted property names, and incorrect bracket matching can all cause your markup to fail. Use a JSON validator to check your JSON-LD syntax before deployment. Many schema generators, including ours, produce valid JSON-LD automatically, but errors can be introduced during manual editing.</p>
+
+<h2>Mistake 6: Using Relative URLs</h2>
+<p>Schema markup should use absolute URLs for all links. Relative URLs can cause issues when pages are accessed from different domains or subdirectories. Absolute URLs ensure that search engines can correctly resolve the links to your content, author profiles, images, and other referenced resources. Always use full URLs starting with https:// in your schema markup.</p>
+
+<h2>Mistake 7: Duplicate or Conflicting Markup</h2>
+<p>Having multiple schema markup instances on a single page with conflicting information can confuse search engines. If you use multiple schema types on one page, ensure they are consistent and organized. Use the @graph property in JSON-LD to group multiple schema types within a single script block. This approach keeps your markup organized and reduces the risk of conflicts.</p>
+
+<h2>Conclusion</h2>
+<p>Avoiding these common mistakes ensures that your schema markup is valid, eligible for rich results, and compliant with Google's guidelines. Our Schema Markup Generator helps you create error-free markup that follows all best practices.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

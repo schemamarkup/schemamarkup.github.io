@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Recipe schema markup and how it enables rich recipe results in Google Search.">
+  <meta property="og:title" content="What is Recipe Schema?">
+  <meta property="og:description" content="Learn about Recipe schema markup and how it enables rich recipe results in Google Search.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-recipe-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Recipe Schema?">
+  <meta name="twitter:description" content="Learn about Recipe schema markup and how it enables rich recipe results in Google Search.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Recipe Schema? &#8212; Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-recipe-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Recipe Schema?</h1>
+      <p class="meta">June 2026 &middot; 544 words</p>
+      <p>Recipe schema is a specialized type of structured data for food and cooking content. It allows you to mark up recipes with detailed information including ingredients, cooking time, nutritional information, and step-by-step instructions. When Google detects valid Recipe schema, it can display your recipe in rich results with a photo, star rating, cooking time, and calorie count. Recipe schema can also get your recipes into the Google recipe carousel, which appears at the top of search results for recipe queries.</p>
+
+<h2>Key Properties of Recipe Schema</h2>
+<p>Recipe schema includes many properties for comprehensive recipe descriptions. The name property is the recipe title. The recipeIngredient property lists ingredients as individual items. The recipeInstructions property provides step-by-step directions using HowToStep or HowToSection schema. The cookTime and prepTime properties specify preparation and cooking durations. The nutrition property uses NutritionInformation schema to provide calorie, fat, protein, and other nutritional data. The recipeCategory, recipeCuisine, and keywords properties help categorize the recipe.</p>
+
+<h2>Recipe Rich Results in Google</h2>
+<p>Recipe rich results are among the most visually appealing search features. They typically display a large photo, the recipe name, star rating, cooking time, and calorie count. Users can browse recipes directly in search results, making it easy to find appealing options. Recipe schema is required for appearing in the recipe carousel, which is a highly visible search feature that showcases recipes from multiple sources. Recipes with high-quality photos and comprehensive markup perform best in these features.</p>
+
+<h2>Required Properties for Recipe Rich Results</h2>
+<p>To be eligible for recipe rich results, your Recipe schema must include certain required properties. The name, recipeIngredient, and recipeInstructions properties are required. Additionally, you must include either cookTime, prepTime, or totalTime. For the best results, also include image, nutrition, recipeCuisine, recipeCategory, and aggregateRating. Google's guidelines also require that the recipe content is visible on the page, not hidden from users.</p>
+
+<h2>Nutritional Information</h2>
+<p>The nutrition property using NutritionInformation schema allows you to provide detailed nutritional data. Properties include calories, carbohydrateContent, fatContent, proteinContent, fiberContent, sugarContent, sodiumContent, and cholesterolContent. Including nutritional information makes your recipe more informative and helpful for users with dietary restrictions. Google may display calorie information directly in recipe rich results, helping users make informed choices.</p>
+
+<h2>Step-by-Step Instructions</h2>
+<p>The recipeInstructions property supports both simple text instructions and structured HowToStep schema. Using HowToStep allows you to provide detailed step-by-step directions with images for each step. Each step can include text, images, and timing information. Structured instructions make it easier for users to follow your recipe and can be used by voice assistants to read directions aloud. Numbered steps with clear language work best for user understanding.</p>
+
+<h2>Recipe Videos</h2>
+<p>Recipe schema can incorporate video content using the video property with VideoObject schema. Recipe videos are highly engaging and can significantly improve user experience. The video can show the cooking process, plating techniques, or final dish presentation. Video recipes often perform better in search results and have higher engagement rates. Including a video with your recipe schema can give you a competitive advantage in recipe search features.</p>
+
+<h2>Conclusion</h2>
+<p>Recipe schema is essential for food blogs and recipe websites. It enables rich recipe results that showcase your recipes with photos, ratings, cooking times, and nutritional information. Our Schema Markup Generator supports Recipe schema with all required and recommended properties for maximum rich result eligibility.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

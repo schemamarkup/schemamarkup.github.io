@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog about schema markup, JSON-LD, rich snippets, and structured data best practices.">
+  <meta property="og:title" content="Blog — Schema Markup Generator">
+  <meta property="og:description" content="Blog about schema markup, JSON-LD, rich snippets, and structured data best practices.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog — Schema Markup Generator">
+  <meta name="twitter:description" content="Blog about schema markup, JSON-LD, rich snippets, and structured data best practices.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>Blog — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog.html">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .blog-header { padding: 3rem 0 1rem; text-align: center; }
+    .blog-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .blog-header p { color: var(--muted); max-width: 600px; margin: 0 auto; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; padding: 2rem 0 4rem; }
+    .blog-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+      padding: 1.5rem; box-shadow: var(--shadow-sm); transition: all 0.3s;
+    }
+    .blog-card:hover { border-color: #ddd6fe; transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .blog-card .cat {
+      display: inline-block; font-size: 0.75rem;
+      background: var(--brand-soft); color: var(--brand);
+      padding: 0.25rem 0.75rem; border-radius: 12px; margin-bottom: 0.75rem;
+    }
+    .blog-card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .blog-card h3 a { color: var(--text); text-decoration: none; }
+    .blog-card h3 a:hover { color: var(--brand); }
+    .blog-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin: 0 0 1rem; }
+    .blog-card .meta { font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="all-tools.html">All Tools</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="index.html">Home</a>
+      <a href="all-tools.html">All Tools</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="tos.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="blog-header">
+        <h1>Schema Markup Blog</h1>
+        <p>Tips, guides, and best practices for structured data and JSON-LD.</p>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-schema-markup.html">What is Schema Markup?</a></h3>
+          <p>Learn what schema markup is, how it works, and why it matters for your website's search presence.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">SEO</div>
+          <h3><a href="blog/what-is-schema-markup-in-seo.html">What is Schema Markup in SEO?</a></h3>
+          <p>Discover how structured data helps search engines understand and rank your content better.</p>
+          <div class="meta">June 2026 &middot; 8 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-schema-org.html">What is Schema.org?</a></h3>
+          <p>Learn about the collaborative project that creates and maintains the vocabulary for structured data.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">SEO</div>
+          <h3><a href="blog/why-is-schema-markup-important.html">Why is Schema Markup Important?</a></h3>
+          <p>Understand why schema markup matters for SEO, user experience, and visibility in search engines.</p>
+          <div class="meta">June 2026 &middot; 8 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">SEO</div>
+          <h3><a href="blog/how-does-schema-markup-improve-seo.html">How Does Schema Markup Improve SEO?</a></h3>
+          <p>Learn the mechanisms through which schema markup boosts your search performance and visibility.</p>
+          <div class="meta">June 2026 &middot; 9 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">SEO</div>
+          <h3><a href="blog/does-schema-markup-help-google-rankings.html">Does Schema Markup Help Google Rankings?</a></h3>
+          <p>Understand the indirect impact of schema markup on search rankings through rich results and engagement.</p>
+          <div class="meta">June 2026 &middot; 8 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-are-rich-snippets.html">What Are Rich Snippets?</a></h3>
+          <p>Learn how rich snippets enhance search listings with star ratings, prices, and more.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-structured-data.html">What is Structured Data?</a></h3>
+          <p>Learn what structured data is and how it helps search engines understand your content.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">SEO</div>
+          <h3><a href="blog/difference-between-schema-markup-and-structured-data.html">Difference Between Schema Markup and Structured Data</a></h3>
+          <p>Understand the distinction between two related but different concepts in SEO.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">SEO</div>
+          <h3><a href="blog/how-does-google-use-schema-markup.html">How Does Google Use Schema Markup?</a></h3>
+          <p>Learn how Google processes structured data for rich results, knowledge panels, and voice search.</p>
+          <div class="meta">June 2026 &middot; 8 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-json-ld-schema-markup.html">What is JSON-LD Schema Markup?</a></h3>
+          <p>Learn about JSON-LD, the recommended format for schema markup, and how it simplifies structured data implementation.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-microdata-schema.html">What is Microdata Schema?</a></h3>
+          <p>Learn about Microdata, an HTML-based format for schema markup that uses attributes to annotate content.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-rdfa-schema.html">What is RDFa Schema?</a></h3>
+          <p>Learn about RDFa, an HTML5 extension for adding structured data using attributes within visible content.</p>
+          <div class="meta">June 2026 &middot; 4 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/which-schema-format-is-recommended-by-google.html">Which Schema Format is Recommended by Google?</a></h3>
+          <p>Google recommends JSON-LD as the preferred format for schema markup. Learn why and how to use it.</p>
+          <div class="meta">June 2026 &middot; 4 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/different-types-of-schema-markup.html">What are the Different Types of Schema Markup?</a></h3>
+          <p>Learn about the major categories of schema markup including business, content, ecommerce, local, and more.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/which-schema-markup-should-i-use.html">Which Schema Markup Should I Use?</a></h3>
+          <p>A guide to choosing the right schema type for your content based on your website type and goals.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-faq-schema.html">What is FAQ Schema?</a></h3>
+          <p>Learn about FAQ schema markup and how it enables expandable FAQ rich results in Google search.</p>
+          <div class="meta">June 2026 &middot; 4 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-product-schema.html">What is Product Schema?</a></h3>
+          <p>Learn about Product schema markup for ecommerce and how it enables product rich results in Google Search.</p>
+          <div class="meta">June 2026 &middot; 4 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">How-To</div>
+          <h3><a href="blog/how-to-create-schema-markup.html">How to Create Schema Markup</a></h3>
+          <p>Step-by-step guide to creating schema markup manually or using a generator tool for your website.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">How-To</div>
+          <h3><a href="blog/how-to-add-schema-markup-to-website.html">How to Add Schema Markup to Your Website</a></h3>
+          <p>Learn how to add schema markup to your website using JSON-LD, plugins, or manual HTML methods.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">How-To</div>
+          <h3><a href="blog/how-to-test-schema-markup.html">How to Test Schema Markup</a></h3>
+          <p>Learn how to test schema markup using Google's tools to ensure it's valid and eligible for rich results.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">How-To</div>
+          <h3><a href="blog/how-to-validate-schema-markup.html">How to Validate Schema Markup</a></h3>
+          <p>Learn how to validate schema markup to ensure it meets Schema.org standards and Google's rich result requirements.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-organization-schema.html">What is Organization Schema?</a></h3>
+          <p>Learn about Organization schema markup and how it helps search engines understand your business information.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-local-business-schema.html">What is Local Business Schema?</a></h3>
+          <p>Learn how Local Business schema helps local businesses appear in local search results and Google Maps.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-article-schema.html">What is Article Schema?</a></h3>
+          <p>Learn about Article schema markup and how it helps news articles and blog posts appear in Google News and Top Stories.</p>
+          <div class="meta">June 2026 &middot; 7 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-blog-posting-schema.html">What is Blog Posting Schema?</a></h3>
+          <p>Learn about BlogPosting schema and how it helps your blog posts stand out in search results.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-breadcrumb-schema.html">What is Breadcrumb Schema?</a></h3>
+          <p>Learn about BreadcrumbList schema and how it shows navigation paths in Google search results.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-person-schema.html">What is Person Schema?</a></h3>
+          <p>Learn about Person schema markup and how it describes individuals in search results and knowledge panels.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-event-schema.html">What is Event Schema?</a></h3>
+          <p>Learn about Event schema markup and how it helps events appear in Google Search with dates, locations, and ticket info.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-recipe-schema.html">What is Recipe Schema?</a></h3>
+          <p>Learn about Recipe schema markup and how it enables rich recipe results in Google Search.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-video-schema.html">What is Video Schema?</a></h3>
+          <p>Learn about VideoObject schema markup and how it helps videos appear in Google Video search and rich results.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-review-schema.html">What is Review Schema?</a></h3>
+          <p>Learn about Review schema markup and how it displays customer reviews with star ratings in search results.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-howto-schema.html">What is HowTo Schema?</a></h3>
+          <p>Learn about HowTo schema markup and how it enables step-by-step rich results in Google Search.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-job-posting-schema.html">What is Job Posting Schema?</a></h3>
+          <p>Learn about JobPosting schema markup and how it enables job listings in Google for Jobs.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-software-application-schema.html">What is Software Application Schema?</a></h3>
+          <p>Learn about SoftwareApplication schema markup and how it helps apps appear in search results with ratings and pricing.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-course-schema.html">What is Course Schema?</a></h3>
+          <p>Learn about Course schema markup and how it helps educational courses appear in Google Search.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-question-schema.html">What is Q&A Schema?</a></h3>
+          <p>Learn about QAPage and Question schema markup and how they enable Q&A rich results in Google Search.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Best Practices</div>
+          <h3><a href="blog/schema-markup-best-practices.html">Schema Markup Best Practices</a></h3>
+          <p>Learn the best practices for implementing schema markup to maximize rich result eligibility and SEO benefits.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Best Practices</div>
+          <h3><a href="blog/common-schema-markup-mistakes.html">Common Schema Markup Mistakes to Avoid</a></h3>
+          <p>Learn about the most common schema markup errors and how to avoid them for better rich result eligibility.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Ecommerce</div>
+          <h3><a href="blog/schema-markup-for-ecommerce.html">Schema Markup for Ecommerce</a></h3>
+          <p>Learn how to use schema markup on ecommerce websites to improve product visibility and drive more sales.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Local SEO</div>
+          <h3><a href="blog/schema-markup-for-local-seo.html">Schema Markup for Local SEO</a></h3>
+          <p>Learn how to use Local Business schema and related markup to improve local search visibility and attract nearby customers.</p>
+          <div class="meta">June 2026 &middot; 6 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/carousel-schema.html">What is Carousel Schema?</a></h3>
+          <p>Learn about Carousel structured data and how it enables a scrollable list of items in Google Search results.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">WordPress</div>
+          <h3><a href="blog/schema-markup-for-wordpress.html">Schema Markup for WordPress</a></h3>
+          <p>Learn how to add schema markup to WordPress sites using plugins, themes, and custom code for better SEO.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Shopify</div>
+          <h3><a href="blog/schema-markup-for-shopify.html">Schema Markup for Shopify</a></h3>
+          <p>Learn how to implement schema markup on Shopify stores to improve product visibility and search performance.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Voice Search</div>
+          <h3><a href="blog/schema-markup-for-voice-search.html">How Schema Markup Helps Voice Search</a></h3>
+          <p>Learn how schema markup improves visibility in voice search results and helps virtual assistants understand your content.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-google-knowledge-graph.html">What is the Google Knowledge Graph?</a></h3>
+          <p>Learn about the Google Knowledge Graph and how schema markup contributes to knowledge panels and entity understanding.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-structured-data-testing-tool.html">What is Google's Structured Data Testing Tool?</a></h3>
+          <p>Learn about Google's Structured Data Testing Tool and how to use it to validate your schema markup.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-image-schema.html">What is ImageObject Schema?</a></h3>
+          <p>Learn about ImageObject schema markup and how it helps search engines understand and display your images.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-special-announcement-schema.html">What is Special Announcement Schema?</a></h3>
+          <p>Learn about SpecialAnnouncement schema and how it highlights important announcements in search results.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+        <article class="blog-card">
+          <div class="cat">Guide</div>
+          <h3><a href="blog/what-is-vacation-rental-schema.html">What is Vacation Rental Schema?</a></h3>
+          <p>Learn about VacationRental schema and how it helps rental properties appear in Google Search with availability and pricing.</p>
+          <div class="meta">June 2026 &middot; 5 min read</div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="all-tools.html">All Tools</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

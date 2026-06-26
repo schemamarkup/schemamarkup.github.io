@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about the major categories of schema markup including business, content, ecommerce, local, and more.">
+  <meta property="og:title" content="What are the different types of Schema Markup?">
+  <meta property="og:description" content="Learn about the major categories of schema markup including business, content, ecommerce, local, and more.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/different-types-of-schema-markup.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What are the different types of Schema Markup?">
+  <meta name="twitter:description" content="Learn about the major categories of schema markup including business, content, ecommerce, local, and more.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What are the different types of Schema Markup? — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/different-types-of-schema-markup.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What are the different types of Schema Markup?</h1>
+      <p class="meta">June 2026 &middot; 503 words</p>
+      Schema.org defines hundreds of types of schema markup organized into categories based on the kind of content they describe. Understanding the different types helps you choose the right one for your content.
+
+<h2>Business and Organization Types</h2>
+<p>These schema types describe organizations, businesses, and their attributes. Organization schema is the most fundamental type, providing properties for name, logo, contact information, and social media profiles. LocalBusiness extends Organization with location-specific properties like address, phone number, and hours of operation. Subtypes include Restaurant, Store, and MedicalBusiness for specialized business types.</p>
+
+<h2>Content and Creative Work Types</h2>
+<p>CreativeWork schema covers a broad range of content types including Article, BlogPosting, NewsArticle, Book, Movie, MusicRecording, and more. Each type has properties specific to that content format. Article schema includes properties for headline, author, publication date, and article body. Recipe schema adds properties for cooking time, ingredients, and nutritional information.</p>
+
+<h2>Ecommerce Types</h2>
+<p>Product schema is the primary type for ecommerce, with properties for name, description, brand, offers, and reviews. Offer schema describes pricing and availability for products and services. AggregateRating schema provides overall ratings from multiple reviews. ShippingDeliveryTime and MerchantReturnPolicy schemas support detailed shipping and returns information.</p>
+
+<h2>Event Types</h2>
+<p>Event schema describes organized events with properties for date, time, location, and ticket information. Subtypes include BusinessEvent, ChildrensEvent, ComedyEvent, DanceEvent, EducationEvent, Festival, FoodEvent, MusicEvent, SaleEvent, SocialEvent, SportsEvent, and TheaterEvent. Each subtype inherits all Event properties while adding specialized characteristics.</p>
+
+<h2>Local and Place Types</h2>
+<p>Place schema describes physical locations with properties for address, geo coordinates, and photos. LocalBusiness subtypes like Restaurant, Hotel, and Hospital extend Place with industry-specific properties. TouristAttraction, Landmark, and Park schemas describe points of interest for travel and tourism content.</p>
+
+<h2>Review and Rating Types</h2>
+<p>Review schema describes a single review with properties for review body, rating, and reviewer. AggregateRating schema provides summary statistics like average rating and review count from multiple reviews. Rating schema represents a numeric or star rating that can be used within Review or independently.</p>
+
+<h2>Media Types</h2>
+<p>VideoObject, AudioObject, and ImageObject schemas describe media content with properties for duration, thumbnail, upload date, and transcript. MusicRecording, MusicAlbum, and MusicGroup schemas describe musical content. Movie and TVSeries schemas describe film and television content with properties for cast, director, and rating.</p>
+
+<h2>Health and Medical Types</h2>
+<p>Schema.org includes extensive medical types under the MedicalEntity category. These cover conditions, treatments, drugs, medical tests, and healthcare procedures. MedicalCondition, Drug, MedicalProcedure, and MedicalTest are some of the most commonly used medical schema types.</p>
+
+<h2>Action and Interaction Types</h2>
+<p>Action schema describes actions that users can take, such as SearchAction, BuyAction, and ListenAction. These are often used in combination with other schema types to enable interactive features in search results. For example, SitelinksSearchBox uses SearchAction to enable on-site search directly from search results.</p>
+
+<p>With so many types available, it's important to choose the one that most accurately describes your content. Using the correct type ensures that search engines understand your content properly and can display it in the most appropriate rich result format. Our Schema Markup Generator supports 15+ of the most commonly used schema types.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

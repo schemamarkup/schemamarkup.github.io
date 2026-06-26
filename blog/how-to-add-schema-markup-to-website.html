@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn how to add schema markup to your website using JSON-LD, plugins, or manual HTML methods.">
+  <meta property="og:title" content="How do I add Schema Markup to my website?">
+  <meta property="og:description" content="Learn how to add schema markup to your website using JSON-LD, plugins, or manual HTML methods.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/how-to-add-schema-markup-to-website.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How do I add Schema Markup to my website?">
+  <meta name="twitter:description" content="Learn how to add schema markup to your website using JSON-LD, plugins, or manual HTML methods.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>How do I add Schema Markup to my website? — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/how-to-add-schema-markup-to-website.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>How do I add Schema Markup to my website?</h1>
+      <p class="meta">June 2026 &middot; 576 words</p>
+      Adding schema markup to your website can be done in several ways depending on your technical expertise and the platform you use. The method you choose will depend on whether you use a content management system, have access to your site's HTML files, or prefer a code-free solution.
+
+<h2>Method 1: Adding JSON-LD to HTML</h2>
+<p>JSON-LD is the recommended format by Google. To add it, create a script tag with type application/ld+json and place your schema markup inside. Add this script tag to the head section of your HTML page, or just before the closing body tag. The markup should be on the same page as the content it describes. Here is the basic structure: a script tag containing your JSON-LD object with @context and @type properties.</p>
+
+<h2>Method 2: Using WordPress Plugins</h2>
+<p>WordPress users can add schema markup without touching code by using SEO plugins. Yoast SEO automatically adds schema markup for articles, pages, and other content types. Rank Math provides more detailed schema control with built-in templates for common types. Schema Pro allows you to create custom schema markup for specific pages and post types. These plugins handle the technical implementation so you can focus on content.</p>
+
+<h2>Method 3: Using a Tag Manager</h2>
+<p>Google Tag Manager can be used to add schema markup without editing your website's HTML directly. Create a Custom HTML tag in GTM, paste your JSON-LD code into the tag, and set it to fire on the pages where you want the schema to appear. This method is useful for websites where you don't have direct access to the HTML files or want to manage markup centrally.</p>
+
+<h2>Method 4: Adding to Specific CMS Platforms</h2>
+<p>For Shopify, add schema markup to your theme's liquid files or use a schema app from the Shopify App Store. For Squarespace and Wix, use the built-in settings panels or code injection features to add JSON-LD. For Joomla and Drupal, use SEO extensions that support schema markup. Each platform has specific methods for adding custom code to your pages.</p>
+
+<h2>Where to Place Schema Markup</h2>
+<p>JSON-LD can be placed in the head or body of your HTML page. Google's documentation says either location is acceptable. For Microdata and RDFa, the markup must be added directly to the visible HTML elements that contain your content. This makes JSON-LD easier to implement because it's separate from your visible content and won't affect your page layout.</p>
+
+<h2>Adding Multiple Schema Types</h2>
+<p>You can add multiple schema types to a single page by including multiple JSON-LD script blocks or by nesting types within a single script using @graph. For example, a product page might include Product schema, Offer schema, and Review schema together. Each type describes a different aspect of your content and can enable different rich result features.</p>
+
+<h2>Testing After Adding</h2>
+<p>After adding schema markup to your website, test it using Google's Rich Results Test. Enter your page URL and the tool will scan for schema markup and report any issues. Fix any errors or warnings found. You can also use the Schema Markup Validator for a more detailed analysis of your markup syntax.</p>
+
+<h2>Monitoring in Search Console</h2>
+<p>Once your schema markup is live, monitor it in Google Search Console. The Enhancements section shows reports for each type of rich result you're targeting. These reports show how many pages have valid markup, how many impressions your rich results receive, and any errors that need attention. Regular monitoring ensures your markup continues to work correctly.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about FAQ schema markup and how it enables expandable FAQ rich results in Google search.">
+  <meta property="og:title" content="What is FAQ Schema?">
+  <meta property="og:description" content="Learn about FAQ schema markup and how it enables expandable FAQ rich results in Google search.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-faq-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is FAQ Schema?">
+  <meta name="twitter:description" content="Learn about FAQ schema markup and how it enables expandable FAQ rich results in Google search.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is FAQ Schema? — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-faq-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is FAQ Schema?</h1>
+      <p class="meta">June 2026 &middot; 402 words</p>
+      <p>FAQ schema markup is a type of structured data that allows you to mark up lists of questions and answers on your web page. When Google detects valid FAQ schema, it can display your questions and answers directly in search results as an expandable rich result. Users can click on a question to expand and read the answer without leaving the search results page. FAQ rich results are highly visible and can significantly increase click-through rates.</p><h2>How FAQ Schema Works</h2><p>FAQ schema uses the FAQPage type from Schema.org. Inside the FAQPage, you define individual Question items, each with a name property containing the question text and an acceptedAnswer property containing the Answer. The Answer has a text property with the answer content. You can include as many question-answer pairs as needed. Google recommends including at least two questions for the FAQ rich result to be eligible.</p><h2>Benefits of FAQ Schema</h2><p>FAQ schema provides several important benefits. It makes your search listing larger and more prominent on the search results page. It provides immediate value to users by showing answers directly in search results. It can reduce bounce rates because users who click through already know what your page contains. It is particularly effective for voice search, as Google Assistant can read FAQ answers aloud in response to user questions.</p><h2>FAQ Schema Requirements</h2><p>To be eligible for FAQ rich results, your FAQ schema must meet certain requirements. The questions and answers must be visible on the page, not hidden from users. The questions must be real questions that users might ask, not just keywords or statements. The answers must provide useful information, not just promotional content. The FAQ content must be the primary content of the page, not a supplementary section.</p><h2>FAQ Schema vs. Q&A Schema</h2><p>FAQ schema is different from Q&A schema. FAQ schema is for pages where the website owner creates both the questions and the answers. Q&A schema is for pages where users submit questions and other users provide answers, like forum threads. Using the wrong type can result in your markup being ignored. Use FAQPage for FAQ pages and QAPage for question-and-answer sites.</p><h2>Implementation</h2><p>Implementing FAQ schema is straightforward with a schema markup generator. Select the FAQ schema type, enter your questions and answers, and the tool generates the JSON-LD code. Add the code to your page's head or body section. Test the markup using Google's Rich Results Test to ensure it's valid and eligible for FAQ rich results.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

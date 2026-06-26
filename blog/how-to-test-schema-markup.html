@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn how to test schema markup using Google's tools to ensure it's valid and eligible for rich results.">
+  <meta property="og:title" content="How do I test Schema Markup?">
+  <meta property="og:description" content="Learn how to test schema markup using Google's tools to ensure it's valid and eligible for rich results.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/how-to-test-schema-markup.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How do I test Schema Markup?">
+  <meta name="twitter:description" content="Learn how to test schema markup using Google's tools to ensure it's valid and eligible for rich results.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>How do I test Schema Markup? — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/how-to-test-schema-markup.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>How do I test Schema Markup?</h1>
+      <p class="meta">June 2026 &middot; 538 words</p>
+      Testing schema markup is a critical step in the implementation process. Even small errors in your markup can prevent Google from generating rich results. Fortunately, Google provides free tools that make testing quick and straightforward.
+
+<h2>Google Rich Results Test</h2>
+<p>The Rich Results Test is Google's primary tool for testing schema markup. You can test either a URL or paste your markup code directly. The tool checks your markup against Google's rich result requirements and shows which rich result types your page is eligible for. It also provides a preview of how your rich result might appear in search results. Any errors or warnings are clearly highlighted with explanations and suggestions for fixing them.</p>
+
+<h2>Google Schema Markup Validator</h2>
+<p>The Schema Markup Validator is a more comprehensive testing tool that validates all Schema.org types, not just those that produce rich results. It checks your markup syntax, verifies that all properties are valid for the specified type, and identifies any missing required properties. This tool is useful for comprehensive testing of complex markup with multiple schema types.</p>
+
+<h2>Testing with Search Console</h2>
+<p>Google Search Console provides ongoing monitoring of your schema markup through the Enhancements section. The Structured Data report shows all pages where Google has detected markup, along with any errors or warnings. You can use this report to identify issues across your entire site and track the status of fixes over time.</p>
+
+<h2>Common Errors to Check</h2>
+<p>When testing schema markup, watch for these common errors: missing required properties, incorrect property values, invalid data types, nested item issues, and syntax errors in JSON-LD format. The testing tools will identify each of these issues with specific error messages that guide you toward the solution.</p>
+
+<h2>Testing Process</h2>
+<p>Follow these steps to test your schema markup: First, create your markup using a generator or manual coding. Second, paste your code into the Rich Results Test to check for basic eligibility. Third, fix any errors or warnings identified. Fourth, test again to confirm all issues are resolved. Fifth, add the markup to your live page. Sixth, test the live URL to confirm the markup is being detected correctly.</p>
+
+<h2>Testing for Different Schema Types</h2>
+<p>Different schema types have different testing requirements. Product schema needs the Rich Results Test to verify product rich result eligibility. Recipe schema needs the same test for recipe rich results. Some schema types like Organization may not produce visible rich results but should still be validated for correctness. Use the Schema Markup Validator for types that don't have specific rich result tests.</p>
+
+<h2>Automated Testing Tools</h2>
+<p>Several third-party tools offer automated schema markup testing. Screaming Frog SEO Spider can crawl your entire site and identify pages with schema markup issues. Merkle's Schema Markup Generator includes a built-in validator. SEMrush and Ahrefs include structured data audits in their site audit tools. These automated tools help you find and fix issues across large websites.</p>
+
+<h2>Regular Testing Schedule</h2>
+<p>Testing should not be a one-time activity. Google's rich result requirements can change, and your markup may break due to website updates. Establish a regular testing schedule to check your markup monthly or after any significant site changes. Search Console will alert you to new issues, but proactive testing helps catch problems before they affect your search visibility.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

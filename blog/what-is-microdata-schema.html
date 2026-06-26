@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Microdata, an HTML-based format for schema markup that uses attributes to annotate content.">
+  <meta property="og:title" content="What is Microdata Schema?">
+  <meta property="og:description" content="Learn about Microdata, an HTML-based format for schema markup that uses attributes to annotate content.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-microdata-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Microdata Schema?">
+  <meta name="twitter:description" content="Learn about Microdata, an HTML-based format for schema markup that uses attributes to annotate content.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Microdata Schema? — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-microdata-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Microdata Schema?</h1>
+      <p class="meta">June 2026 &middot; 442 words</p>
+      <p>Microdata is an HTML specification that allows you to add structured data directly to your web page's visible content using HTML attributes. Unlike JSON-LD which uses a separate script block, Microdata integrates the structured data into the same HTML elements that display your content. This approach was one of the earliest methods for implementing schema markup and is still supported by all major search engines.</p><h2>How Microdata Works</h2><p>Microdata works by adding three main attributes to your HTML elements. The itemscope attribute declares that an HTML element contains a structured data item. The itemtype attribute specifies the Schema.org type for that item. The itemprop attribute identifies individual properties within the item. For example, a div with itemscope and itemtype attributes would contain spans with itemprop attributes for each property value.</p><h2>Microdata Example</h2><p>A typical Microdata implementation for an Organization would involve adding itemscope itemtype attributes to a div element, then using itemprop attributes on child elements to mark up the organization name, URL, and logo. The visible text content of those child elements becomes the property value. This tight integration between visible content and structured data is the defining characteristic of Microdata.</p><h2>Advantages of Microdata</h2><p>Microdata has some advantages in specific situations. Because the markup is embedded in your content, it naturally stays synchronized with your visible content. If you update the visible text, the structured data updates automatically. Microdata also works well for simple pages where you want to add a small amount of structured data without creating a separate script block.</p><h2>Disadvantages of Microdata</h2><p>Microdata has several significant disadvantages compared to JSON-LD. It clutters your HTML with many additional attributes, making your code harder to read and maintain. It is more difficult to debug because the structured data is spread throughout your HTML. It is harder to update because you need to find and modify individual HTML elements. It can also be limiting when you need to describe complex relationships that don't correspond neatly to your visible HTML structure.</p><h2>Microdata vs. JSON-LD</h2><p>Google recommends JSON-LD over Microdata for most use cases. JSON-LD is easier to implement, maintain, and debug. It doesn't clutter your HTML and it handles complex relationships more naturally. However, Microdata is still a valid format and is fully supported by Google. If you have an existing Microdata implementation, there is no urgent need to convert it, but new implementations should use JSON-LD.</p><h2>When to Use Microdata</h2><p>Microdata might be appropriate in certain situations. If you're working on a simple static site and want to add a small amount of schema markup quickly, Microdata can be a straightforward option. Some older CMS platforms and themes still use Microdata by default. However, for most new projects, JSON-LD is the better choice.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

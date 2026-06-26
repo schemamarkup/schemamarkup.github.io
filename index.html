@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional JSON-LD Schema Markup Generator. Create valid, SEO-optimized structured data for your website in seconds. 15+ schema types with instant validation.">
+  <meta property="og:title" content="Schema Markup Generator - JSON-LD SEO Tool">
+  <meta property="og:description" content="Professional JSON-LD Schema Markup Generator. Create valid, SEO-optimized structured data for your website in seconds. 15+ schema types with instant validation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schemamarkup.github.io">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Schema Markup Generator - JSON-LD SEO Tool">
+  <meta name="twitter:description" content="Professional JSON-LD Schema Markup Generator. Create valid, SEO-optimized structured data for your website in seconds. 15+ schema types with instant validation.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="keywords" content="schema markup generator, JSON-LD generator, structured data generator, schema validator, SEO markup">
+  <meta name="author" content="WebDeskArt">
+  <title>Schema Markup Generator - JSON-LD SEO Tool | WebDeskArt</title>
+  <link rel="canonical" href="https://schemamarkup.github.io">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="all-tools.html">All Tools</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="index.html" class="active">Home</a>
+      <a href="all-tools.html">All Tools</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="tos.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Schema Markup Generator</h1>
+        <p class="hero-sub">Create valid JSON-LD structured data for your website. Instant validation, live preview, and one-click copy.</p>
+        <p class="hero-url"><a href="https://schemamarkup.github.io">schemamarkup.github.io</a></p>
+
+        <div class="search-section">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search schema generators...">
+          </div>
+          <div class="filter-tabs" id="filterTabs"></div>
+        </div>
+
+        <div class="tools-grid" id="toolsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container narrow">
+        <h2 class="section-title">Why Use This Schema Markup Generator?</h2>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-ico">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h4>15+ Schema Types</h4>
+            <p>Generate JSON-LD for Organization, Product, Article, FAQ, Recipe, Event, Local Business, and more.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-ico">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h4>Instant Validation</h4>
+            <p>Every schema is validated in real-time. Copy clean, production-ready JSON-LD with one click.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-ico">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h4>Free & Browser-Based</h4>
+            <p>No account, no sign-up, no server uploads. Everything runs in your browser. Free to use forever.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Choose a Schema Type</h3>
+            <p>Select from 15+ schema types including Organization, Product, Article, FAQ, Event, and more.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Fill in the Details</h3>
+            <p>Complete the form with your content. Required fields are marked, and helpful placeholders guide you.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Copy & Use</h3>
+            <p>Copy the generated JSON-LD markup and paste it into your website's HTML head section.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container narrow center">
+        <h2>Ready to Add Schema Markup to Your Website?</h2>
+        <p>Choose a schema type below and generate valid JSON-LD in seconds. No account required.</p>
+        <div class="popular-schemas" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px">
+          <a href="tools/organization.html" class="btn primary lg">Organization</a>
+          <a href="tools/product.html" class="btn primary lg">Product</a>
+          <a href="tools/article.html" class="btn primary lg">Article</a>
+          <a href="tools/localbusiness.html" class="btn primary lg">Local Business</a>
+          <a href="tools/faq.html" class="btn primary lg">FAQ</a>
+        </div>
+        <p class="cta-sub"><a href="https://schemamarkup.github.io">schemamarkup.github.io</a> &middot; No account required &middot; Works on all devices</p>
+      </div>
+    </section>
+
+    <section class="blog-section">
+      <div class="container">
+        <h2>Latest from the Blog</h2>
+        <p>Learn how to use schema markup effectively with our expert guides and tutorials.</p>
+        <div class="blog-grid">
+          <div class="blog-card">
+            <div class="cat">Basics</div>
+            <h3><a href="blog/what-is-schema-markup.html">What is Schema Markup? A Beginner's Guide</a></h3>
+            <p>Learn what schema markup is, how it helps search engines understand your content, and why it's essential for modern SEO.</p>
+          </div>
+          <div class="blog-card">
+            <div class="cat">SEO</div>
+            <h3><a href="blog/what-is-schema-markup-in-seo.html">What is Schema Markup in SEO?</a></h3>
+            <p>Discover how schema markup enhances your SEO strategy by enabling rich results and improving search engine understanding.</p>
+          </div>
+          <div class="blog-card">
+            <div class="cat">Basics</div>
+            <h3><a href="blog/what-is-schema-org.html">What is Schema.org? The Foundation of Structured Data</a></h3>
+            <p>Learn about Schema.org, the collaborative project behind the world's most widely used structured data vocabulary.</p>
+          </div>
+          <div class="blog-card">
+            <div class="cat">Rich Results</div>
+            <h3><a href="blog/what-are-rich-snippets.html">What Are Rich Snippets? Complete Guide</a></h3>
+            <p>Learn everything about rich snippets, how they differ from standard search results, and how schema markup enables them.</p>
+          </div>
+          <div class="blog-card">
+            <div class="cat">SEO</div>
+            <h3><a href="blog/does-schema-markup-help-google-rankings.html">Does Schema Markup Help Google Rankings?</a></h3>
+            <p>Get the facts about schema markup and Google rankings, including what Google says and the real impact on rankings.</p>
+          </div>
+          <div class="blog-card">
+            <div class="cat">Basics</div>
+            <h3><a href="blog/what-is-structured-data.html">What is Structured Data?</a></h3>
+            <p>Understand what structured data is, how it organizes information for search engines, and why it's essential for schema markup.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="all-tools.html">All Tools</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const generators = [
+      { id:'organization', name:'Organization Schema', description:'Define your organization details for search engines', category:'Business', icon:'fa-building' },
+      { id:'localbusiness', name:'Local Business Schema', description:'Target local search results with business information', category:'Local SEO', icon:'fa-location-dot' },
+      { id:'article', name:'Article Schema', description:'Markup blog posts and articles for rich snippets', category:'Content', icon:'fa-newspaper' },
+      { id:'blogposting', name:'BlogPosting Schema', description:'Optimize blog posts for search results', category:'Content', icon:'fa-blog' },
+      { id:'product', name:'Product Schema', description:'Display products in rich snippets and shopping results', category:'Ecommerce', icon:'fa-cube' },
+      { id:'offer', name:'Offer Schema', description:'Markup special offers and deals', category:'Ecommerce', icon:'fa-tag' },
+      { id:'review', name:'Review Schema', description:'Markup customer reviews with ratings', category:'Ecommerce', icon:'fa-star' },
+      { id:'aggregaterating', name:'Aggregate Rating Schema', description:'Show overall ratings from multiple reviews', category:'Ecommerce', icon:'fa-chart-simple' },
+      { id:'faq', name:'FAQ Schema', description:'Create FAQ rich snippets for search results', category:'Content', icon:'fa-circle-question' },
+      { id:'recipe', name:'Recipe Schema', description:'Markup recipes with ingredients and instructions', category:'Content', icon:'fa-utensils' },
+      { id:'event', name:'Event Schema', description:'Markup events with dates, locations, and tickets', category:'Content', icon:'fa-calendar' },
+      { id:'webpage', name:'WebPage Schema', description:'Mark up individual web pages', category:'Website', icon:'fa-globe' },
+      { id:'breadcrumb', name:'Breadcrumb Schema', description:'Show navigation breadcrumbs in search results', category:'Website', icon:'fa-link' },
+      { id:'jobposting', name:'Job Posting Schema', description:'Post job openings with salary and requirements', category:'Content', icon:'fa-briefcase' },
+      { id:'course', name:'Course Schema', description:'Markup online courses and training programs', category:'Education', icon:'fa-graduation-cap' },
+      { id:'newsarticle', name:'NewsArticle Schema', description:'Markup news articles for Google News and rich results', category:'Content', icon:'fa-newspaper' },
+      { id:'service', name:'Service Schema', description:'Markup services offered by your business', category:'Content', icon:'fa-wrench' },
+      { id:'videoobject', name:'VideoObject Schema', description:'Markup videos for rich video results', category:'Content', icon:'fa-video' },
+      { id:'movie', name:'Movie Schema', description:'Markup movies for rich movie results', category:'Content', icon:'fa-film' },
+      { id:'tvseries', name:'TV Series Schema', description:'Markup TV series with cast and episode info', category:'Content', icon:'fa-tv' },
+      { id:'book', name:'Book Schema', description:'Markup books with author and ISBN details', category:'Content', icon:'fa-book' },
+      { id:'softwareapplication', name:'Software Application Schema', description:'Markup desktop software applications', category:'Content', icon:'fa-laptop-code' },
+      { id:'mobileapplication', name:'Mobile Application Schema', description:'Markup mobile apps in app stores', category:'Content', icon:'fa-mobile-screen-button' },
+      { id:'imageobject', name:'ImageObject Schema', description:'Markup images with creator and license info', category:'Content', icon:'fa-image' },
+      { id:'audioobject', name:'AudioObject Schema', description:'Markup audio files and recordings', category:'Content', icon:'fa-volume-high' },
+      { id:'podcast', name:'Podcast Schema', description:'Markup podcast episodes for podcast directories', category:'Content', icon:'fa-podcast' },
+      { id:'musicalbum', name:'Music Album Schema', description:'Markup music albums with track listings', category:'Content', icon:'fa-compact-disc' },
+      { id:'musicrecording', name:'Music Recording Schema', description:'Markup individual music tracks and songs', category:'Content', icon:'fa-microphone' },
+      { id:'restaurant', name:'Restaurant Schema', description:'Markup restaurants with menu and hours', category:'Content', icon:'fa-utensils' },
+      { id:'hotel', name:'Hotel Schema', description:'Markup hotels with amenities and pricing', category:'Content', icon:'fa-hotel' },
+      { id:'realestatelisting', name:'Real Estate Listing Schema', description:'Markup property listings for real estate', category:'Content', icon:'fa-house-chimney' },
+      { id:'vehicle', name:'Vehicle Schema', description:'Markup vehicles for sale with specs and pricing', category:'Content', icon:'fa-car' },
+      { id:'educationalorganization', name:'Educational Organization Schema', description:'Markup schools, colleges, and universities', category:'Business', icon:'fa-school' },
+      { id:'medicalorganization', name:'Medical Organization Schema', description:'Markup hospitals and medical institutions', category:'Business', icon:'fa-hospital' },
+      { id:'dentist', name:'Dentist Schema', description:'Markup dental practices for local search', category:'Business', icon:'fa-tooth' },
+      { id:'physician', name:'Physician Schema', description:'Markup medical doctors and clinics', category:'Business', icon:'fa-user-doctor' },
+      { id:'legalservice', name:'Legal Service Schema', description:'Markup law firms and legal services', category:'Business', icon:'fa-scale-balanced' },
+      { id:'financialservice', name:'Financial Service Schema', description:'Markup financial advisors and services', category:'Business', icon:'fa-money-bill-wave' },
+      { id:'ngo', name:'NGO Schema', description:'Markup non-profit organizations', category:'Business', icon:'fa-hand-holding-heart' },
+      { id:'governmentorganization', name:'Government Organization Schema', description:'Markup government agencies and departments', category:'Business', icon:'fa-landmark' },
+      { id:'profilepage', name:'Profile Page Schema', description:'Markup user profile and about pages', category:'Website', icon:'fa-user' },
+      { id:'contactpage', name:'Contact Page Schema', description:'Markup contact pages with business info', category:'Website', icon:'fa-address-card' },
+      { id:'searchaction', name:'Search Action Schema', description:'Add site search to Google search results', category:'Website', icon:'fa-magnifying-glass' },
+      { id:'sitelinkssearchbox', name:'Sitelinks Search Box Schema', description:'Enable search box in Google search results', category:'Website', icon:'fa-search-plus' },
+      { id:'howto', name:'How-To Schema', description:'Markup step-by-step instructions and guides', category:'Content', icon:'fa-list' },
+      { id:'speakable', name:'Speakable Schema', description:'Markup text for voice search and assistants', category:'Content', icon:'fa-volume-high' },
+      { id:'dataset', name:'Dataset Schema', description:'Markup data sets for research and science', category:'Content', icon:'fa-database' },
+      { id:'employer', name:'Employer Review Schema', description:'Markup employer reviews and ratings', category:'Business', icon:'fa-users' },
+      { id:'occupation', name:'Occupation Schema', description:'Markup job occupations with salary data', category:'Content', icon:'fa-briefcase' },
+      { id:'collectionpage', name:'Collection Page Schema', description:'Markup collection and listing pages', category:'Website', icon:'fa-layer-group' },
+      { id:'categorypage', name:'Category Page Schema', description:'Markup category and taxonomy pages', category:'Website', icon:'fa-folder-open' },
+      { id:'itemlist', name:'ItemList Schema', description:'Markup ordered lists for rich results', category:'Content', icon:'fa-list-ul' },
+      { id:'carousel', name:'Carousel Schema', description:'Markup item carousels for rich results', category:'Content', icon:'fa-images' },
+      { id:'videolivestream', name:'Video Live Stream Schema', description:'Markup live video streams', category:'Content', icon:'fa-tower-broadcast' },
+      { id:'socialprofile', name:'Social Profile Schema', description:'Markup social media profile pages', category:'Content', icon:'fa-share-nodes' }
+    ];
+
+    function createCard(g) {
+      return `<a href="tools/${g.id}.html" class="tool-card">
+        <div class="tool-icon"><i class="fas ${g.icon}"></i></div>
+        <h3>${g.name}</h3>
+        <p>${g.description}</p>
+        <div class="tool-category">${g.category}</div>
+      </a>`;
+    }
+
+    function render(filtered) {
+      document.getElementById('toolsGrid').innerHTML = filtered.map(createCard).join('');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase();
+      render(generators.filter(g => g.name.toLowerCase().includes(q) || g.description.toLowerCase().includes(q) || g.category.toLowerCase().includes(q)));
+    });
+
+    const cats = [...new Set(generators.map(g => g.category))];
+    const ft = document.getElementById('filterTabs');
+    ft.innerHTML = `<button class="filter-btn active" data-cat="all">All</button>`;
+    cats.forEach(c => { ft.innerHTML += `<button class="filter-btn" data-cat="${c}">${c}</button>`; });
+    ft.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(btn.dataset.cat === 'all' ? generators : generators.filter(g => g.category === btn.dataset.cat));
+    });
+
+    render(generators);
+  </script>
+</body>
+</html>

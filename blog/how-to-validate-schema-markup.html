@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn how to validate schema markup to ensure it meets Schema.org standards and Google's rich result requirements.">
+  <meta property="og:title" content="How do I validate Schema Markup?">
+  <meta property="og:description" content="Learn how to validate schema markup to ensure it meets Schema.org standards and Google's rich result requirements.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/how-to-validate-schema-markup.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How do I validate Schema Markup?">
+  <meta name="twitter:description" content="Learn how to validate schema markup to ensure it meets Schema.org standards and Google's rich result requirements.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>How do I validate Schema Markup? — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/how-to-validate-schema-markup.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>How do I validate Schema Markup?</h1>
+      <p class="meta">June 2026 &middot; 537 words</p>
+      Validating schema markup is essential to ensure that search engines can process your structured data correctly. Validation checks your markup against the official Schema.org specification and Google's rich result guidelines. Proper validation prevents errors that could prevent your content from appearing in rich results.
+
+<h2>What Is Schema Validation?</h2>
+<p>Schema validation is the process of checking your structured data against the official Schema.org vocabulary to ensure it is technically correct. Validation verifies that you are using valid types, valid properties for those types, and correct data formats for each property value. It also checks for missing required properties and syntax errors in your markup format.</p>
+
+<h2>Using Google's Rich Results Test</h2>
+<p>Google's Rich Results Test is the primary validation tool for schema markup. Enter a URL or paste your markup code to check it against Google's rich result requirements. The tool displays any errors or warnings, provides a preview of how your rich result might appear, and indicates which rich result types your page is eligible for. Pass this test before deploying any schema markup.</p>
+
+<h2>Using the Schema.org Validator</h2>
+<p>The official Schema.org validator provides comprehensive validation against the complete Schema.org vocabulary. It checks all types and properties, not just those that produce rich results. This validator is useful for complex markup with multiple schema types or less common schema types that may not be covered by Google's Rich Results Test.</p>
+
+<h2>Understanding Validation Errors</h2>
+<p>Validation errors fall into several categories. Syntax errors occur when your JSON-LD is not valid JSON, such as missing commas or braces. Type errors occur when you use an invalid type name or a property that doesn't belong to the specified type. Value errors occur when you provide a value in the wrong format, such as a string where a number is expected. Missing property errors occur when you omit required properties.</p>
+
+<h2>Fixing Common Validation Issues</h2>
+<p>Most validation issues are easy to fix. Syntax errors are corrected by reviewing your JSON structure for missing punctuation. Type errors are fixed by checking the Schema.org documentation for the correct type name. Value errors are resolved by converting the value to the expected data type. Missing properties are addressed by adding the required information to your markup.</p>
+
+<h2>Validation for Different Formats</h2>
+<p>JSON-LD, Microdata, and RDFa each have different validation requirements. JSON-LD requires valid JSON syntax and proper use of @context and @type. Microdata requires correct use of itemscope, itemtype, and itemprop attributes. RDFa requires proper use of typeof and property attributes. Use format-specific validators or the Schema.org validator which supports all three formats.</p>
+
+<h2>Automated Validation Tools</h2>
+<p>Several tools can automate schema validation across your entire website. Google Search Console provides ongoing monitoring through the Structured Data report. Screaming Frog SEO Spider can crawl your site and validate schema markup on every page. Merkle's Schema Markup Validator offers bulk validation. These tools help you maintain schema quality at scale.</p>
+
+<h2>Validation Best Practices</h2>
+<p>Follow these best practices for schema validation: Always validate markup before deploying to production. Test both the raw code and the live URL. Fix all errors and warnings, not just errors. Re-validate after making changes. Monitor Search Console for new issues. Keep your markup updated when content changes. Follow these practices to ensure your schema markup works correctly.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

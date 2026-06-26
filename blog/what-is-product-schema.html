@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Product schema markup for ecommerce and how it enables product rich results in Google Search.">
+  <meta property="og:title" content="What is Product Schema?">
+  <meta property="og:description" content="Learn about Product schema markup for ecommerce and how it enables product rich results in Google Search.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-product-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Product Schema?">
+  <meta name="twitter:description" content="Learn about Product schema markup for ecommerce and how it enables product rich results in Google Search.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Product Schema? — Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-product-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Product Schema?</h1>
+      <p class="meta">June 2026 &middot; 354 words</p>
+      <p>Product schema is one of the most important types of schema markup for ecommerce websites. It allows you to describe products in detail, including name, description, brand, price, availability, and reviews. When Google detects valid Product schema, it can display your product information directly in search results as a product rich result. This can include price, availability, star ratings, and product images. Product schema is essential for appearing in Google Shopping and other Google commerce features.</p><h2>Key Properties of Product Schema</h2><p>Product schema includes many properties to describe your products comprehensively. The name and description properties are required. The offers property allows you to specify pricing and availability using the nested Offer schema. The brand property identifies the product manufacturer. The review and aggregateRating properties display customer reviews and ratings. The image property provides product images for rich results.</p><h2>Product Schema and Google Shopping</h2><p>Product schema is the foundation for appearing in Google Shopping. When you add Product schema to your product pages, Google can include your products in Google Shopping search results, the Shopping tab, and other Google commerce surfaces. Product schema ensures that Google displays accurate pricing, availability, and product details across all shopping surfaces.</p><h2>Advanced Product Properties</h2><p>Product schema supports many advanced properties for detailed product descriptions. The sku, mpn, and gtin8/gtin13/gtin14 properties provide product identifiers. The color, size, and material properties describe product variants. The condition property indicates whether the product is new, used, or refurbished. The category property helps organize products in Google's shopping taxonomy.</p><h2>Multiple Offers and Variants</h2><p>For products with multiple options like different sizes or colors, you can include multiple Offer objects within the offers property. Each offer can have different prices and availability. You can also use the hasVariant property to link to product variant pages. This allows Google to display the correct pricing for each product option in search results.</p><h2>Implementation</h2><p>Our Schema Markup Generator makes it easy to create Product schema markup. Simply select the Product type, fill in your product details including name, price, brand, and reviews, and the tool generates the JSON-LD code. Test the markup using Google's Rich Results Test to ensure it's valid and eligible for product rich results.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

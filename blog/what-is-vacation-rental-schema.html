@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about VacationRental schema and how it helps rental properties appear in Google Search with availability and pricing.">
+  <meta property="og:title" content="What is Vacation Rental Schema?">
+  <meta property="og:description" content="Learn about VacationRental schema and how it helps rental properties appear in Google Search with availability and pricing.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-vacation-rental-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Vacation Rental Schema?">
+  <meta name="twitter:description" content="Learn about VacationRental schema and how it helps rental properties appear in Google Search with availability and pricing.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Vacation Rental Schema? &#8212; Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-vacation-rental-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Vacation Rental Schema?</h1>
+      <p class="meta">June 2026 &middot; 420 words</p>
+      <p>VacationRental schema is a type of structured data for describing short-term rental properties such as apartments, houses, and villas available for vacation stays. It provides properties for property name, description, location, amenities, pricing, and availability. VacationRental schema helps your rental property appear in Google Search with detailed information that helps travelers find and book accommodations.</p>
+
+<h2>Key Properties of VacationRental Schema</h2>
+<p>VacationRental schema includes properties for comprehensive property descriptions. The name property identifies the rental property. The description summarizes what the property offers. The numberOfBedrooms and numberOfBathrooms describe the property layout. The occupancy property indicates the maximum number of guests. The amenityFeature lists property amenities using LocationFeatureSpecification schema. The petsAllowed property indicates whether pets are permitted. The checkinTime and checkoutTime specify the rental schedule.</p>
+
+<h2>Pricing and Availability</h2>
+<p>The offers property using Offer schema describes pricing and availability for your rental property. Include properties for price, priceCurrency, and availability. The availableAtOrFrom and availabilityEnds properties define the rental period. For seasonal pricing, include multiple Offer instances with different price specifications. The priceRange property provides a general indication of cost level. Clear pricing information helps travelers compare properties and make informed booking decisions.</p>
+
+<h2>Location and Nearby Attractions</h2>
+<p>The address property using PostalAddress schema provides the property location. The geo property with GeoCoordinates provides map coordinates. The containedInPlace property can link to the larger complex or neighborhood. For nearby attractions, use the nearbyPlace property with Place schema describing restaurants, beaches, landmarks, or other points of interest. Location information is critical for travelers searching for rentals in specific areas.</p>
+
+<h2>Amenities and Features</h2>
+<p>The amenityFeature property uses LocationFeatureSpecification schema to describe property amenities. Common amenities include WiFi, parking, pool, air conditioning, heating, washer, dryer, kitchen, and gym access. The floorSize property describes the property square footage. The numberOfRooms provides the total room count. Comprehensive amenity information helps travelers find properties that meet their specific needs and preferences.</p>
+
+<h2>Reviews and Ratings</h2>
+<p>The aggregateRating property displays average guest ratings in search results. The review property with Review schema marks up individual guest reviews. Star ratings and review counts provide valuable social proof that can significantly influence booking decisions. Ensure that reviews are from genuine guests and are visible on your property page. Positive reviews with detailed feedback help your property stand out in search results.</p>
+
+<h2>Conclusion</h2>
+<p>VacationRental schema is essential for property owners and rental platforms listing short-term accommodations. It helps your properties appear in search results with detailed information that attracts travelers. Our Schema Markup Generator supports VacationRental schema with all the properties needed for comprehensive rental listings.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

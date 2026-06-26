@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Markup blog posts and articles for rich snippets">
+  <meta property="og:title" content="Article Schema - Schema Markup Generator">
+  <meta property="og:description" content="Markup blog posts and articles for rich snippets">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schemamarkup.github.io/tools/article.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Article Schema - Schema Markup Generator">
+  <meta name="twitter:description" content="Markup blog posts and articles for rich snippets">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <link rel="canonical" href="https://schemamarkup.github.io/tools/article.html">
+  <title>Article Schema - Schema Markup Generator | WebDeskArt</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    @media (max-width:1024px) { .tool-layout { grid-template-columns: 1fr; } }
+    .form-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .form-section h2 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--text); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 10px;
+      font-family: inherit; font-size: 0.875rem;
+      background: var(--bg); color: var(--text); transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; font-family: 'Monaco','Courier New',monospace; }
+    .required { color: var(--danger); }
+    .help-text { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .output-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .output-section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .validation-msg { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-bottom: 1rem; display: none; }
+    .validation-msg.show { display: block; animation: fadeIn 0.3s; }
+    .validation-msg.success { background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
+    .validation-msg.error { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    .output-box {
+      background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+      padding: 1rem; font-family: 'Monaco','Courier New',monospace; font-size: 0.8rem;
+      line-height: 1.5; max-height: 500px; overflow-y: auto; color: var(--text); min-height: 200px;
+    }
+    .output-box pre { margin: 0; white-space: pre-wrap; }
+    .json-key { color: var(--brand); }
+    .json-string { color: #dc2626; }
+    .json-value { color: #059669; }
+    .btn-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn-group .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+.tool-article { margin-top: 3rem; }
+    .tool-article h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .tool-article h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; }
+    .tool-article p { font-size: 0.9rem; line-height: 1.8; color: var(--text); margin-bottom: 0.75rem; }
+    .tool-article ul, .tool-article ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .tool-article li { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.35rem; }
+    .tool-article .faq-item { margin-bottom: 0.75rem; }
+    .tool-article .faq-item h4 { font-size: 1rem; margin: 0; }
+    .tool-article .note { background: #fff8e1; border-left: 4px solid #f9a825; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.85rem; }
+
+    .faq-item { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; position: relative; }
+    .faq-item .btn-remove { position: absolute; top: 0.5rem; right: 0.5rem; color: var(--danger); border: 1px solid var(--line); background: #fff; cursor: pointer; border-radius: 6px; padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+    .faq-item .btn-remove:hover { background: var(--danger); color: #fff; }
+    #addFaqBtn { margin-top: 0.5rem; }
+    @media (max-width:768px) {
+      .form-section, .output-section { padding: 1rem; }
+      .btn-group { flex-direction: column; }
+      .btn-group .btn { width: 100%; justify-content: center; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="breadcrumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="../all-tools.html">All Tools</a>
+        <span class="sep">›</span>
+        <span class="current">Article Schema</span>
+      </div>
+      <div class="tool-header"><h1><span class="icon-box"><i class="fas fa-newspaper"></i></span> Article Schema</h1><p>Markup blog posts and articles for rich snippets</p></div>
+      <div class="tool-layout">
+        <div class="form-section"><h2>Fill in the Details</h2><form id="genForm"><div class="form-group"><label>Article Headline <span class="required">*</span></label><input type="text" name="headline" placeholder="Article Title" required></div>
+        <div class="form-group"><label>Article Description <span class="required">*</span></label><textarea name="description" placeholder="Brief summary of the article" required></textarea></div>
+        <div class="form-group"><label>Article Image URL <span class="required">*</span></label><input type="text" name="image" placeholder="https://example.com/image.jpg" required></div>
+        <div class="form-group"><label>Date Published <span class="required">*</span></label><input type="text" name="datePublished" placeholder="2024-01-15" required></div>
+        <div class="form-group"><label>Date Modified</label><input type="text" name="dateModified" placeholder="2024-01-20"></div>
+        <div class="form-group"><label>Author Name <span class="required">*</span></label><input type="text" name="author" placeholder="John Doe" required></div>
+        <div class="form-group"><label>Author URL</label><input type="text" name="authorUrl" placeholder="https://example.com/author"></div>
+        <div class="form-group"><label>Article URL <span class="required">*</span></label><input type="text" name="url" placeholder="https://example.com/article" required></div>
+        <div class="form-group"><label>Article Text (first 100 chars)</label><textarea name="articleBody" placeholder="Beginning of the article..."></textarea></div></form></div>
+        <div class="output-section">
+          <h2>Generated JSON-LD</h2>
+          <div class="validation-msg" id="valMsg"></div>
+          <div class="output-box" id="outBox"><pre>Fill in the form to generate JSON-LD...</pre></div>
+          <div class="btn-group">
+            <button class="btn primary btn-small" onclick="copyJSON()"><i class="fas fa-copy"></i> Copy JSON</button>
+            <button class="btn ghost btn-small" onclick="downloadJSON()"><i class="fas fa-download"></i> Download</button>
+            <button class="btn ghost btn-small" onclick="validateJSON()"><i class="fas fa-check-circle"></i> Validate</button>
+            <button class="btn ghost btn-small" onclick="beautifyJSON()"><i class="fas fa-wand-magic-sparkles"></i> Beautify</button>
+            <button class="btn ghost btn-small" onclick="minifyJSON()"><i class="fas fa-wrench"></i> Minify</button>
+          </div>
+        </div>
+      </div>
+      <div class="tool-article">
+
+<h2>Make Your Articles Stand Out in Google Search</h2>
+<p>Every day, millions of articles are published online. How do you make yours stand out in search results? Article Schema is the structured data markup that transforms your standard search listing into a rich result featuring headlines, images, author information, and publication dates. It is the difference between blending in and being noticed.</p>
+<p>Our Article Schema Generator creates valid JSON-LD markup optimized for Google News, Top Stories, and standard article rich results. No coding skills needed.</p>
+
+<h2>What Is Article Schema?</h2>
+<p>Article Schema is a Schema.org type that describes news articles, blog posts, and other written content. It provides search engines with essential metadata including headline, description, image, author, publication date, and article body. This information powers enhanced search features like the Top Stories carousel and article-rich results.</p>
+<p>Google uses Article Schema to display your content in Google News, Google Discover, and the Top Stories section of search results. For publishers and content creators, this markup is essential for maximum visibility.</p>
+
+<h2>Features</h2>
+<ul>
+<li>Complete article metadata: headline, description, image, author</li>
+<li>Date handling with published and modified timestamps</li>
+<li>Author URL support for author authority signals</li>
+<li>Article body text inclusion for content understanding</li>
+<li>Valid JSON-LD format compliant with Google guidelines</li>
+<li>Clean, minified output ready to implement</li>
+</ul>
+
+<h2>Benefits</h2>
+<h3>Top Stories Visibility</h3>
+<p>Article Schema is required for your content to appear in Google's Top Stories carousel, one of the most prominent search features.</p>
+<h3>Higher Click-Through Rates</h3>
+<p>Rich article results with images and publication dates achieve 20-40% higher CTR compared to standard text listings.</p>
+<h3>Google News Inclusion</h3>
+<p>News publishers must implement Article Schema to be indexed and displayed in Google News.</p>
+
+<h2>How It Works</h2>
+<ol>
+<li>Enter your article headline and description in the form.</li>
+<li>Add the featured image URL for rich result display.</li>
+<li>Set the publication date and optional modification date.</li>
+<li>Include the author name and optional author URL.</li>
+<li>Paste your article URL and optional first 100 characters.</li>
+<li>Copy the generated JSON-LD to your article page.</li>
+</ol>
+
+<h2>When to Use It</h2>
+<p>Use Article Schema on every news article, blog post, press release, and editorial content page. It is particularly important for news publishers, media sites, and content marketing blogs.</p>
+
+<h2>Real-World Examples</h2>
+<p><strong>News Publisher:</strong> A regional news site adds Article Schema to all their stories. Within two weeks, their articles appear in Google News and Top Stories for breaking local events.</p>
+<p><strong>Blogger:</strong> A food blogger implements Article Schema. Their recipes now display with images and publish dates in search results, doubling their organic traffic.</p>
+
+<h2>Use Cases</h2>
+<ul>
+<li>News websites and online publications</li>
+<li>Bloggers and content creators</li>
+<li>Corporate blogs publishing thought leadership</li>
+<li>Magazine websites and digital media</li>
+<li>Press release distribution</li>
+</ul>
+
+<h2>Common Mistakes</h2>
+<p><strong>Missing or incorrect dates:</strong> Always use ISO 8601 date format (YYYY-MM-DD). Incorrect dates can prevent rich result eligibility.</p>
+<p><strong>Missing author information:</strong> Google prefers articles with clear author attribution for E-A-T signals.</p>
+<p><strong>Image without URL:</strong> The image field requires a full URL, not a relative path.</p>
+
+<h2>Tips & Best Practices</h2>
+<ul>
+<li>Use Article Schema on <strong>every</strong> article page, not just the homepage</li>
+<li>Include high-resolution images (at least 1200px wide) for Top Stories</li>
+<li>Keep your headline under 110 characters for optimal display</li>
+<li>Update the modified date when you update content</li>
+<li>Combine with Breadcrumb Schema for comprehensive navigation markup</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h4>Is Article Schema the same as BlogPosting Schema?</h4><p>No. Article is the parent type. BlogPosting is a subtype used specifically for blog content. Use Article for news and general articles.</p></div>
+<div class="faq-item"><h4>Do I need Article Schema for every post?</h4><p>Yes, every article or blog post should have its own Article Schema markup for best search visibility.</p></div>
+<div class="faq-item"><h4>Can I use Article Schema for videos?</h4><p>No, use VideoObject Schema for video content. Article Schema is for written content.</p></div>
+<div class="faq-item"><h4>How does Google use the article body field?</h4><p>It helps Google understand the content for featured snippets and Google News categorization.</p></div>
+<div class="faq-item"><h4>Will this help with Google Discover?</h4><p>Yes, Article Schema is one of the signals Google uses for Discover content recommendations.</p></div>
+
+<h2>Conclusion</h2>
+<p>Article Schema is essential for any website that publishes written content. It unlocks Top Stories, Google News, and rich results that dramatically improve your content's search visibility. Use our Article Schema Generator above to create your markup in seconds and start getting the visibility your articles deserve.</p>
+
+</div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+  <script>
+    function genJSON(d){
+            return {'@context':'https://schema.org','@type':'Article',headline:d.headline,description:d.description,image:d.image,
+                datePublished:d.datePublished,dateModified:d.dateModified||d.datePublished,
+                author:{'@type':'Person',name:d.author,url:d.authorUrl||undefined},url:d.url,articleBody:d.articleBody||undefined}
+        }
+    function cleanJSON(obj){if(Array.isArray(obj))return obj.map(cleanJSON).filter(i=>i!==null);if(obj!==null&&typeof obj==='object'){const c={};for(const k in obj){const v=cleanJSON(obj[k]);if(v!==undefined)c[k]=v;}return Object.keys(c).length?c:undefined}return obj===undefined?undefined:obj}
+    function formatJSON(json,minify){return minify?JSON.stringify(cleanJSON(json)):JSON.stringify(cleanJSON(json),null,2)}
+    function highlightJSON(str){str=str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');str=str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,function(m){let cls='json-value';if(/^"/.test(m)){cls=/:$/.test(m)?'json-key':'json-string'}else if(/true|false|null/.test(m))cls='json-value';return '<span class="'+cls+'">'+m+'</span>'});return str}
+    function genOutput(){const f=document.getElementById('genForm');const d=Object.fromEntries(new FormData(f));const j=genJSON(d);if(!j)return;const fmt=formatJSON(j,false);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(fmt)+'</pre>';window._json=fmt}
+    function copyJSON(){if(!window._json){msg('Nothing to copy. Fill the form first.','error');return}navigator.clipboard.writeText(window._json).then(()=>msg('✓ Copied!','success')).catch(()=>msg('✗ Failed','error'))}
+    function downloadJSON(){if(!window._json){msg('Nothing to download. Fill the form first.','error');return}const a=document.createElement('a');a.setAttribute('href','data:application/json;charset=utf-8,'+encodeURIComponent(window._json));a.setAttribute('download',document.title.replace(/\s+/g,'-').toLowerCase()+'.json');a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);msg('⬇️ Downloaded!','success')}
+    function validateJSON(){try{JSON.parse(document.getElementById('outBox').innerText);msg('✓ Valid JSON!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function beautifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const f=JSON.stringify(v,null,2);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(f)+'</pre>';window._json=f;msg('✨ Beautified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function minifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const m=JSON.stringify(v);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(m)+'</pre>';window._json=m;msg('🔧 Minified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function msg(text,type){const el=document.getElementById('valMsg');el.textContent=text;el.className='validation-msg show '+type;setTimeout(()=>el.classList.remove('show'),3000)}
+    document.getElementById('genForm').addEventListener('input',genOutput);document.getElementById('genForm').addEventListener('change',genOutput);genOutput();
+  </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Markup job occupations with salary data">
+  <meta property="og:title" content="Occupation Schema - Schema Markup Generator">
+  <meta property="og:description" content="Markup job occupations with salary data">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://schemamarkup.github.io/tools/occupation.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Occupation Schema - Schema Markup Generator">
+  <meta name="twitter:description" content="Markup job occupations with salary data">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <link rel="canonical" href="https://schemamarkup.github.io/tools/occupation.html">
+  <title>Occupation Schema - Schema Markup Generator | WebDeskArt</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    @media (max-width:1024px) { .tool-layout { grid-template-columns: 1fr; } }
+    .form-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .form-section h2 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--text); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 10px;
+      font-family: inherit; font-size: 0.875rem;
+      background: var(--bg); color: var(--text); transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; font-family: 'Monaco','Courier New',monospace; }
+    .required { color: var(--danger); }
+    .help-text { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .output-section { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2rem; }
+    .output-section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .validation-msg { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-bottom: 1rem; display: none; }
+    .validation-msg.show { display: block; animation: fadeIn 0.3s; }
+    .validation-msg.success { background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
+    .validation-msg.error { background: rgba(239,68,68,0.1); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    .output-box {
+      background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+      padding: 1rem; font-family: 'Monaco','Courier New',monospace; font-size: 0.8rem;
+      line-height: 1.5; max-height: 500px; overflow-y: auto; color: var(--text); min-height: 200px;
+    }
+    .output-box pre { margin: 0; white-space: pre-wrap; }
+    .json-key { color: var(--brand); }
+    .json-string { color: #dc2626; }
+    .json-value { color: #059669; }
+    .btn-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn-group .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+.tool-article { margin-top: 3rem; }
+    .tool-article h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .tool-article h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; }
+    .tool-article p { font-size: 0.9rem; line-height: 1.8; color: var(--text); margin-bottom: 0.75rem; }
+    .tool-article ul, .tool-article ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .tool-article li { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.35rem; }
+    .tool-article .faq-item { margin-bottom: 0.75rem; }
+    .tool-article .faq-item h4 { font-size: 1rem; margin: 0; }
+    .tool-article .note { background: #fff8e1; border-left: 4px solid #f9a825; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.85rem; }
+
+    .faq-item { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; position: relative; }
+    .faq-item .btn-remove { position: absolute; top: 0.5rem; right: 0.5rem; color: var(--danger); border: 1px solid var(--line); background: #fff; cursor: pointer; border-radius: 6px; padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+    .faq-item .btn-remove:hover { background: var(--danger); color: #fff; }
+    #addFaqBtn { margin-top: 0.5rem; }
+    @media (max-width:768px) {
+      .form-section, .output-section { padding: 1rem; }
+      .btn-group { flex-direction: column; }
+      .btn-group .btn { width: 100%; justify-content: center; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="breadcrumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="../all-tools.html">All Tools</a>
+        <span class="sep">›</span>
+        <span class="current">Occupation Schema</span>
+      </div>
+      <div class="tool-header"><h1><span class="icon-box"><i class="fas fa-briefcase"></i></span> Occupation Schema</h1><p>Markup job occupations with salary data</p></div>
+      <div class="tool-layout">
+        <div class="form-section"><h2>Fill in the Details</h2><form id="genForm"><div class="form-group"><label>Occupation Title <span class="required">*</span></label><input type="text" name="name" placeholder="Software Developer" required></div>
+        <div class="form-group"><label>Description</label><textarea name="description" placeholder="Designs and develops software applications"></textarea></div>
+        <div class="form-group"><label>Skills (one per line)</label><textarea name="skills" placeholder="JavaScript&#10;Python&#10;SQL"></textarea></div>
+        <div class="form-group"><label>Occupation Location</label><input type="text" name="location" placeholder="United States"></div>
+        <div class="form-group"><label>Qualifications (one per line)</label><textarea name="qualifications" placeholder="Bachelor's degree&#10;3+ years experience"></textarea></div>
+        <div class="form-group"><label>Duties (one per line)</label><textarea name="duties" placeholder="Write code&#10;Review pull requests&#10;Attend stand-ups"></textarea></div>
+        <div class="form-group"><label>Salary Min</label><input type="text" name="salaryMin" placeholder="80000"></div>
+        <div class="form-group"><label>Salary Max</label><input type="text" name="salaryMax" placeholder="150000"></div>
+        <div class="form-group"><label>Salary Currency</label><select name="salaryCurrency"><option value="">Select...</option><option>USD</option><option>EUR</option><option>GBP</option></select></div>
+        <div class="form-group"><label>Salary Period</label><select name="salaryPeriod"><option value="">Select...</option><option>YEAR</option><option>MONTH</option><option>WEEK</option><option>HOUR</option></select></div></form></div>
+        <div class="output-section">
+          <h2>Generated JSON-LD</h2>
+          <div class="validation-msg" id="valMsg"></div>
+          <div class="output-box" id="outBox"><pre>Fill in the form to generate JSON-LD...</pre></div>
+          <div class="btn-group">
+            <button class="btn primary btn-small" onclick="copyJSON()"><i class="fas fa-copy"></i> Copy JSON</button>
+            <button class="btn ghost btn-small" onclick="downloadJSON()"><i class="fas fa-download"></i> Download</button>
+            <button class="btn ghost btn-small" onclick="validateJSON()"><i class="fas fa-check-circle"></i> Validate</button>
+            <button class="btn ghost btn-small" onclick="beautifyJSON()"><i class="fas fa-wand-magic-sparkles"></i> Beautify</button>
+            <button class="btn ghost btn-small" onclick="minifyJSON()"><i class="fas fa-wrench"></i> Minify</button>
+          </div>
+        </div>
+      </div>
+      <div class="tool-article">
+
+<h2>Attract Qualified Candidates With Occupation Schema</h2>
+<p>When job seekers search for career information, they want to see salary ranges, required skills, and job duties at a glance. Occupation Schema provides this structured data directly in search results, helping candidates make informed career decisions while positioning your organization as a transparent employer.</p>
+<p>Our Occupation Schema Generator creates Google-compliant JSON-LD markup with salary data, skills, qualifications, and job duties. No coding required.</p>
+
+<h2>What Is Occupation Schema?</h2>
+<p>Occupation Schema is a Schema.org type that describes a specific occupation or profession. It includes properties such as name, description, skills, qualifications, duties, education requirements, and salary information. This structured data helps search engines display detailed occupation profiles in rich results, giving job seekers comprehensive career information directly in search.</p>
+<p>Google uses Occupation Schema to power enhanced job-related searches, displaying estimated salaries, required skills, and typical responsibilities. For employers and recruiters, this markup ensures your job postings reach the most qualified candidates.</p>
+
+<h2>Features</h2>
+<ul>
+<li>Occupation name, description, and detailed overview</li>
+<li>Skills and qualifications specification</li>
+<li>Job duties and responsibilities listing</li>
+<li>Salary range with minimum and maximum values</li>
+<li>Currency and salary period support (hourly, monthly, yearly)</li>
+<li>Education requirements and certifications</li>
+<li>Valid JSON-LD output ready for implementation</li>
+</ul>
+
+<h2>Benefits</h2>
+<h3>Enhanced Job Search Visibility</h3>
+<p>Occupation Schema powers richer job search results with salary, skills, and duties displayed before the candidate clicks through.</p>
+<h3>Better Candidate Matching</h3>
+<p>Detailed occupation data helps candidates self-select based on skills and salary expectations, reducing unqualified applications.</p>
+<h3>Salary Transparency</h3>
+<p>Displaying salary ranges builds trust with candidates and improves application quality by setting clear expectations.</p>
+
+<h2>How It Works</h2>
+<ol>
+<li>Enter the occupation name and a detailed description of the role.</li>
+<li>List the required skills, qualifications, and education requirements.</li>
+<li>Describe the primary job duties and responsibilities.</li>
+<li>Set the salary range with minimum, maximum, currency, and payment period.</li>
+<li>Add the location where the occupation is based.</li>
+<li>Copy the generated JSON-LD code to your career or job posting page.</li>
+</ol>
+
+<h2>Use Cases</h2>
+<ul>
+<li>Company career pages describing role expectations</li>
+<li>Job boards and recruitment platforms</li>
+<li>Professional association and certification sites</li>
+<li>Career guidance and salary research websites</li>
+<li>Government labor and employment information pages</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h4>Is Occupation Schema the same as Job Posting Schema?</h4><p>No. Occupation Schema describes the occupation itself, while JobPosting Schema describes a specific job opening. They complement each other.</p></div>
+<div class="faq-item"><h4>Can I use Occupation Schema without salary data?</h4><p>Yes, salary fields are optional. The schema is still valuable for skills and duties information.</p></div>
+<div class="faq-item"><h4>What salary periods are supported?</h4><p>Yearly, monthly, weekly, and hourly periods are all supported.</p></div>
+<div class="faq-item"><h4>Does Occupation Schema help with Google for Jobs?</h4><p>Indirectly. Use JobPosting Schema for Google for Jobs, but Occupation Schema provides enriched context.</p></div>
+
+<h2>Conclusion</h2>
+<p>Occupation Schema helps qualified candidates discover your job opportunities with transparent salary, skills, and duties information. Generate your markup above and attract better-matched candidates to your open positions.</p>
+
+</div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io" class="footer-url">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+  <script>
+    function genJSON(d){
+            const skills=(d.skills||'').split('\n').filter(s=>s.trim()).map(s=>s.trim());
+            return {'@context':'https://schema.org','@type':'Occupation',name:d.name,description:d.description||undefined,
+                skills:d.skills?skills:undefined,occupationLocation:d.location||undefined,
+                qualifications:d.qualifications?d.qualifications.split('\n').filter(s=>s.trim()):undefined,
+                duties:d.duties?d.duties.split('\n').filter(s=>s.trim()):undefined,
+                estimatedSalary:d.salaryMin&&d.salaryMax?{'@type':'PriceSpecification',priceCurrency:d.salaryCurrency||'USD',minPrice:d.salaryMin,maxPrice:d.salaryMax,unitText:d.salaryPeriod||'YEAR'}:undefined}
+        }
+    function cleanJSON(obj){if(Array.isArray(obj))return obj.map(cleanJSON).filter(i=>i!==null);if(obj!==null&&typeof obj==='object'){const c={};for(const k in obj){const v=cleanJSON(obj[k]);if(v!==undefined)c[k]=v;}return Object.keys(c).length?c:undefined}return obj===undefined?undefined:obj}
+    function formatJSON(json,minify){return minify?JSON.stringify(cleanJSON(json)):JSON.stringify(cleanJSON(json),null,2)}
+    function highlightJSON(str){str=str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');str=str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,function(m){let cls='json-value';if(/^"/.test(m)){cls=/:$/.test(m)?'json-key':'json-string'}else if(/true|false|null/.test(m))cls='json-value';return '<span class="'+cls+'">'+m+'</span>'});return str}
+    function genOutput(){const f=document.getElementById('genForm');const d=Object.fromEntries(new FormData(f));const j=genJSON(d);if(!j)return;const fmt=formatJSON(j,false);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(fmt)+'</pre>';window._json=fmt}
+    function copyJSON(){if(!window._json){msg('Nothing to copy. Fill the form first.','error');return}navigator.clipboard.writeText(window._json).then(()=>msg('✓ Copied!','success')).catch(()=>msg('✗ Failed','error'))}
+    function downloadJSON(){if(!window._json){msg('Nothing to download. Fill the form first.','error');return}const a=document.createElement('a');a.setAttribute('href','data:application/json;charset=utf-8,'+encodeURIComponent(window._json));a.setAttribute('download',document.title.replace(/\s+/g,'-').toLowerCase()+'.json');a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);msg('⬇️ Downloaded!','success')}
+    function validateJSON(){try{JSON.parse(document.getElementById('outBox').innerText);msg('✓ Valid JSON!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function beautifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const f=JSON.stringify(v,null,2);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(f)+'</pre>';window._json=f;msg('✨ Beautified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function minifyJSON(){try{const v=JSON.parse(document.getElementById('outBox').innerText);const m=JSON.stringify(v);document.getElementById('outBox').innerHTML='<pre>'+highlightJSON(m)+'</pre>';window._json=m;msg('🔧 Minified!','success')}catch(e){msg('✗ '+e.message,'error')}}
+    function msg(text,type){const el=document.getElementById('valMsg');el.textContent=text;el.className='validation-msg show '+type;setTimeout(()=>el.classList.remove('show'),3000)}
+    document.getElementById('genForm').addEventListener('input',genOutput);document.getElementById('genForm').addEventListener('change',genOutput);genOutput();
+  </script>
+</body>
+</html>

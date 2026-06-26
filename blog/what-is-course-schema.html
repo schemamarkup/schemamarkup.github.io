@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Course schema markup and how it helps educational courses appear in Google Search.">
+  <meta property="og:title" content="What is Course Schema?">
+  <meta property="og:description" content="Learn about Course schema markup and how it helps educational courses appear in Google Search.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://schemamarkup.github.io/blog/what-is-course-schema.html">
+  <meta property="og:image" content="https://schemamarkup.github.io/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is Course Schema?">
+  <meta name="twitter:description" content="Learn about Course schema markup and how it helps educational courses appear in Google Search.">
+  <meta name="twitter:image" content="https://schemamarkup.github.io/og-image.svg">
+  <title>What is Course Schema? &#8212; Schema Markup Generator</title>
+  <link rel="canonical" href="https://schemamarkup.github.io/blog/what-is-course-schema.html">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .article { padding: 3rem 0 4rem; }
+    .article h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .article .meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+    .article h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .article p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .article ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .article ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.5rem; }
+    .article .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .article .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="logo-text">Schema Generator</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="../index.html">Home</a>
+      <a href="../all-tools.html">All Tools</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../tos.html">Terms</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </div>
+  </header>
+  <main>
+    <div class="container narrow article">
+      <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+      <h1>What is Course Schema?</h1>
+      <p class="meta">June 2026 &middot; 483 words</p>
+      <p>Course schema is a type of structured data for describing educational courses. It provides properties for course name, description, provider, educational level, and syllabus. When Google detects valid Course schema, it can display your courses in rich results with course details, ratings, and provider information. Course schema is essential for educational institutions, online learning platforms, and any organization offering structured educational content.</p>
+
+<h2>Key Properties of Course Schema</h2>
+<p>Course schema includes properties for comprehensive course descriptions. The name property is the course title. The description property summarizes what the course covers. The provider property identifies the educational organization using Organization schema. The educationalCredentialAwarded property describes the certificate or degree earned. The courseCode property provides the institutional course identifier. The hasCourseInstance property links to specific offerings using CourseInstance schema with dates, locations, and enrollment information.</p>
+
+<h2>Course Rich Results</h2>
+<p>Course schema enables rich results that display course name, provider, rating, and pricing directly in search results. These rich results can include review stars and educational level information. For online courses, the rich result can include a direct link to enroll. For in-person courses, location and schedule information can be displayed. Course rich results help students find and compare educational opportunities directly from search results.</p>
+
+<h2>CourseInstance Schema</h2>
+<p>The CourseInstance schema works alongside Course to describe specific offerings of a course. Each CourseInstance can have its own startDate, endDate, location, and offers properties. This allows you to describe multiple sessions of the same course offered at different times or locations. The courseMode property indicates whether the offering is in-person, online, or mixed. The instructor property identifies who teaches that specific offering.</p>
+
+<h2>Educational Level and Audience</h2>
+<p>The educationalLevel property describes the target audience using terms like Beginner, Intermediate, Advanced, or specific grade levels. The typicalAgeRange property specifies the recommended age for learners. The audience property using Audience schema can provide more specific targeting information. These properties help students find courses appropriate for their skill level and educational background.</p>
+
+<h2>Provider and Accreditation</h2>
+<p>The provider property identifies the organization offering the course using EducationalOrganization schema. Include the provider name, url, and logo. For accredited courses, include accreditation information. The offers property can describe tuition costs, payment plans, and financial aid options. A complete provider profile helps establish credibility and helps students evaluate the quality of the educational offering.</p>
+
+<h2>Syllabus and Learning Outcomes</h2>
+<p>Course schema supports detailed curriculum information. The description property can include an overview of topics covered. The teaches property identifies specific skills or concepts taught. The educationalCredentialAwarded property describes what students earn upon completion. The competencyRequired property lists prerequisites. Comprehensive curriculum information helps students understand what they will learn and whether the course meets their educational goals.</p>
+
+<h2>Conclusion</h2>
+<p>Course schema is essential for educational institutions and online learning platforms. It enables course rich results that help students discover and compare educational opportunities. Our Schema Markup Generator supports Course schema with all the properties needed to create comprehensive course markup.</p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../all-tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../tos.html">Terms</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </nav>
+      <p class="copy">&copy; 2026 <a href="https://schemamarkup.github.io">Schema Markup Generator</a> &middot; Built by <a href="https://www.webdeskart.com">WebDeskArt</a></p>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
